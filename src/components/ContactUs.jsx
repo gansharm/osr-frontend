@@ -77,20 +77,15 @@ function Contact_Us() {
       setLoading(true);
 
       await axios.post(
-        "https://osr-solutions.onrender.com/",
-        {
-          name:
-            `${form.first} ${form.last}`,
-          email:
-            form.email,
-          phone:
-            form.phone,
-          service:
-            form.service,
-          message:
-            form.message,
-        }
-      );
+  "https://osr-solutions.onrender.com/api/contact",
+  {
+    name: `${form.first} ${form.last}`,
+    email: form.email,
+    phone: form.phone,
+    service: form.service,
+    message: form.message,
+  }
+);
 
       setSent(true);
 
