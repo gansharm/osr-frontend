@@ -1,0 +1,169 @@
+.about-bg {
+  background: #050d18;
+  padding: 120px 7%;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-content h2 {
+  font-size: 4rem;
+  line-height: 1.1;
+  color: white;
+  margin: 20px 0;
+}
+
+.glow {
+  color: #00d4ff;
+  text-shadow:
+    0 0 10px rgba(0,212,255,.3);
+}
+
+.about-text {
+  color: #8fa2bc;
+  line-height: 1.9;
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+}
+
+.sec-tag {
+  color: #00d4ff;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* FEATURES */
+.feat-list {
+  margin-top: 40px;
+  display: grid;
+  gap: 20px;
+}
+
+.feat {
+  display: flex;
+  gap: 18px;
+  padding: 22px;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(0,0,0,.92),
+    rgba(7,20,35,.88)
+  );
+
+  border: 1px solid
+    rgba(0,212,255,.12);
+
+  transition: .3s ease;
+}
+
+.feat:hover {
+  transform: translateY(-6px);
+
+  border-color:
+    rgba(0,212,255,.35);
+}
+
+.feat-icon {
+  min-width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background:
+    rgba(0,212,255,.08);
+
+  font-size: 28px;
+}
+
+.feat-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.feat-desc {
+  color: #8fa2bc;
+  margin-top: 6px;
+  line-height: 1.7;
+}
+
+/* RIGHT CARDS */
+.about-cards {
+  display: grid;
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 25px;
+}
+
+.about-card {
+  padding: 50px 30px;
+  border-radius: 28px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(0,0,0,.95),
+    rgba(5,15,30,.92)
+  );
+
+  border: 1px solid
+    rgba(0,212,255,.14);
+
+  text-align: center;
+  transition: .3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+
+  border-color:
+    rgba(0,212,255,.4);
+
+  box-shadow:
+    0 0 25px
+    rgba(0,212,255,.08);
+}
+
+.about-num {
+  color: #00d4ff;
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.about-lbl {
+  color: #cfd8e6;
+  font-size: 18px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-content h2 {
+    font-size: 3rem;
+  }
+}
+
+@media(max-width:768px) {
+  .about-content h2 {
+    font-size: 2.4rem;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+}
