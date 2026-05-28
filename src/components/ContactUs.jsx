@@ -77,7 +77,7 @@ function Contact_Us() {
       setLoading(true);
 
       await axios.post(
-        "http://localhost:5000/api/contact",
+        "https://osr-solutions.onrender.com/",
         {
           name:
             `${form.first} ${form.last}`,
