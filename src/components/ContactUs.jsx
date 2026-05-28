@@ -77,7 +77,7 @@ function Contact_Us() {
       setLoading(true);
 
       await axios.post(
-        "https://osr-solutions.onrender.com/",
+        "https://osr-solutions.onrender.com/api/contact",
         {
           name:
             `${form.first} ${form.last}`,
