@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./ServicePage.css";
-
+import DTF_LOGO from "../images/DTF.png"
 function ServicePage() {
   return (
     <>
@@ -26,7 +26,7 @@ function ServicePage() {
 
           <div className="service-card">
             <img
-              src="/images/machine.jpg"
+              src={DTF_LOGO}
               alt="Machine"
             />
             <h3>
