@@ -2,7 +2,8 @@ import { useState } from "react";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-
+import logo from
+"../images/OSR.png";
 const NAV_LINKS = [
   {
     name: "Home",
@@ -77,7 +78,13 @@ function Navbar() {
           navigate("/")
         }
       >
-        O<span>SR</span>
+        <div className="logo">
+  <img
+    src={logo}
+    alt="OSR Solutions"
+    className="nav-logo"
+  />
+</div>
       </div>
 
       {/* DESKTOP MENU */}

@@ -22,6 +22,11 @@
     1px solid rgba(0,212,255,.12);
 }
 
+
+.nav-logo {
+  height: 70px;
+  width: auto;
+}
 /* LOGO */
 .nav-logo {
   color: white;
@@ -48,7 +53,7 @@
   background: none;
   border: none;
 
-  color: #c0c0c0;
+  color: #b5b1b1a3;
   font-size: 18px;
   font-weight: 600;
 
