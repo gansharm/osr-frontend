@@ -3,7 +3,7 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import logo from
-"../images/OSR.png";
+"../images/vicky4.png";
 const NAV_LINKS = [
   {
     name: "Home",
