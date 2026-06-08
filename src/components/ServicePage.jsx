@@ -51,7 +51,7 @@ function ServicePage() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [machineImages.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -59,7 +59,7 @@ function ServicePage() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [machineImages1.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -67,7 +67,7 @@ function ServicePage() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [machineImages2.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -75,7 +75,7 @@ function ServicePage() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [machineImages3.length]);
 
   return (
     <>
