@@ -1,8 +1,70 @@
+import { useState, useEffect } from "react";
+
+import DTF1 from "../images/DTF.png";
+import DTF2 from "../images/DTF1.png";
+import DTF3 from "../images/DTF2.png";
+import ALLINONE from "../images/ALL-IN-ONE.png";
+import ALLINONE1 from "../images/ALL-IN-ONE1.png";
+import ALLINONE2 from "../images/ALL-IN-ONE2.png";
+import ALLINONE3 from "../images/ALL-IN-ONE3.png";
+import ALLINONE4 from "../images/ALL-IN-ONE4.png";
+import ALLINONE5 from "../images/ALL-IN-ONE5.png";
+import ALLINONE6 from "../images/ALL-IN-ONE6.png";
+import ALLINONE7 from "../images/ALL-IN-ONE7.png";
+import ALLINONE8 from "../images/ALL-IN-ONE8.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./ServicePage.css";
-import DTF_LOGO from "../images/DTF.png"
+
 function ServicePage() {
+  const machineImages = [DTF1, DTF2, DTF3,];
+  const machineImages1 = [
+  ALLINONE,
+  ALLINONE1,
+  ALLINONE2
+];
+const machineImages2 = [ALLINONE3,ALLINONE4,ALLINONE5
+];
+const machineImages3 = [ALLINONE6,ALLINONE7,ALLINONE8
+];
+
+const [currentImage, setCurrentImage] = useState(0);
+const [currentImage1, setCurrentImage1] = useState(0);
+const [currentImage3, setCurrentImage2] = useState(0);
+const [currentImage4, setCurrentImage4] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentImage((prev) => (prev + 1) % machineImages.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [machineImages.length]);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentImage1((prev) => (prev + 1) % machineImages1.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [machineImages1.length]);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentImage2((prev) => (prev + 1) % machineImages2.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [machineImages2.length]);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentImage4((prev) => (prev + 1) % machineImages3.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [machineImages3.length]);
+
   return (
     <>
       {/* NAVBAR */}
@@ -25,40 +87,85 @@ function ServicePage() {
         <div className="service-grid">
 
           <div className="service-card">
+  <img
+    src={machineImages[currentImage]}
+    alt="Machine"
+  />
+
+  {/* <div className="slider-buttons">
+    <button
+      onClick={() =>
+        setCurrentImage(
+          (currentImage - 1 + machineImages.length) %
+            machineImages.length
+        )
+      }
+    >
+      ◀
+    </button>
+
+    <button
+      onClick={() =>
+        setCurrentImage(
+          (currentImage + 1) % machineImages.length
+        )
+      }
+    >
+      ▶
+    </button>
+  </div> */}
+
+  <h3>DTF</h3>
+</div>
+
+          <div className="service-card">
+
+  <img
+    src={machineImages1[currentImage]}
+    alt="ALL-IN-ONE DTF"
+    className="slider-image"
+  />
+
+  <div className="slider-buttons">
+     
+  </div>
+
+  <h3>ALL-IN-ONE DTF</h3>
+
+</div>
+
+          <div className="service-card">
             <img
-              src={DTF_LOGO}
-              alt="Machine"
-            />
+    src={machineImages2[currentImage3]}
+    alt="ALL-IN-ONE DTF"
+    className="slider-image"
+  />
             <h3>
-              Printing Machines
+              ALL-IN-ONE DTF
             </h3>
+            <p>A3F-4050 DX | Dual Epson DX7 Heads | 2400 DPI | CMYK + White + Varnish + Gold Varnish | Up to 300 mm Print Width | Dual UV LED Curing | 0.8–1.2 m²/hr Print Speed | 100 kg.</p>
+            <p>Technical Specifications
+Model: A3F-4050 DX
+Print Heads: Dual Epson DX7
+Technology: Piezoelectric Inkjet
+Print Size: Up to 300 mm
+Media Thickness: Up to 15 mm
+Ink Type: CMYK + White + Varnish + Gold Varnish
+Resolution: Up to 2400 DPI
+Speed: 0.8–1.2 m²/hr
+UV Curing: Dual UV LED Lamps
+Interface: USB 2.0
+Power: 220V AC, 850W
+Machine Size: 860 × 900 × 570 mm
+Weight: 100 kg</p>
           </div>
 
           <div className="service-card">
             <img
-              src="/images/mainboard.jpg"
-              alt="Board"
-            />
-            <h3>
-              Main Boards
-            </h3>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/images/inkhead.jpg"
-              alt="Ink Head"
-            />
-            <h3>
-              Ink Heads
-            </h3>
-          </div>
-
-          <div className="service-card">
-            <img
-              src="/images/repair.jpg"
-              alt="Repair"
-            />
+    src={machineImages3[currentImage4]}
+    alt="ALL-IN-ONE DTF"
+    className="slider-image"
+  />
             <h3>
               Motherboard Repair
             </h3>
