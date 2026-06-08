@@ -104,6 +104,19 @@ function ServicePage() {
               className="slider-image"
             />
             <h3>DTF</h3>
+            <p>High-performance industrial DTF printer designed for fast, vibrant, and durable textile printing. Ideal for custom t-shirts, garments, promotional products, and bulk production.</p>
+
+            <h3>Key Features</h3>
+            <p>ulHigh-Speed DTF Printing <br />
+                Vibrant CMYK + White Ink Output <br />
+                Automatic Film Feeding System <br />
+Precision Print Head Technology <br />
+Stable Industrial Design <br />
+Low Maintenance Operation <br />
+High Resolution Printing <br />
+Suitable for Cotton, Polyester & Mixed Fabrics <br />
+Bulk Production Ready <br />
+User-Friendly Touch Screen Interface</p>
           </div>
 
           {/* ALL IN ONE DTF */}
@@ -133,6 +146,20 @@ function ServicePage() {
               Dual UV LED Curing |
               0.8–1.2 m²/hr Print Speed
             </p>
+            <p>Technical Specifications
+Model: A3F-4050 DX
+Print Heads: Dual Epson DX7
+Technology: Piezoelectric Inkjet
+Print Size: Up to 300 mm
+Media Thickness: Up to 15 mm
+Ink Type: CMYK + White + Varnish + Gold Varnish
+Resolution: Up to 2400 DPI
+Speed: 0.8–1.2 m²/hr
+UV Curing: Dual UV LED Lamps
+Interface: USB 2.0
+Power: 220V AC, 850W
+Machine Size: 860 × 900 × 570 mm
+Weight: 100 kg</p>
           </div>
 
           {/* Flatbed UV */}
@@ -142,7 +169,7 @@ function ServicePage() {
               alt="Flatbed UV Printer"
               className="slider-image"
             />
-            <h3>Flatbed UV Printer</h3>
+            <h3>Heat Press</h3>
           </div>
 
           <div className="service-card">
