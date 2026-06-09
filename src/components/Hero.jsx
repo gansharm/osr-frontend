@@ -66,9 +66,7 @@ function Hero({ setActive }) {
           </h1>
 
           <p className="hero-desc">
-            Professional supplier of BYHX Main Boards,
-            Ink Heads, Motherboard Repair,
-            Spare Parts and Technical Support.
+            OSR Solutions is your trusted partner for industrial printing machines, offering sales, service, installation, repair, technical support, and genuine spare parts including print heads, main boards, head boards, cables, and more.
           </p>
 
           <div className="ctas">
