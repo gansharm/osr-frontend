@@ -4,12 +4,12 @@
   "icons": [
     {
       "src": "OSR.png",
-      "type": "image/png",
+      "type": "images/png",
       "sizes": "192x192"
     },
     {
       "src": "OSR.png",
-      "type": "image/png",
+      "type": "images/png",
       "sizes": "512x512"
     }
   ],
