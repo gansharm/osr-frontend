@@ -7,7 +7,7 @@ const CONTACT_INFO = [
     icon: "📍",
     label: " Head office",
     value:
-      " Room no - US14,  COMPLEX , 120 Mathura road , Opp Apollo Hospital , Jasola Vihar , New Delhi - 110076",
+      " Room no - US14, US COMPLEX , 120 Mathura road , Opp Apollo Hospital , Jasola Vihar , New Delhi - 110076",
   },
   {
   icon: "📍",

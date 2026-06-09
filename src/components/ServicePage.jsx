@@ -118,7 +118,7 @@ Suitable for Cotton, Polyester & Mixed Fabrics <br />
 Bulk Production Ready <br />
 User-Friendly Touch Screen Interface</p>
 
-<h1>Technical Specifications</h1>
+<h3>Technical Specifications</h3>
 
 <p>Printing Technology: DTF (Direct To Film) <br />
 Ink Type: CMYK + White Pigment Ink <br />
