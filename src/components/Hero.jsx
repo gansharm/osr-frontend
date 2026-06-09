@@ -52,7 +52,7 @@ function Hero({ setActive }) {
 
           <div className="badge">
             <span className="badge-dot" />
-            OM SAI RAM SOLUTION
+            OSR SOLUTIONS
           </div>
 
           <h1 className="hero-h1">

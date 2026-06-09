@@ -14,7 +14,7 @@ function Footer() {
           </h2>
 
           <p className="footer-tag">
-            OM SAI RAM SOLUTION
+           OSR SOLUTIONS
           </p>
 
           <p className="footer-desc">
@@ -153,12 +153,14 @@ function Footer() {
           </h3>
 
           <ul>
-            <li>📍 First Floor, Room no US - 13,
+            <li>📍Head Office - First Floor, Room no US - 14,
               US COMPLEX , 120 Mathura road , opp
               Apollo Hospital , Jasola Vihar , New Delhi
             </li>
-            <li>📞 +91 9211566451 , +91 9717125351</li>
-            <li>📧 osrsolution51@gmail.com</li>
+            <li>📍Santi Basti, Amsing Jorabat, (Narangi Army Cantt) Guwahati - 781027 ASSAM
+            </li>
+            <li>📞 +91 9211566451 , +91 9717125351 , +91 9085184086</li>
+            <li>📧 osrsolutions51@gmail.com</li>
             <li>🕒 Mon - Sat / 10 AM - 6 PM</li>
           </ul>
         </div>
