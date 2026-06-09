@@ -50,10 +50,7 @@ function Hero({ setActive }) {
         {/* LEFT SIDE */}
         <div className="hero-content reveal">
 
-          <div className="badge">
-            <span className="badge-dot" />
-            OSR SOLUTIONS
-          </div>
+           
 
           <h1 className="hero-h1">
             Machine Parts
