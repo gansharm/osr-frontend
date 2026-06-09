@@ -87,6 +87,8 @@ function Navbar() {
 </div>
       </div>
 
+      
+
       {/* DESKTOP MENU */}
       <ul className="nav-links">
         {NAV_LINKS.map(
@@ -105,6 +107,9 @@ function Navbar() {
           )
         )}
       </ul>
+
+
+        
 
       {/* HAMBURGER */}
       <button

@@ -75,15 +75,14 @@
   margin-right: 45px;
   color: white;
   font-size: 2rem;
-
+  
   cursor: pointer;
 }
 
 /* MOBILE MENU */
 .mobile-menu {
   position: fixed;
-
-  top: 78px;
+  top: 100px;
   left: 0;
 
   width: 100%;
@@ -133,6 +132,12 @@
   visibility: visible;
 }
 
+ 
+
+ 
+
+ 
+
 /* MOBILE */
 @media (max-width:900px){
 
@@ -146,9 +151,26 @@
 
   .hamburger {
     display: block;
+    font-size: 40px;
   }
 
   .nav-logo {
     font-size: 1.8rem;
   }
+
+  .brand-center {
+  text-align: center;
+  line-height: 1;
+}
+
+}
+
+ 
+ 
+
+@media (max-width: 900px) {
+  .nav-logo{
+    margin-left: 5px;
+  }
+   
 }
