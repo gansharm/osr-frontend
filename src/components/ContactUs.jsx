@@ -5,21 +5,34 @@ import "./Contact.css";
 const CONTACT_INFO = [
   {
     icon: "📍",
-    label: "Office Address",
+    label: " Head office",
     value:
-      "US COMPLEX , 120 Mathura road , opp Apollo Hospital , Jasola Vihar , New Delhi - 110020",
+      " Room no - US14,  COMPLEX , 120 Mathura road , Opp Apollo Hospital , Jasola Vihar , New Delhi - 110076",
   },
+  {
+  icon: "📍",
+  label: "Guwahati Branch",
+  value: (
+    <>
+      Santi Basti, Amsing Jorabat, (Narangi Army Cantt)
+      <br />
+      Guwahati - 781027, ASSAM
+      <br />
+      Mob - 9085184086
+    </>
+  ),
+},
   {
     icon: "📞",
     label: "Phone Number",
     value:
-      "+91 9211566451 , 9717125351",
+      "+91 9211566451 , 9717125351"
   },
   {
     icon: "📧",
     label: "Email Address",
     value:
-      "osrsolution51@gmail.com",
+      "osrsolutions51@gmail.com",
   },
   {
     icon: "🕒",

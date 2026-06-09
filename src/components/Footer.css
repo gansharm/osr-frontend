@@ -57,10 +57,15 @@
 .footer-socials {
   display: flex;
   gap: 12px;
-
+  
   margin-top: 25px;
 }
 
+.footer-socials a{
+  font-size: 25px;
+  border: 1px solid white;
+  color: white;
+}
 .social-box {
   width: 45px;
   height: 45px;
