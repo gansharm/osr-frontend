@@ -14,7 +14,7 @@ import ALLINONE6 from "../images/ALL-IN-ONE6.png";
 import ALLINONE7 from "../images/ALL-IN-ONE7.png";
 import ALLINONE8 from "../images/ALL-IN-ONE8.png";
 import KING from "../images/KING.png";
-
+import D6 from "../images/D602.png"
 import UVDTF from "../images/A3F.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -107,7 +107,7 @@ function ServicePage() {
             />
              
             <div className="machine-imgage">
-              <img src={UVDTF} alt="UV PRINTING" />
+              <img src={D6} alt="UV PRINTING" />
             </div>
             
              
@@ -132,7 +132,9 @@ function ServicePage() {
               alt="UV DTF"
               className="slider-image"
             />
-
+            <div className="machine-imgage">
+              <img src={UVDTF} alt="UV PRINTING" />
+            </div>
               
           </div>
 
@@ -143,7 +145,7 @@ function ServicePage() {
               alt="Flatbed UV Printer"
               className="slider-image"
             />
-            <h3>Heat Press</h3>
+            <h3>Ploter</h3>
           </div>
 
           <div className="service-card">
