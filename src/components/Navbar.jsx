@@ -21,6 +21,10 @@ const NAV_LINKS = [
     name: "Contact",
     id: "contact",
   },
+  {
+    name: "Products",
+    id: "Products",
+  },
 ];
 
 function Navbar() {
@@ -33,6 +37,11 @@ function Navbar() {
   const handleNavigation = (
   sectionId
 ) => {
+  if (sectionId === "Products") {
+    navigate("/services");
+    setMenuOpen(false);
+    return;
+  }
 
   // If not on homepage
   if (
@@ -79,12 +88,12 @@ function Navbar() {
         }
       >
         <div className="logo">
-  <img
-    src={logo}
-    alt="OSR Solutions"
-    className="nav-logo"
-  />
-</div>
+        {<img
+          src={logo}
+          alt="OSR Solutions"
+          className="nav-logo"
+        />}
+  </div>
       </div>
 
       
@@ -126,7 +135,7 @@ function Navbar() {
           <HiMenuAlt3 />
         )}
       </button>
-
+        
       {/* MOBILE MENU */}
       <div
         className={`mobile-menu ${
