@@ -103,36 +103,12 @@ function ServicePage() {
               alt="DTF"
               className="slider-image"
             />
-            <h3>A3F - 4050DX</h3>
+             
             <div className="machine-imgage">
               <img src={UVDTF} alt="UV PRINTING" />
             </div>
             
-            {/* <p>High-performance industrial DTF printer designed for fast, vibrant, and durable textile printing. Ideal for custom t-shirts, garments, promotional products, and bulk production.</p>
-
-            <h3>Key Features</h3>
-            <p>ulHigh-Speed DTF Printing <br />
-                Vibrant CMYK + White Ink Output <br />
-                Automatic Film Feeding System <br />
-Precision Print Head Technology <br />
-Stable Industrial Design <br />
-Low Maintenance Operation <br />
-High Resolution Printing <br />
-Suitable for Cotton, Polyester & Mixed Fabrics <br />
-Bulk Production Ready <br />
-User-Friendly Touch Screen Interface</p>
-
-<h3>Technical Specifications</h3>
-
-<p>Printing Technology: DTF (Direct To Film) <br />
-Ink Type: CMYK + White Pigment Ink <br />
-Print Resolution: Up to 1440 DPI<br />
-Media Type: PET Film<br />
-Print Width: 60 cm (Approx.)<br />
-Color Configuration: CMYK + White<br />
-Operating System: Windows Compatible<br />
-Application: T-Shirts, Hoodies, Caps, Bags, Textile Products<br />
-Production Type: Industrial & Commercial</p> */}
+             
           </div>
 
           {/* ALL IN ONE DTF */}
