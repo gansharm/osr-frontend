@@ -59,7 +59,7 @@ function About() {
           </h2>
 
           <p className="about-text">
-            OSR Solution specializes in
+            OSR Solutions specializes in
             advanced industrial printing machines,
             technical support, machine servicing,
             installation, and genuine spare parts.
