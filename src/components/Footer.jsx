@@ -168,7 +168,7 @@ function Footer() {
       {/* BOTTOM */}
       <div className="footer-bottom">
         <p>
-          © 2025 Om Sai Ram Solution.
+          © 2025 OSR Solutions.
           All Rights Reserved.
         </p>
 
