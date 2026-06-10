@@ -13,6 +13,8 @@ import ALLINONE5 from "../images/ALL-IN-ONE5.png";
 import ALLINONE6 from "../images/ALL-IN-ONE6.png";
 import ALLINONE7 from "../images/ALL-IN-ONE7.png";
 import ALLINONE8 from "../images/ALL-IN-ONE8.png";
+import KING from "../images/KING.png";
+
 import UVDTF from "../images/A3F.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -118,7 +120,9 @@ function ServicePage() {
               alt="ALL-IN-ONE DTF"
               className="slider-image"
             />
-            <h3>ALL-IN-ONE DTF</h3>
+            <div className="machine-imgage">
+              <img src={KING} alt="UV KING" />
+            </div>
           </div>
 
           {/* UV DTF */}
@@ -129,29 +133,7 @@ function ServicePage() {
               className="slider-image"
             />
 
-            <h3>A3F-4050 DX UV DTF Printer</h3>
-
-            <p>
-              Dual Epson DX7 Heads | 2400 DPI |
-              CMYK + White + Varnish + Gold Varnish |
-              Up to 300mm Print Width |
-              Dual UV LED Curing |
-              0.8–1.2 m²/hr Print Speed
-            </p>
-            <p>Technical Specifications
-Model: A3F-4050 DX
-Print Heads: Dual Epson DX7
-Technology: Piezoelectric Inkjet
-Print Size: Up to 300 mm
-Media Thickness: Up to 15 mm
-Ink Type: CMYK + White + Varnish + Gold Varnish
-Resolution: Up to 2400 DPI
-Speed: 0.8–1.2 m²/hr
-UV Curing: Dual UV LED Lamps
-Interface: USB 2.0
-Power: 220V AC, 850W
-Machine Size: 860 × 900 × 570 mm
-Weight: 100 kg</p>
+              
           </div>
 
           {/* Flatbed UV */}
