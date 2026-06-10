@@ -13,7 +13,7 @@ import ALLINONE5 from "../images/ALL-IN-ONE5.png";
 import ALLINONE6 from "../images/ALL-IN-ONE6.png";
 import ALLINONE7 from "../images/ALL-IN-ONE7.png";
 import ALLINONE8 from "../images/ALL-IN-ONE8.png";
-
+import UVDTF from "../images/A3F.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./ServicePage.css";
@@ -103,8 +103,12 @@ function ServicePage() {
               alt="DTF"
               className="slider-image"
             />
-            <h3>DTF</h3>
-            <p>High-performance industrial DTF printer designed for fast, vibrant, and durable textile printing. Ideal for custom t-shirts, garments, promotional products, and bulk production.</p>
+            <h3>A3F - 4050DX</h3>
+            <div className="machine-imgage">
+              <img src={UVDTF} alt="UV PRINTING" />
+            </div>
+            
+            {/* <p>High-performance industrial DTF printer designed for fast, vibrant, and durable textile printing. Ideal for custom t-shirts, garments, promotional products, and bulk production.</p>
 
             <h3>Key Features</h3>
             <p>ulHigh-Speed DTF Printing <br />
@@ -128,7 +132,7 @@ Print Width: 60 cm (Approx.)<br />
 Color Configuration: CMYK + White<br />
 Operating System: Windows Compatible<br />
 Application: T-Shirts, Hoodies, Caps, Bags, Textile Products<br />
-Production Type: Industrial & Commercial</p>
+Production Type: Industrial & Commercial</p> */}
           </div>
 
           {/* ALL IN ONE DTF */}

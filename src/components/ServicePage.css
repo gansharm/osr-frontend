@@ -93,3 +93,13 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.machine-imgage{
+  width: 100%;
+  height: 550px;
+}
+
+.machine-imgage img{
+  width: 100%;
+  height: 500px;
+}

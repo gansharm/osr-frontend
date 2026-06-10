@@ -59,7 +59,7 @@ function About() {
           </h2>
 
           <p className="about-text">
-            Om Sai Ram Solution (OSR) specializes in
+            OSR Solution specializes in
             advanced industrial printing machines,
             technical support, machine servicing,
             installation, and genuine spare parts.
