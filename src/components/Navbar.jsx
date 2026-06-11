@@ -82,20 +82,19 @@ function Navbar() {
     <nav className="nav">
 
       {/* LOGO */}
-      <div
-        className="nav-logo"
+      <button
+        className="nav-brand"
         onClick={() =>
           navigate("/")
         }
+        aria-label="Go to home"
       >
-        <div className="logo">
-        {<img
+        <img
           src={logo}
           alt="OSR Solutions"
           className="nav-logo"
-        />}
-  </div>
-      </div>
+        />
+      </button>
 
       
 
@@ -129,6 +128,8 @@ function Navbar() {
             !menuOpen
           )
         }
+        aria-label="Toggle navigation menu"
+        aria-expanded={menuOpen}
       >
         {menuOpen ? (
           <HiX />
