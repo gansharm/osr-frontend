@@ -7,8 +7,11 @@ import {
   FiSettings,
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { aboutFeatures, products } from "../data/siteData";
+import { aboutFeatures } from "../data/siteData";
 import "./About.css";
+import "./Hero.css";
+// Use the KJ-1060 machine image from the images folder
+import aboutMachine from "../images/KJ-1060.png";
 
 const ABOUT_CARDS = [
   { num: "500+", label: "Machines Installed" },
@@ -21,15 +24,19 @@ const featureIcons = [FiPrinter, FiSettings, FiCpu, FiHeadphones];
 
 function About() {
   const navigate = useNavigate();
-  const product = products.find((item) => item.slug === "a3f-4050dx-uv-flatbed-printer");
 
   return (
     <section id="about" className="about-bg">
       <div className="about-shell">
         <div className="about-grid">
-          <div className="about-visual reveal">
+            <div className="about-visual reveal">
             <div className="about-machine">
-              <img src={product.image} alt={product.title} />
+              <div className="showcase-stage">
+                <img src={aboutMachine} alt="UV flatbed printing machine" />
+                <span className="stage-orb stage-orb-one" aria-hidden="true"></span>
+                <span className="stage-orb stage-orb-two" aria-hidden="true"></span>
+                <span className="stage-orb stage-orb-three" aria-hidden="true"></span>
+              </div>
             </div>
             <div className="about-mini-grid">
               {ABOUT_CARDS.map((card) => (

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   FiArrowRight,
   FiBox,
@@ -82,104 +83,115 @@ function Navbar() {
     return false;
   };
 
-  return (
-    <nav className="nav" aria-label="Primary navigation">
-      <button
-        className="nav-brand"
-        onClick={() => navigate("/")}
-        aria-label="Go to home"
-      >
-        <img src={logo} alt="OSR Solutions" className="nav-logo" />
-      </button>
+  const mobileMenu = (
+    <div
+      id="mobile-navigation"
+      className={`mobile-menu ${menuOpen ? "show" : ""}`}
+      aria-hidden={!menuOpen}
+    >
+      <div className="mobile-menu-head">
+        <img src={logo} alt="OSR Solutions" />
+        <button onClick={() => setMenuOpen(false)} aria-label="Close navigation menu">
+          <HiX />
+        </button>
+      </div>
 
-      <ul className="nav-links">
-        {NAV_LINKS.map((item) => (
-          <li key={item.id}>
+      <div className="mobile-menu-links">
+        {NAV_LINKS.map((item) => {
+          const Icon = item.icon;
+          return (
             <button
+              key={item.id}
               className={isActive(item) ? "active" : ""}
               onClick={() => handleNavigation(item.id)}
             >
+              <Icon />
               {item.name}
             </button>
-          </li>
-        ))}
-      </ul>
+          );
+        })}
+      </div>
 
-      <div className="nav-actions">
-        <button className="nav-call" onClick={callOffice} aria-label="Call OSR Solutions">
+      <div className="menu-quote">
+        <FiBriefcase />
+        <div>
+          <h3>Need a Quote?</h3>
+          <p>Get the best solution for your business. Our experts are here to help you.</p>
+          <button onClick={getQuote}>
+            Get a Quote
+            <FiArrowRight />
+          </button>
+        </div>
+      </div>
+
+      <div className="menu-contact">
+        <button onClick={callOffice}>
           <FiPhone />
+          <span>{company.phone}</span>
         </button>
-        <button className="quote-btn" onClick={getQuote}>
-          Get a Quote
-          <FiArrowRight />
-        </button>
-        <button
-          className="hamburger"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-label="Toggle navigation menu"
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? <HiX /> : <HiMenuAlt3 />}
+        <a href={`mailto:${company.email}`}>
+          <FiMail />
+          <span>{company.email}</span>
+        </a>
+        <button onClick={openWhatsApp}>
+          <FaWhatsapp />
+          <span>WhatsApp Us</span>
         </button>
       </div>
 
-      <div className={`mobile-menu ${menuOpen ? "show" : ""}`} aria-hidden={!menuOpen}>
-        <div className="mobile-menu-head">
-          <img src={logo} alt="OSR Solutions" />
-          <button onClick={() => setMenuOpen(false)} aria-label="Close navigation menu">
-            <HiX />
-          </button>
-        </div>
+      <div className="mobile-menu-product">
+        <FiGrid />
+        <span>Premium industrial printing solutions, spare parts and technical support.</span>
+      </div>
+    </div>
+  );
 
-        <div className="mobile-menu-links">
-          {NAV_LINKS.map((item) => {
-            const Icon = item.icon;
-            return (
+  return (
+    <>
+      <nav className="nav" aria-label="Primary navigation">
+        <button
+          className="nav-brand"
+          onClick={() => navigate("/")}
+          aria-label="Go to home"
+        >
+          <img src={logo} alt="OSR Solutions" className="nav-logo" />
+        </button>
+
+        <ul className="nav-links">
+          {NAV_LINKS.map((item) => (
+            <li key={item.id}>
               <button
-                key={item.id}
                 className={isActive(item) ? "active" : ""}
                 onClick={() => handleNavigation(item.id)}
               >
-                <Icon />
                 {item.name}
               </button>
-            );
-          })}
-        </div>
+            </li>
+          ))}
+        </ul>
 
-        <div className="menu-quote">
-          <FiBriefcase />
-          <div>
-            <h3>Need a Quote?</h3>
-            <p>Get the best solution for your business. Our experts are here to help you.</p>
-            <button onClick={getQuote}>
-              Get a Quote
-              <FiArrowRight />
-            </button>
-          </div>
-        </div>
-
-        <div className="menu-contact">
-          <button onClick={callOffice}>
+        <div className="nav-actions">
+          <button className="nav-call" onClick={callOffice} aria-label="Call OSR Solutions">
             <FiPhone />
-            <span>{company.phone}</span>
           </button>
-          <a href={`mailto:${company.email}`}>
-            <FiMail />
-            <span>{company.email}</span>
-          </a>
-          <button onClick={openWhatsApp}>
-            <FaWhatsapp />
-            <span>WhatsApp Us</span>
+          <button className="quote-btn" onClick={getQuote}>
+            Get a Quote
+            <FiArrowRight />
+          </button>
+          <button
+            className="hamburger"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+          >
+            {menuOpen ? <HiX /> : <HiMenuAlt3 />}
           </button>
         </div>
+      </nav>
 
-        <div className="mobile-menu-product">
-          <FiGrid />
-          <span>Premium industrial printing solutions, spare parts and technical support.</span>
-        </div>
-      </div>
-    </nav>
+      {typeof document !== "undefined" ? createPortal(mobileMenu, document.body) : mobileMenu}
+    </>
   );
 }
 

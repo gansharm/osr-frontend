@@ -27,31 +27,135 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 420px;
+  min-height: 390px;
   border-radius: 10px;
   border: 1px solid rgba(11, 124, 255, .12);
   background:
-    radial-gradient(ellipse at center, rgba(78, 174, 255, .24), transparent 60%),
-    rgba(255, 255, 255, .82);
-  box-shadow: 0 24px 70px rgba(15, 57, 113, .10);
+    linear-gradient(115deg, transparent 0 34%, rgba(255, 255, 255, .72) 45%, transparent 56%),
+    radial-gradient(circle at 50% 48%, rgba(11, 124, 255, .10), transparent 46%),
+    linear-gradient(180deg, rgba(255, 255, 255, .98), rgba(246, 251, 255, .94));
+  background-size: 240% 100%, 100% 100%, 100% 100%;
+  background-position: -140% 0, center, center;
+  box-shadow: 0 20px 56px rgba(15, 57, 113, .09);
   overflow: hidden;
+  isolation: isolate;
+  animation: aboutCardSheen 6s ease-in-out infinite;
+}
+
+.about-machine:hover img {
+  transform: translateY(-7px) scale(1.025);
 }
 
 .about-machine::before {
   content: "";
   position: absolute;
-  inset: 28px;
+  width: min(78%, 370px);
+  aspect-ratio: 1 / 1;
+  left: 50%;
+  top: 34px;
   border-radius: 50%;
-  border: 1px dashed rgba(11, 124, 255, .20);
+  border: 1px dashed rgba(11, 124, 255, .22);
+  transform: translateX(-50%) scaleX(1.15);
+  animation: aboutHaloPulse 5s ease-in-out infinite;
+  z-index: 1;
+}
+
+.about-machine::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 78px;
+  width: min(68%, 340px);
+  height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(11, 124, 255, .18), rgba(11, 124, 255, .06) 58%, transparent 74%);
+  transform: translateX(-50%);
+  animation: aboutPlatformPulse 4.8s ease-in-out infinite;
+  z-index: 1;
 }
 
 .about-machine img {
   position: relative;
-  z-index: 1;
-  width: min(92%, 420px);
-  max-height: 340px;
+  z-index: 2;
+  width: min(90%, 470px);
+  max-height: 300px;
   object-fit: contain;
-  filter: drop-shadow(0 22px 26px rgba(15, 23, 42, .16));
+  filter: drop-shadow(0 22px 24px rgba(15, 23, 42, .16));
+  animation: aboutMachineFloat 5.2s ease-in-out infinite;
+  transition: transform .35s ease, filter .35s ease;
+  will-change: transform;
+}
+
+/* When using the showcase-stage markup (reused from Hero), hide the old about-machine pseudo items
+   and apply a CSS mask to visually remove the photo background and blend the subject into the glow. */
+.about-machine::before,
+.about-machine::after {
+  display: none;
+}
+
+.about-machine .showcase-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 420px;
+  border-radius: 12px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.about-machine .showcase-stage img {
+  position: relative;
+  z-index: 3;
+  width: min(92%, 640px);
+  max-height: 460px;
+  object-fit: cover;
+  object-position: 50% 46%;
+  filter: drop-shadow(0 32px 36px rgba(8, 32, 60, .22)) saturate(1.02) contrast(1.02);
+  transition: transform .45s cubic-bezier(.2,.9,.2,1), filter .35s ease;
+  will-change: transform, filter;
+
+  /* Soft circular mask to fade the background edges and simulate subject cutout */
+  -webkit-mask-image: radial-gradient(circle at 50% 44%, rgba(0,0,0,1) 36%, rgba(0,0,0,0.92) 44%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 78%);
+  mask-image: radial-gradient(circle at 50% 44%, rgba(0,0,0,1) 36%, rgba(0,0,0,0.92) 44%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 78%);
+  mask-mode: alpha;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  border-radius: 8px;
+}
+
+/* a subtle overlay to smooth leftover background artifacts */
+.about-machine .showcase-stage::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: min(86%, 580px);
+  height: min(86%, 420px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.02), rgba(246,251,255,0.02));
+  pointer-events: none;
+  filter: blur(6px);
+}
+
+/* Reduced motion / lighter effects for small screens */
+@media (max-width: 620px) {
+  .about-machine .showcase-stage {
+    min-height: 320px;
+  }
+
+  .about-machine .showcase-stage img {
+    -webkit-mask-image: radial-gradient(circle at 50% 44%, rgba(0,0,0,1) 42%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0) 78%);
+    mask-image: radial-gradient(circle at 50% 44%, rgba(0,0,0,1) 42%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0) 78%);
+    width: min(94%, 340px);
+    max-height: 320px;
+    filter: drop-shadow(0 18px 22px rgba(8,32,60,.18));
+  }
 }
 
 .about-mini-grid {
@@ -61,27 +165,100 @@
 }
 
 .about-card {
+  position: relative;
   border: 1px solid rgba(11, 124, 255, .12);
   border-radius: 8px;
-  background: rgba(255, 255, 255, .88);
-  box-shadow: 0 14px 36px rgba(15, 57, 113, .08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(246, 251, 255, .94));
+  box-shadow: 0 14px 34px rgba(15, 57, 113, .07);
   padding: 22px;
   text-align: center;
+  overflow: hidden;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.about-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 12%, rgba(11, 124, 255, .08) 48%, transparent 78%);
+  transform: translateX(-120%);
+  transition: transform .55s ease;
+}
+
+.about-card:hover {
+  border-color: rgba(11, 124, 255, .24);
+  box-shadow: 0 18px 42px rgba(15, 57, 113, .11);
+  transform: translateY(-3px);
+}
+
+.about-card:hover::before {
+  transform: translateX(120%);
 }
 
 .about-card strong {
+  position: relative;
   display: block;
   color: #0b7cff;
-  font-size: 30px;
+  font-size: 34px;
   line-height: 1;
 }
 
 .about-card span {
+  position: relative;
   display: block;
   color: #526780;
   font-size: 13px;
   font-weight: 800;
   margin-top: 8px;
+}
+
+@keyframes aboutMachineFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes aboutCardSheen {
+  0%,
+  48% {
+    background-position: -140% 0, center, center;
+  }
+
+  72%,
+  100% {
+    background-position: 160% 0, center, center;
+  }
+}
+
+@keyframes aboutHaloPulse {
+  0%,
+  100% {
+    opacity: .72;
+    transform: translateX(-50%) scaleX(1.15) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1.15) scale(1.035);
+  }
+}
+
+@keyframes aboutPlatformPulse {
+  0%,
+  100% {
+    opacity: .82;
+    transform: translateX(-50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.07);
+  }
 }
 
 .about-content h2 {
@@ -194,11 +371,22 @@
   }
 
   .about-machine {
-    min-height: 320px;
+    min-height: 304px;
   }
 
   .about-machine img {
-    max-height: 260px;
+    width: min(92%, 335px);
+    max-height: 210px;
+  }
+
+  .about-machine::before {
+    width: min(76%, 275px);
+    top: 27px;
+  }
+
+  .about-machine::after {
+    bottom: 58px;
+    height: 34px;
   }
 
   .about-mini-grid,
@@ -209,5 +397,14 @@
 
   .about-card {
     padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-machine,
+  .about-machine::before,
+  .about-machine::after,
+  .about-machine img {
+    animation: none;
   }
 }
