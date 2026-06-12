@@ -1,171 +1,220 @@
-import { useState, useEffect } from "react";
-
-import DTF1 from "../images/DTF.png";
-import DTF2 from "../images/DTF1.png";
-import DTF3 from "../images/DTF2.png";
-
-import ALLINONE from "../images/ALL-IN-ONE.png";
-import ALLINONE1 from "../images/ALL-IN-ONE1.png";
-import ALLINONE2 from "../images/ALL-IN-ONE2.png";
-import ALLINONE3 from "../images/ALL-IN-ONE3.png";
-import ALLINONE4 from "../images/ALL-IN-ONE4.png";
-import ALLINONE5 from "../images/ALL-IN-ONE5.png";
-import ALLINONE6 from "../images/ALL-IN-ONE6.png";
-import ALLINONE7 from "../images/ALL-IN-ONE7.png";
-import ALLINONE8 from "../images/ALL-IN-ONE8.png";
-import KING from "../images/KING.png";
-import D6 from "../images/D602.png"
-import UVDTF from "../images/A3F.png";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  FiArrowRight,
+  FiCheckCircle,
+  FiPhoneCall,
+  FiPrinter,
+  FiShield,
+  FiSliders,
+  FiTool,
+} from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { company, productCategories, products, samples } from "../data/siteData";
 import "./ServicePage.css";
 
 function ServicePage() {
-
-  const machineImages = [DTF1, DTF2, DTF3];
-
-  const machineImages1 = [
-    ALLINONE,
-    ALLINONE1,
-    ALLINONE2
-  ];
-
-  const machineImages2 = [
-    ALLINONE3,
-    ALLINONE4,
-    ALLINONE5
-  ];
-
-  const machineImages3 = [
-    ALLINONE6,
-    ALLINONE7,
-    ALLINONE8
-  ];
-
+  const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState("All Products");
   const [currentImage, setCurrentImage] = useState(0);
-  const [currentImage1, setCurrentImage1] = useState(0);
-  const [currentImage2, setCurrentImage2] = useState(0);
-  const [currentImage3, setCurrentImage3] = useState(0);
+
+  const featuredProduct = products.find(
+    (product) => product.slug === "kj-1060uc-uv-flatbed-printer"
+  );
+
+  const visibleProducts = useMemo(() => {
+    if (activeCategory === "All Products") {
+      return products;
+    }
+    return products.filter((product) => product.category === activeCategory);
+  }, [activeCategory]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % machineImages.length);
+      setCurrentImage((prev) => (prev + 1) % 3);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [machineImages.length]);
+  }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage1((prev) => (prev + 1) % machineImages1.length);
-    }, 3000);
+  const getImage = (product) => {
+    const gallery = product.gallery?.length ? product.gallery : [product.image];
+    return gallery[currentImage % gallery.length];
+  };
 
-    return () => clearInterval(interval);
-  }, [machineImages1.length]);
+  const openWhatsApp = () => {
+    window.open(`https://wa.me/91${company.phone.replace(/\D/g, "").slice(-10)}`, "_blank");
+  };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage2((prev) => (prev + 1) % machineImages2.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [machineImages2.length]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage3((prev) => (prev + 1) % machineImages3.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [machineImages3.length]);
+  const callOffice = () => {
+    window.location.href = `tel:${company.phone}`;
+  };
 
   return (
     <>
       <Navbar />
 
-      <div className="service-page">
-
-        <h1>Our Products</h1>
-
-        <p>
-          BYHX Machine Parts,
-          Main Boards,
-          Ink Heads,
-          Motherboard Repair,
-          Technical Support &
-          Spare Parts.
-        </p>
-
-        <div className="service-grid">
-
-          {/* DTF */}
-          <div className="service-card">
-            <img
-              src={machineImages[currentImage]}
-              alt="DTF"
-              className="slider-image"
-            />
-             
-            <div className="machine-imgage">
-              <img src={D6} alt="UV PRINTING" />
-            </div>
-            
-             
-          </div>
-
-          {/* ALL IN ONE DTF */}
-          <div className="service-card">
-            <img
-              src={machineImages1[currentImage1]}
-              alt="ALL-IN-ONE DTF"
-              className="slider-image"
-            />
-            <div className="machine-imgage">
-              <img src={KING} alt="UV KING" />
+      <main className="service-page">
+        <section className="products-hero">
+          <div className="products-hero-copy reveal">
+            <span className="eyebrow">Our Products</span>
+            <h1>
+              Industrial Printing
+              <span>Machines</span>
+            </h1>
+            <p>
+              BYHX Machine Parts, Main Boards, Ink Heads, Motherboard Repair, Technical Support &
+              Spare Parts.
+            </p>
+            <div className="products-hero-badges">
+              <span>
+                <FiPrinter />
+                High Precision
+              </span>
+              <span>
+                <FiShield />
+                Reliable Performance
+              </span>
+              <span>
+                <FiTool />
+                Best in Class Service
+              </span>
             </div>
           </div>
 
-          {/* UV DTF */}
-          <div className="service-card">
-            <img
-              src={machineImages2[currentImage2]}
-              alt="UV DTF"
-              className="slider-image"
-            />
-            <div className="machine-imgage">
-              <img src={UVDTF} alt="UV PRINTING" />
+          <div className="products-hero-machine reveal">
+            <img src={featuredProduct.image} alt={featuredProduct.title} />
+          </div>
+        </section>
+
+        <section className="category-tabs" aria-label="Product categories">
+          {productCategories.map((category) => (
+            <button
+              key={category}
+              className={activeCategory === category ? "active" : ""}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </section>
+
+        <section className="featured-product reveal">
+          <div className="featured-copy">
+            <span className="eyebrow">Featured Product</span>
+            <h2>
+              {featuredProduct.name}
+              <span>{featuredProduct.shortTitle}</span>
+            </h2>
+            <p>{featuredProduct.desc}</p>
+            <div className="featured-specs">
+              {featuredProduct.specs.map((spec) => (
+                <span key={spec}>
+                  <FiCheckCircle />
+                  {spec}
+                </span>
+              ))}
             </div>
-              
+            <button
+              className="btn-primary"
+              onClick={() => navigate(`/products/${featuredProduct.slug}`)}
+            >
+              View Details
+              <FiArrowRight />
+            </button>
           </div>
 
-          {/* Flatbed UV */}
-          <div className="service-card">
-            <img
-              src={machineImages3[currentImage3]}
-              alt="Flatbed UV Printer"
-              className="slider-image"
-            />
-            <h3>Ploter</h3>
+          <div className="featured-image">
+            <img src={getImage(featuredProduct)} alt={featuredProduct.title} />
           </div>
 
-          <div className="service-card">
-            <img
-              src="/images/headboard.jpg"
-              alt="Head Board"
-            />
-            <h3>Head Boards</h3>
+          <div className="featured-metrics">
+            {featuredProduct.specs.slice(0, 4).map((spec) => (
+              <div key={spec}>
+                <FiSliders />
+                <strong>{spec.split(" ")[0]}</strong>
+                <span>{spec}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="browse-products">
+          <div className="section-heading">
+            <span className="eyebrow">Browse Products</span>
+            <h2>
+              Our Printing
+              <span>Machines</span>
+            </h2>
           </div>
 
-          <div className="service-card">
-            <img
-              src="/images/support.jpg"
-              alt="Support"
-            />
-            <h3>Technical Support</h3>
+          <div className="browse-grid">
+            {visibleProducts.map((product) => (
+              <article className="browse-card reveal" key={product.slug}>
+                <div className="browse-img">
+                  <img src={getImage(product)} alt={product.title} />
+                </div>
+                <div className="browse-copy">
+                  <h3>{product.name}</h3>
+                  <strong>{product.shortTitle}</strong>
+                  <ul>
+                    {product.specs.slice(0, 3).map((spec) => (
+                      <li key={spec}>{spec}</li>
+                    ))}
+                  </ul>
+                  <button onClick={() => navigate(`/products/${product.slug}`)}>
+                    View Details
+                    <FiArrowRight />
+                  </button>
+                </div>
+              </article>
+            ))}
           </div>
 
-        </div>
-      </div>
+          <button className="view-all bottom" onClick={() => setActiveCategory("All Products")}>
+            View All Products
+            <FiArrowRight />
+          </button>
+        </section>
+
+        <section className="quality-section" id="gallery">
+          <div className="section-heading">
+            <span className="eyebrow">Printing Samples</span>
+            <h2>
+              See Our Printing
+              <span>Quality</span>
+            </h2>
+          </div>
+          <div className="quality-grid">
+            {samples.map((sample) => (
+              <figure key={sample.title}>
+                <img src={sample.image} alt={sample.title} />
+                <figcaption>{sample.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        <section className="products-help">
+          <div>
+            <FiPrinter />
+          </div>
+          <div>
+            <h2>Need Help Choosing the Right Machine?</h2>
+            <p>Our experts are here to help you find the perfect solution.</p>
+          </div>
+          <button className="btn-soft" onClick={callOffice}>
+            <FiPhoneCall />
+            Call Us Now
+          </button>
+          <button className="btn-whatsapp" onClick={openWhatsApp}>
+            <FaWhatsapp />
+            WhatsApp Us
+          </button>
+        </section>
+      </main>
 
       <Footer />
     </>

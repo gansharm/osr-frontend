@@ -2,9 +2,12 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Services from "./components/Services";
-import ContactUs from "./components/ContactUs";import Footer from "./components/Footer";
-import { BrowserRouter,Routes,Route } from "react-router-dom";   
+import ContactUs from "./components/ContactUs";
+import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ServicePage from "./components/ServicePage";
+import ProductDetail from "./components/ProductDetail";
+
 function HomePage() {
   return (
     <>
@@ -22,19 +25,20 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
-        {/* Home */}
         <Route
           path="/"
           element={<HomePage />}
         />
 
-        {/* Services Page */}
         <Route
           path="/services"
           element={<ServicePage />}
         />
 
+        <Route
+          path="/products/:productSlug"
+          element={<ProductDetail />}
+        />
       </Routes>
     </BrowserRouter>
   );

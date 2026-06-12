@@ -1,8 +1,31 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+jest.mock(
+  "react-router-dom",
+  () => {
+    const React = require("react");
+
+    return {
+      BrowserRouter: ({ children }) => <>{children}</>,
+      Routes: ({ children }) => <>{React.Children.toArray(children)[0]}</>,
+      Route: ({ element }) => element,
+      Navigate: () => null,
+      useNavigate: () => jest.fn(),
+      useLocation: () => ({ pathname: "/" }),
+      useParams: () => ({}),
+    };
+  },
+  { virtual: true }
+);
+
+test("renders the OSR Solutions homepage", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("heading", {
+      level: 1,
+      name: /Industrial Printing Solutions Experts/i,
+    })
+  ).toBeInTheDocument();
 });
