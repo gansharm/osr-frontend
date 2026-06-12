@@ -1,152 +1,125 @@
-import "./Hero.css";
-    import printerImg from "../images/flex3.png";
 import { useNavigate } from "react-router-dom";
-const STATS = [
-  {
-    icon: "⚙️",
-    num: "500+",
-    label: "Machines Repaired",
-  },
-  {
-    icon: "📦",
-    num: "1000+",
-    label: "Parts Delivered",
-  },
-  {
-    icon: "🏅",
-    num: "5+",
-    label: "Years Experience",
-  },
-];
+import {
+  FiArrowRight,
+  FiAward,
+  FiBox,
+  FiCheckCircle,
+  FiCpu,
+  FiPrinter,
+  FiShield,
+  FiTool,
+  FiUsers,
+} from "react-icons/fi";
+import { heroHighlights, products, stats } from "../data/siteData";
+import "./Hero.css";
 
-const HEX_ITEMS = [
-  { icon: "⚙️", text: "MAIN BOARDS" },
-  { icon: "🖨️", text: "INK HEADS" },
-  { icon: "🧩", text: "MOTHERBOARD REPAIR" },
-  { icon: "🔧", text: "SPARE PARTS" },
-  { icon: "🎧", text: "TECHNICAL SUPPORT" },
-  { icon: "⚡", text: "FAST SOLUTIONS" },
-];
+const statIcons = [FiPrinter, FiBox, FiAward, FiUsers];
+const highlightIcons = [FiCpu, FiTool, FiBox, FiShield];
 
-function Hero({ setActive }) {
-    const navigate = useNavigate();
+function Hero() {
+  const navigate = useNavigate();
+  const heroProduct = products.find((product) => product.slug === "kj-1060uc-uv-flatbed-printer");
+
+  const goToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="home" className="hero">
+      <div className="hero-shell">
+        <div className="hero-grid">
+          <div className="hero-content reveal">
+            <span className="eyebrow">Machine Parts & Repair Solutions</span>
+            <h1 className="hero-h1">
+              Industrial Printing
+              <span>Solutions Experts</span>
+            </h1>
+            <p className="hero-kicker">
+              UV Printers <span /> DTF Printers <span /> Spare Parts <span /> Service & Support
+            </p>
+            <p className="hero-desc">
+              OSR Solutions is your trusted partner for industrial printing machines, offering sales,
+              service, installation, repair, technical support, and genuine spare parts including print
+              heads, main boards, head boards, cables, and more.
+            </p>
 
-      {/* BACKGROUND MACHINE IMAGE */}
-      <div className="hero-machine-bg">
-        <img
-    src={printerImg}
-    alt="Printer Machine"
-  />
-      </div>
-
-      {/* Glow orbs */}
-      <div className="orb orb1" />
-      <div className="orb orb2" />
-
-      <div className="hero-grid">
-
-        {/* LEFT SIDE */}
-        <div className="hero-content reveal">
-
-           
-
-          <h1 className="hero-h1">
-            Machine Parts
-            <br />
-            & Repair
-            <br />
-            <span className="glow">
-              Solutions
-            </span>
-          </h1>
-
-          <p className="hero-desc">
-            OSR Solutions is your trusted partner for industrial printing machines, offering sales, service, installation, repair, technical support, and genuine spare parts including print heads, main boards, head boards, cables, and more.
-          </p>
-
-          <div className="ctas">
-            <button
-  className="btn-primary"
-  onClick={() =>
-    navigate("/services")
-  }
->
-  EXPLORE SERVICES →
-</button>
-
-            <button
-  className="btn-outline"
-  onClick={() => {
-
-    // If already on homepage
-    if (
-      window.location
-        .pathname === "/"
-    ) {
-
-      document
-        .getElementById(
-          "contact"
-        )
-        ?.scrollIntoView({
-          behavior:
-            "smooth",
-        });
-
-    } else {
-
-      // From service page go to home contact
-      window.location.href =
-        "/#contact";
-    }
-  }}
->
-  GET IN TOUCH
-</button>
-          </div>
-
-          <div className="hero-stats">
-            {STATS.map((s) => (
-              <div
-                key={s.label}
-                className="stat-card"
-              >
-                <div className="stat-icon">
-                  {s.icon}
-                </div>
-
-                <div className="stat-num">
-                  {s.num}
-                </div>
-
-                <div className="stat-label">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* RIGHT SIDE HEX */}
-        <div className="hex-grid">
-          {HEX_ITEMS.map((item, i) => (
-            <div
-              key={i}
-              className={`hex hex-${i}`}
-            >
-              <div className="hex-icon">
-                {item.icon}
-              </div>
-
-              <span>
-                {item.text}
-              </span>
+            <div className="ctas">
+              <button className="btn-primary" onClick={() => navigate("/services")}>
+                Explore Products
+                <FiArrowRight />
+              </button>
+              <button className="btn-outline" onClick={goToContact}>
+                Get a Quote
+                <FiArrowRight />
+              </button>
             </div>
-          ))}
+
+            <div className="customer-proof" aria-label="Customer rating">
+              <div className="avatar-stack">
+                <span>OS</span>
+                <span>BY</span>
+                <span>UV</span>
+                <span>DT</span>
+              </div>
+              <div>
+                <strong>500+ Happy Customers</strong>
+                <div className="stars">*****</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-showcase reveal">
+            <div className="showcase-stage">
+              <img src={heroProduct.image} alt={heroProduct.title} />
+            </div>
+
+            <div className="showcase-features">
+              {heroHighlights.map((item, index) => {
+                const Icon = highlightIcons[index];
+                return (
+                  <div className="showcase-feature" key={item.title}>
+                    <Icon />
+                    <div>
+                      <strong>{item.title}</strong>
+                      <span>{item.desc}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
+        <div className="hero-stats">
+          {stats.map((stat, index) => {
+            const Icon = statIcons[index];
+            return (
+              <div className="stat-card" key={stat.label}>
+                <Icon />
+                <div>
+                  <strong>{stat.num}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="hero-feature-rail">
+          {heroHighlights.map((item, index) => {
+            const Icon = highlightIcons[index];
+            return (
+              <div key={item.title} className="rail-item">
+                <Icon />
+                <div>
+                  <strong>{item.title}</strong>
+                  <span>{item.desc}</span>
+                </div>
+                <FiCheckCircle />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

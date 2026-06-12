@@ -1,5 +1,9 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp, FaYoutube } from "react-icons/fa";
+import { FiMail, FiMapPin, FiPhoneCall } from "react-icons/fi";
+import { company, products } from "../data/siteData";
 import "./Footer.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import logo from "../images/OSR.png";
 
 function Footer() {
   const navigate = useNavigate();
@@ -13,171 +17,119 @@ function Footer() {
 
     if (location.pathname !== "/") {
       navigate("/");
-
       setTimeout(() => {
-        document
-          .getElementById(sectionId)
-          ?.scrollIntoView({
-            behavior: "smooth",
-          });
-      }, 300);
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      }, 260);
     } else {
-      document
-        .getElementById(sectionId)
-        ?.scrollIntoView({
-          behavior: "smooth",
-        });
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const openWhatsApp = () => {
+    window.open(`https://wa.me/91${company.phone.replace(/\D/g, "").slice(-10)}`, "_blank");
   };
 
   return (
     <footer className="footer">
       <div className="footer-container">
-
-        {/* LEFT */}
         <div className="footer-about">
-          <h2 className="footer-logo">
-            O<span>SR</span>
-          </h2>
-
-          <p className="footer-tag">
-            OSR SOLUTIONS
-          </p>
-
+          <img src={logo} alt="OSR Solutions" className="footer-logo-img" />
           <p className="footer-desc">
-            Professional supplier of BYHX Main Boards,
-            Ink Heads, Motherboard Repair,
-            Spare Parts and Technical Support.
+            Professional supplier of BYHX Main Boards, Ink Heads, Motherboard Repair, Spare Parts
+            and Technical Support.
           </p>
 
           <div className="footer-socials">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-box"
-            >
-              f
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <FaFacebookF />
             </a>
-
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-box"
-            >
-              ◎
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram />
             </a>
-
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-box"
-            >
-              in
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <FaYoutube />
             </a>
-
-            <a
-              href="https://x.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-box"
-            >
-              𝕏
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <FaLinkedinIn />
             </a>
           </div>
         </div>
 
-        {/* QUICK LINKS */}
         <div className="footer-col">
           <h3>Quick Links</h3>
-
           <ul>
-            <li onClick={() => handleNavigation("home")}>
-              Home
-            </li>
-
-            <li onClick={() => handleNavigation("about")}>
-              About
-            </li>
-
-            <li onClick={() => handleNavigation("services")}>
-              Services
-            </li>
-
-            <li onClick={() => handleNavigation("products")}>
-              Products
-            </li>
-
-            <li onClick={() => handleNavigation("contact")}>
-              Contact
-            </li>
+            <li onClick={() => handleNavigation("home")}>Home</li>
+            <li onClick={() => handleNavigation("about")}>About Us</li>
+            <li onClick={() => handleNavigation("services")}>Services</li>
+            <li onClick={() => handleNavigation("products")}>Products</li>
+            <li onClick={() => handleNavigation("gallery")}>Gallery</li>
+            <li onClick={() => handleNavigation("contact")}>Contact Us</li>
           </ul>
         </div>
 
-        {/* SERVICES */}
         <div className="footer-col">
-          <h3>Services</h3>
-
+          <h3>Our Products</h3>
           <ul>
-            <li>Main Boards</li>
-            <li>Ink Heads</li>
-            <li>Motherboard Repair</li>
+            {products.slice(0, 6).map((product) => (
+              <li key={product.slug} onClick={() => navigate(`/products/${product.slug}`)}>
+                {product.title}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="footer-col">
+          <h3>Our Services</h3>
+          <ul>
+            <li>Installation</li>
+            <li>Repair & Maintenance</li>
+            <li>Spare Parts Supply</li>
             <li>Technical Support</li>
-            <li>Spare Parts</li>
+            <li>Training</li>
           </ul>
         </div>
 
-        {/* CONTACT */}
-        <div className="footer-col">
+        <div className="footer-col contact-col">
           <h3>Contact Info</h3>
-
           <ul>
             <li>
-              📍 Head Office - First Floor, Room no US - 14,
-              US COMPLEX, 120 Mathura Road,
-              Opp Apollo Hospital, Jasola Vihar,
-              New Delhi
+              <FiPhoneCall />
+              <span>
+                {company.phone}
+                <br />
+                {company.phoneAlt}
+                <br />
+                {company.branchPhone}
+              </span>
             </li>
-
             <li>
-              📍Guwahati Branch - Santi Basti, Amsing Jorabat,
-              (Narangi Army Cantt),
-              Guwahati - 781027 ASSAM
+              <FiMail />
+              <span>{company.email}</span>
             </li>
-
             <li>
-              📞 +91 9211566451,
-              +91 9717125351,
-              +91 9085184086
-            </li>
-
-            <li>
-              📧 osrsolutions51@gmail.com
-            </li>
-
-            <li>
-              🕒 Mon - Sat / 10 AM - 6 PM
+              <FiMapPin />
+              <span>
+                {company.footerOffice}
+                <br />
+                Guwahati Branch - {company.branch}
+              </span>
             </li>
           </ul>
         </div>
-
       </div>
 
-      {/* BOTTOM */}
       <div className="footer-bottom">
-        <p>
-          © 2025 OSR Solutions.
-          All Rights Reserved.
-        </p>
-
+        <p>© 2025 OSR Solutions. All Rights Reserved.</p>
         <div className="footer-links">
           <span>Privacy Policy</span>
           <span>Terms of Service</span>
           <span>Sitemap</span>
         </div>
       </div>
+
+      <button className="whatsapp-float" onClick={openWhatsApp} aria-label="WhatsApp OSR Solutions">
+        <FaWhatsapp />
+      </button>
     </footer>
   );
 }
