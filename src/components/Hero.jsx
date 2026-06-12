@@ -10,15 +10,15 @@ import {
   FiTool,
   FiUsers,
 } from "react-icons/fi";
-import { heroHighlights, products, stats } from "../data/siteData";
+import { heroHighlights, stats } from "../data/siteData";
 import "./Hero.css";
+import heroMachine from "../images/ALL-IN-ONE3.png";
 
 const statIcons = [FiPrinter, FiBox, FiAward, FiUsers];
 const highlightIcons = [FiCpu, FiTool, FiBox, FiShield];
 
 function Hero() {
   const navigate = useNavigate();
-  const heroProduct = products.find((product) => product.slug === "kj-1060uc-uv-flatbed-printer");
 
   const goToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
@@ -70,11 +70,14 @@ function Hero() {
 
           <div className="hero-showcase reveal">
             <div className="showcase-stage">
-              <img src={heroProduct.image} alt={heroProduct.title} />
+              <span className="stage-orb stage-orb-one" />
+              <span className="stage-orb stage-orb-two" />
+              <span className="stage-orb stage-orb-three" />
+              <img src={heroMachine} alt="OPIXELL UV flatbed printing machine" />
             </div>
 
             <div className="showcase-features">
-              {heroHighlights.map((item, index) => {
+              {heroHighlights.slice(0, 3).map((item, index) => {
                 const Icon = highlightIcons[index];
                 return (
                   <div className="showcase-feature" key={item.title}>
