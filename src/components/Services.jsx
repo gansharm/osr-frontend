@@ -100,7 +100,9 @@ function Services() {
           <div className="sample-grid">
             {samples.map((sample) => (
               <figure className="sample-card" key={sample.title}>
-                <img src={sample.image} alt={sample.title} />
+                <div className="sample-media">
+                  <img src={sample.image} alt={sample.title} />
+                </div>
                 <figcaption>{sample.title}</figcaption>
               </figure>
             ))}

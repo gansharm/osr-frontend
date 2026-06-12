@@ -12,7 +12,7 @@ import {
 } from "react-icons/fi";
 import { heroHighlights, stats } from "../data/siteData";
 import "./Hero.css";
-import heroMachine from "../images/ALL-IN-ONE3.png";
+import heroMachine from "../images/KJ-1060UC.png";
 
 const statIcons = [FiPrinter, FiBox, FiAward, FiUsers];
 const highlightIcons = [FiCpu, FiTool, FiBox, FiShield];

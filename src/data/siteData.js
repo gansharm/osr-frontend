@@ -1,24 +1,37 @@
 import A3F from "../images/A3F.png";
-import allInOne from "../images/ALL-IN-ONE.png";
-import allInOne1 from "../images/ALL-IN-ONE1.png";
-import allInOne2 from "../images/ALL-IN-ONE2.png";
-import allInOne3 from "../images/ALL-IN-ONE3.png";
-import allInOne4 from "../images/ALL-IN-ONE4.png";
-import allInOne5 from "../images/ALL-IN-ONE5.png";
-import allInOne6 from "../images/ALL-IN-ONE6.png";
-import allInOne7 from "../images/ALL-IN-ONE7.png";
-import allInOne8 from "../images/ALL-IN-ONE8.png";
+import A3F4050DX from "../images/A3F-4050DX.png";
+import A3F4050DX1 from "../images/A3F-4050DX1.png";
+import A3F4050DX2 from "../images/A3F-4050DX2.png";
 import D602 from "../images/D602.png";
-import DTF from "../images/DTF.png";
-import DTF1 from "../images/DTF1.png";
-import DTF2 from "../images/DTF2.png";
-import flex from "../images/flex.png";
-import flex2 from "../images/flex2.png";
-import flex3 from "../images/flex3.png";
+import D6022H from "../images/D602-2H.png";
+import D6022H1 from "../images/D602-2H1.png";
+import D6022H2 from "../images/D602-2H2.png";
+import ecoSolvent from "../images/ECO-SOLVENT.png";
+import ecoSolvent1 from "../images/ECO-SOLVENT1.png";
+import ecoSolvent2 from "../images/ECO-SOLVENT2.png";
+import catSample from "../images/catSample.jpeg";
+import girlSample from "../images/girlSample.jpeg";
 import head from "../images/head.jpeg";
+import iphoneSample from "../images/iphoneSample.jpeg";
+import iphone2Sample from "../images/iphone2Sample.jpeg";
 import ink from "../images/ink3.jpeg";
-import KING from "../images/KING.png";
+import KJ1060 from "../images/KJ-1060.png";
+import KJ1060UCBrochure from "../images/KJ-1060UC-specifications.svg";
+import KJ1060UC from "../images/KJ-1060UC.png";
+import KJ1060UC1 from "../images/KJ-1060UC1.png";
+import KJ1060UC2 from "../images/KJ-1060UC2.png";
+import krishnSample from "../images/krishnSample.jpeg";
+import lotusSample from "../images/lotusSample.jpeg";
 import mainBoard from "../images/mainBoard2.jpeg";
+import manSample from "../images/manSample.jpeg";
+import peacockSample from "../images/peacockSample.jpeg";
+import plotter from "../images/Plotter.png";
+import plotter1 from "../images/Plotter1.png";
+import plotter2 from "../images/Plotter2.png";
+import rahulSample from "../images/rahulSample.jpeg";
+import uvBottleSample from "../images/uvBottleSample.jpeg";
+import uvWoodSample from "../images/uvWoodSample.jpeg";
+import vickySample from "../images/vickySample.png";
 
 export const company = {
   name: "OSR Solutions",
@@ -118,12 +131,12 @@ export const products = [
     slug: "d602-2h-dtf-printer",
     name: "D602-2H",
     category: "DTF Printers",
-    title: "D602-2H DTF Printer",
+    title: "D602-2H",
     shortTitle: "DTF Printer",
     desc: "High-performance DTF printer for sharp, vibrant and reliable production.",
-    image: DTF,
+    image: D6022H,
     heroImage: D602,
-    gallery: [DTF, DTF1, DTF2, D602],
+    gallery: [D6022H, D6022H1, D6022H2, D602],
     specs: [
       "High Speed Printing",
       "Auto White Ink Circulation",
@@ -143,12 +156,14 @@ export const products = [
     slug: "kj-1060uc-uv-flatbed-printer",
     name: "KJ-1060UC",
     category: "UV Flatbed Printers",
-    title: "KJ-1060UC UV Flatbed Printer",
+    title: "KJ-1060UC",
     shortTitle: "UV Flatbed Printer",
     desc: "High precision UV flatbed printer with advanced features and industrial grade performance.",
-    image: flex3,
-    heroImage: KING,
-    gallery: [flex3, flex2, flex, KING],
+    image: KJ1060UC,
+    heroImage: KJ1060UC,
+    brochure: KJ1060UCBrochure,
+    brochureFileName: "KJ-1060UC-specifications.svg",
+    gallery: [KJ1060UC, KJ1060UC1, KJ1060UC2, KJ1060],
     specs: [
       "1050mm Print Width",
       "Epson DX7 Print Head",
@@ -168,12 +183,12 @@ export const products = [
     slug: "a3f-4050dx-uv-flatbed-printer",
     name: "A3F-4050DX",
     category: "UV Flatbed Printers",
-    title: "A3F-4050DX UV Flatbed Printer",
+    title: "A3F-4050DX",
     shortTitle: "UV Flatbed Printer",
     desc: "Compact UV flatbed printer for multi-material printing and premium-quality output.",
-    image: allInOne,
+    image: A3F4050DX,
     heroImage: A3F,
-    gallery: [allInOne, allInOne1, allInOne2, A3F],
+    gallery: [A3F4050DX, A3F4050DX1, A3F4050DX2, A3F],
     specs: [
       "High Precision Print Head",
       "Dual Head Configuration",
@@ -191,38 +206,38 @@ export const products = [
   },
   {
     slug: "all-in-one-dtf-printer",
-    name: "ALL-IN-ONE",
-    category: "DTF Printers",
-    title: "ALL-IN-ONE DTF Printer",
-    shortTitle: "DTF Printer",
-    desc: "Integrated DTF solution for smooth production, service and print performance.",
-    image: allInOne3,
-    heroImage: allInOne4,
-    gallery: [allInOne3, allInOne4, allInOne5],
+    name: "ECO-SOLVENT",
+    category: "Eco Solvent Printers",
+    title: "ECO-SOLVENT",
+    shortTitle: "Eco Solvent Printer",
+    desc: "Wide-format eco solvent printing solution for sharp commercial media and signage output.",
+    image: ecoSolvent,
+    heroImage: ecoSolvent,
+    gallery: [ecoSolvent, ecoSolvent1, ecoSolvent2],
     specs: [
-      "Reliable Production",
-      "Service Friendly Design",
+      "Wide Format Output",
+      "Eco Solvent Ink",
       "Sharp Color Output",
-      "Cost Effective",
+      "Commercial Media Ready",
     ],
     details: [
-      "Stable daily production",
-      "Easy maintenance access",
-      "Premium quality components",
+      "Large-format printing capability",
+      "Smooth production for signage work",
+      "Vibrant color output for display media",
       "Fast support from OSR Solutions",
     ],
-    applications: ["Textile", "Garments", "Custom Printing", "Merchandise"],
+    applications: ["Signage", "Backlit Work", "Display Prints", "Commercial Media"],
   },
   {
     slug: "flatbed-uv-printer",
-    name: "Flatbed UV",
+    name: "KJ-1060",
     category: "UV Flatbed Printers",
-    title: "Flatbed UV Printer",
-    shortTitle: "UV Printer",
+    title: "KJ-1060",
+    shortTitle: "UV Flatbed Printer",
     desc: "Industrial UV flatbed machine for quality printing on multiple surfaces.",
-    image: allInOne6,
-    heroImage: allInOne7,
-    gallery: [allInOne6, allInOne7, allInOne8],
+    image: KJ1060,
+    heroImage: KJ1060,
+    gallery: [KJ1060, KJ1060UC, KJ1060UC1],
     specs: [
       "Multi Material Printing",
       "Reliable Performance",
@@ -239,14 +254,14 @@ export const products = [
   },
   {
     slug: "ploter",
-    name: "Ploter",
+    name: "Plotter",
     category: "Plotters",
-    title: "Ploter",
+    title: "Plotter",
     shortTitle: "Plotter",
     desc: "Large-format printing support for industrial and commercial requirements.",
-    image: flex,
-    heroImage: flex3,
-    gallery: [flex, flex2, flex3],
+    image: plotter,
+    heroImage: plotter1,
+    gallery: [plotter, plotter1, plotter2],
     specs: [
       "Large Format Output",
       "High Speed Production",
@@ -313,30 +328,59 @@ export const products = [
 
 export const samples = [
   {
-    title: "UV Printing on Acrylic",
-    image: allInOne,
+    title: "UV Printed Wood Panel",
+    image: uvWoodSample,
   },
   {
-    title: "UV Printing on Wood",
-    image: allInOne1,
+    title: "UV Printed Bottle",
+    image: uvBottleSample,
   },
   {
-    title: "UV Printing on Mobile Covers",
-    image: allInOne2,
+    title: "Peacock Mobile Case Print",
+    image: iphoneSample,
   },
   {
-    title: "UV Printing on Bottle",
-    image: allInOne5,
+    title: "Devotional Mobile Cover Print",
+    image: iphone2Sample,
   },
   {
-    title: "UV Backlit Signage",
-    image: flex2,
+    title: "Krishna Radha UV Art Print",
+    image: krishnSample,
+  },
+  {
+    title: "Peacock UV Artwork Print",
+    image: peacockSample,
+  },
+  {
+    title: "Custom Girl Artwork Print",
+    image: girlSample,
+  },
+  {
+    title: "Premium UV Poster Print",
+    image: vickySample,
+  },
+  {
+    title: "Lotus Invitation Card Print",
+    image: lotusSample,
+  },
+  {
+    title: "Cosmic Color Artwork Print",
+    image: manSample,
+  },
+  {
+    title: "KJ-1060UC UV Printer Showcase",
+    image: rahulSample,
+  },
+  {
+    title: "Tropical Cat Artwork Print",
+    image: catSample,
   },
 ];
 
 export const productCategories = [
   "All Products",
   "UV Flatbed Printers",
+  "Eco Solvent Printers",
   "DTF Printers",
   "Plotters",
   "Spare Parts & Accessories",
