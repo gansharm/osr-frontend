@@ -17,6 +17,13 @@
   box-sizing: border-box;
 }
 
+/* Prevent decorative pseudo-elements from intercepting touch/click events on mobile devices.
+   Interactive elements (buttons, links, inputs) explicitly receive pointer events below. */
+*::before,
+*::after {
+  pointer-events: none;
+}
+
 html {
   scroll-behavior: smooth;
   background: #ffffff;
@@ -44,6 +51,13 @@ input,
 select,
 textarea {
   font: inherit;
+  /* allow interaction on form controls and buttons even if their parents or pseudo-elements
+     cover them visually on some devices */
+  pointer-events: auto;
+}
+
+a {
+  pointer-events: auto;
 }
 
 img {
