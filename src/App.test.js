@@ -31,6 +31,7 @@ beforeEach(() => {
   mockPathname = "/";
   mockProductSlug = products[0].slug;
   window.scrollTo = jest.fn();
+  Element.prototype.scrollIntoView = jest.fn();
 });
 
 afterEach(() => {
@@ -69,6 +70,33 @@ test("mobile navigation opens, navigates, and removes the overlay after closing"
   });
 
   expect(document.querySelector(".mobile-menu")).not.toBeInTheDocument();
+});
+
+test("mobile section links close the menu before scrolling", () => {
+  jest.useFakeTimers();
+  const scrollIntoView = jest.fn();
+  Element.prototype.scrollIntoView = scrollIntoView;
+
+  render(
+    <>
+      <Navbar />
+      <section id="about">About section</section>
+    </>
+  );
+
+  fireEvent.click(screen.getByRole("button", { name: /toggle navigation menu/i }));
+
+  const mobileMenu = document.querySelector(".mobile-menu.show");
+  fireEvent.click(within(mobileMenu).getByRole("button", { name: /about/i }));
+
+  expect(document.body).not.toHaveClass("nav-open");
+  expect(scrollIntoView).not.toHaveBeenCalled();
+
+  act(() => {
+    jest.advanceTimersByTime(420);
+  });
+
+  expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth" });
 });
 
 test("product detail mobile controls update thumbnails and accordion state", () => {
