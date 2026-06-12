@@ -28,6 +28,16 @@ function ProductDetail() {
   );
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab] = useState("Overview");
+  const [openTabs, setOpenTabs] = useState(() => ({
+    Overview: true,
+    Specifications: false,
+    Applications: false,
+    Downloads: false,
+  }));
+
+  const toggleAccordion = (tab) => {
+    setOpenTabs((prev) => ({ ...prev, [tab]: !prev[tab] }));
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -148,7 +158,8 @@ function ProductDetail() {
             ))}
           </div>
 
-          <div className="tab-content">
+          {/* Desktop tab content (unchanged) */}
+          <div className="tab-content desktop-only">
             <div className="tab-panel">
               <div className="tab-panel-title">
                 <h2>{activeTab}</h2>
@@ -217,6 +228,86 @@ function ProductDetail() {
                 </div>
               )}
             </div>
+          </div>
+
+          {/* Mobile accordion: show all headers and allow independent toggling */}
+          <div className="accordion mobile-only">
+            {detailTabs.map((tab) => (
+              <div className="accordion-item" key={tab}>
+                <button
+                  className="accordion-header"
+                  onClick={() => toggleAccordion(tab)}
+                  aria-expanded={!!openTabs[tab]}
+                >
+                  <span>{tab}</span>
+                  <FiChevronDown className={openTabs[tab] ? "open" : ""} />
+                </button>
+
+                <div className={`accordion-panel ${openTabs[tab] ? "open" : ""}`}>
+                  {tab === "Overview" && (
+                    <div className="overview-grid">
+                      <div>
+                        <h3>Product Overview</h3>
+                        <p>
+                          {product.title} is designed for high-quality printing,
+                          reliable service operations, and strong business
+                          performance with OSR Solutions support.
+                        </p>
+                        <ul>
+                          {product.details.map((item) => (
+                            <li key={item}>
+                              <FiCheckCircle />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="application-panel">
+                        <h3>Perfect For Printing On</h3>
+                        <div className="application-grid">
+                          {product.applications.map((item) => (
+                            <span key={item}>{item}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {tab === "Specifications" && (
+                    <div className="spec-table">
+                      {product.specs.concat(product.details).map((item, index) => (
+                        <div key={`${item}-${index}`}>
+                          <strong>Feature {index + 1}</strong>
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {tab === "Applications" && (
+                    <div className="application-grid wide">
+                      {product.applications.map((item) => (
+                        <span key={item}>{item}</span>
+                      ))}
+                    </div>
+                  )}
+
+                  {tab === "Downloads" && (
+                    <div className="download-panel">
+                      <p>
+                        Download the available product visual or contact our experts
+                        for a complete brochure and pricing guidance.
+                      </p>
+                      <a className="btn-soft" href={product.heroImage} download>
+                        <FiDownload />
+                        Download Brochure
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 

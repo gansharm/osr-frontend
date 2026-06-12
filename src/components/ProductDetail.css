@@ -290,6 +290,50 @@
   display: none;
 }
 
+/* Accordion (mobile) and visibility helpers */
+.mobile-only {
+  display: none;
+}
+.desktop-only {
+  display: block;
+}
+
+/* Basic accordion visuals */
+.accordion {
+  display: none;
+  width: 100%;
+}
+.accordion-item {
+  margin-bottom: 12px;
+  border-radius: 8px;
+  overflow: visible;
+  border: 1px solid rgba(11,124,255,.10);
+}
+.accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #f4f9ff;
+  border: 0;
+  cursor: pointer;
+  font-weight: 900;
+  color: #0b7cff;
+}
+.accordion-header svg { transform: rotate(0deg); transition: transform .28s ease; }
+.accordion-header svg.open { transform: rotate(180deg); }
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .36s ease, padding .28s ease;
+  padding: 0 16px;
+  background: #fff;
+}
+.accordion-panel.open { max-height: 1600px; padding: 16px; }
+
+
 .overview-grid {
   display: grid;
   grid-template-columns: 1.1fr .9fr;
@@ -542,6 +586,19 @@
   }
 
   .tab-buttons {
+    display: none;
+  }
+
+  /* show accordion on mobile and hide desktop-only content */
+  .mobile-only {
+    display: block;
+  }
+  .desktop-only {
+    display: none;
+  }
+
+  /* hide single panel title (we use accordion headers instead) */
+  .tab-panel-title {
     display: none;
   }
 
