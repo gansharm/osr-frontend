@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   FiArrowRight,
@@ -30,9 +30,20 @@ const NAV_LINKS = [
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuMounted, setMenuMounted] = useState(false);
   const navRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    if (menuOpen) {
+      setMenuMounted(true);
+      return undefined;
+    }
+
+    const timeout = window.setTimeout(() => setMenuMounted(false), 360);
+    return () => window.clearTimeout(timeout);
+  }, [menuOpen]);
 
   useEffect(() => {
     document.body.classList.toggle("nav-open", menuOpen);
@@ -212,7 +223,8 @@ function Navbar() {
         </div>
       </nav>
 
-      {typeof document !== "undefined" ? createPortal(mobileMenu, document.body) : mobileMenu}
+      {(menuOpen || menuMounted) &&
+        (typeof document !== "undefined" ? createPortal(mobileMenu, document.body) : mobileMenu)}
     </>
   );
 }
