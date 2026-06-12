@@ -48,6 +48,39 @@ function ProductDetail() {
   }
 
   const gallery = product.gallery?.length ? product.gallery : [product.image];
+  const brochureFile = product.brochure || product.heroImage;
+  const brochureFileName = product.brochureFileName || `${product.name}-brochure`;
+
+  const downloadBrochure = async () => {
+    try {
+      const response = await fetch(brochureFile);
+      if (!response.ok) {
+        throw new Error("Brochure download failed");
+      }
+
+      const fileBlob = await response.blob();
+      const downloadBlob = new Blob([fileBlob], { type: "application/octet-stream" });
+      const downloadUrl = URL.createObjectURL(downloadBlob);
+      const link = document.createElement("a");
+
+      link.href = downloadUrl;
+      link.download = brochureFileName;
+      link.rel = "noopener";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(downloadUrl);
+    } catch (error) {
+      const link = document.createElement("a");
+
+      link.href = brochureFile;
+      link.download = brochureFileName;
+      link.rel = "noopener";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
+  };
 
   const goToContact = () => {
     navigate("/");
@@ -120,10 +153,10 @@ function ProductDetail() {
                   Get a Quote
                   <FiArrowRight />
                 </button>
-                <a className="btn-soft" href={product.heroImage} download>
+                <button className="btn-soft" type="button" onClick={downloadBrochure}>
                   <FiDownload />
                   Download Brochure
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -221,10 +254,10 @@ function ProductDetail() {
                     Download the available product visual or contact our experts
                     for a complete brochure and pricing guidance.
                   </p>
-                  <a className="btn-soft" href={product.heroImage} download>
+                  <button className="btn-soft" type="button" onClick={downloadBrochure}>
                     <FiDownload />
                     Download Brochure
-                  </a>
+                  </button>
                 </div>
               )}
             </div>
@@ -299,10 +332,10 @@ function ProductDetail() {
                         Download the available product visual or contact our experts
                         for a complete brochure and pricing guidance.
                       </p>
-                      <a className="btn-soft" href={product.heroImage} download>
+                      <button className="btn-soft" type="button" onClick={downloadBrochure}>
                         <FiDownload />
                         Download Brochure
-                      </a>
+                      </button>
                     </div>
                   )}
                 </div>
@@ -336,7 +369,9 @@ function ProductDetail() {
           <div className="sample-row">
             {samples.map((sample) => (
               <figure key={sample.title}>
-                <img src={sample.image} alt={sample.title} />
+                <div className="sample-media">
+                  <img src={sample.image} alt={sample.title} />
+                </div>
                 <figcaption>{sample.title}</figcaption>
               </figure>
             ))}
