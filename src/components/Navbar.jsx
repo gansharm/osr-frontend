@@ -32,6 +32,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuMounted, setMenuMounted] = useState(false);
   const navRef = useRef(null);
+  const lastTouchActivationRef = useRef(0);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -80,20 +81,40 @@ function Navbar() {
   };
 
   const handleNavigation = (sectionId) => {
+    const scrollDelay = menuOpen ? 420 : 0;
+
+    setMenuOpen(false);
+
     if (sectionId === "Products") {
       navigate("/services");
-      setMenuOpen(false);
       return;
     }
 
     if (location.pathname !== "/") {
       navigate("/");
-      setTimeout(() => scrollToSection(sectionId), 220);
+      window.setTimeout(() => scrollToSection(sectionId), Math.max(scrollDelay, 260));
     } else {
-      scrollToSection(sectionId);
+      window.setTimeout(() => scrollToSection(sectionId), scrollDelay);
+    }
+  };
+
+  const handleTouchNavigation = (sectionId, event) => {
+    if (event.pointerType === "mouse") return;
+
+    const now = Date.now();
+    if (lastTouchActivationRef.current && now - lastTouchActivationRef.current < 500) {
+      event.preventDefault();
+      return;
     }
 
-    setMenuOpen(false);
+    lastTouchActivationRef.current = now;
+    event.preventDefault();
+    handleNavigation(sectionId);
+  };
+
+  const handleClickNavigation = (sectionId) => {
+    if (lastTouchActivationRef.current && Date.now() - lastTouchActivationRef.current < 500) return;
+    handleNavigation(sectionId);
   };
 
   const getQuote = () => handleNavigation("contact");
@@ -124,7 +145,7 @@ function Navbar() {
     >
       <div className="mobile-menu-head">
         <img src={logo} alt="OSR Solutions" />
-        <button onClick={() => setMenuOpen(false)} aria-label="Close navigation menu">
+        <button type="button" onClick={() => setMenuOpen(false)} aria-label="Close navigation menu">
           <HiX />
         </button>
       </div>
@@ -134,9 +155,11 @@ function Navbar() {
           const Icon = item.icon;
           return (
             <button
+              type="button"
               key={item.id}
               className={isActive(item) ? "active" : ""}
-              onClick={() => handleNavigation(item.id)}
+              onPointerUp={(event) => handleTouchNavigation(item.id, event)}
+              onClick={() => handleClickNavigation(item.id)}
             >
               <Icon />
               {item.name}
@@ -150,7 +173,11 @@ function Navbar() {
         <div>
           <h3>Need a Quote?</h3>
           <p>Get the best solution for your business. Our experts are here to help you.</p>
-          <button onClick={getQuote}>
+          <button
+            type="button"
+            onPointerUp={(event) => handleTouchNavigation("contact", event)}
+            onClick={() => handleClickNavigation("contact")}
+          >
             Get a Quote
             <FiArrowRight />
           </button>
@@ -158,7 +185,7 @@ function Navbar() {
       </div>
 
       <div className="menu-contact">
-        <button onClick={callOffice}>
+        <button type="button" onClick={callOffice}>
           <FiPhone />
           <span>{company.phone}</span>
         </button>
@@ -166,7 +193,7 @@ function Navbar() {
           <FiMail />
           <span>{company.email}</span>
         </a>
-        <button onClick={openWhatsApp}>
+        <button type="button" onClick={openWhatsApp}>
           <FaWhatsapp />
           <span>WhatsApp Us</span>
         </button>
@@ -183,6 +210,7 @@ function Navbar() {
     <>
       <nav className="nav" aria-label="Primary navigation" ref={navRef}>
         <button
+          type="button"
           className="nav-brand"
           onClick={() => navigate("/")}
           aria-label="Go to home"
@@ -194,6 +222,7 @@ function Navbar() {
           {NAV_LINKS.map((item) => (
             <li key={item.id}>
               <button
+                type="button"
                 className={isActive(item) ? "active" : ""}
                 onClick={() => handleNavigation(item.id)}
               >
@@ -204,14 +233,15 @@ function Navbar() {
         </ul>
 
         <div className="nav-actions">
-          <button className="nav-call" onClick={callOffice} aria-label="Call OSR Solutions">
+          <button type="button" className="nav-call" onClick={callOffice} aria-label="Call OSR Solutions">
             <FiPhone />
           </button>
-          <button className="quote-btn" onClick={getQuote}>
+          <button type="button" className="quote-btn" onClick={getQuote}>
             Get a Quote
             <FiArrowRight />
           </button>
           <button
+            type="button"
             className="hamburger"
             onClick={() => setMenuOpen((open) => !open)}
             aria-label="Toggle navigation menu"
