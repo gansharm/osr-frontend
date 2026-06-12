@@ -30,12 +30,34 @@ const NAV_LINKS = [
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     document.body.classList.toggle("nav-open", menuOpen);
     return () => document.body.classList.remove("nav-open");
+  }, [menuOpen]);
+
+  // set CSS variables for mobile menu top offset based on nav height
+  useEffect(() => {
+    const setOffsets = () => {
+      const h = navRef.current?.offsetHeight || 72;
+      document.documentElement.style.setProperty("--nav-top", `${h + 8}px`);
+      document.documentElement.style.setProperty("--nav-top-sm", `${Math.max(56, h - 8)}px`);
+    };
+    setOffsets();
+    window.addEventListener("resize", setOffsets);
+    return () => window.removeEventListener("resize", setOffsets);
+  }, []);
+
+  // close on Escape key for mobile accessibility
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    if (menuOpen) document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
   useEffect(() => {
@@ -148,7 +170,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="nav" aria-label="Primary navigation">
+      <nav className="nav" aria-label="Primary navigation" ref={navRef}>
         <button
           className="nav-brand"
           onClick={() => navigate("/")}
