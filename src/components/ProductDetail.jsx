@@ -19,6 +19,13 @@ import "./ProductDetail.css";
 
 const detailTabs = ["Overview", "Specifications", "Applications", "Downloads"];
 
+const getFileExtension = (fileUrl) => {
+  const cleanUrl = fileUrl.split("?")[0].split("#")[0];
+  const extension = cleanUrl.match(/\.([a-z0-9]+)$/i)?.[1];
+
+  return extension || "png";
+};
+
 function ProductDetail() {
   const { productSlug } = useParams();
   const navigate = useNavigate();
@@ -49,36 +56,45 @@ function ProductDetail() {
 
   const gallery = product.gallery?.length ? product.gallery : [product.image];
   const brochureFile = product.brochure || product.heroImage;
-  const brochureFileName = product.brochureFileName || `${product.name}-brochure`;
+  const brochureFileName =
+    product.brochureFileName || `${product.name}-brochure.${getFileExtension(brochureFile)}`;
+
+  const triggerDownload = (downloadUrl, fileName, shouldRevoke = false) => {
+    const link = document.createElement("a");
+
+    link.href = downloadUrl;
+    link.download = fileName;
+    link.rel = "noopener";
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+
+    window.setTimeout(() => {
+      link.remove();
+      if (shouldRevoke) {
+        URL.revokeObjectURL(downloadUrl);
+      }
+    }, 1200);
+  };
 
   const downloadBrochure = async () => {
     try {
-      const response = await fetch(brochureFile);
+      const response = await fetch(brochureFile, { cache: "force-cache" });
       if (!response.ok) {
         throw new Error("Brochure download failed");
       }
 
       const fileBlob = await response.blob();
       const downloadBlob = new Blob([fileBlob], { type: "application/octet-stream" });
-      const downloadUrl = URL.createObjectURL(downloadBlob);
-      const link = document.createElement("a");
 
-      link.href = downloadUrl;
-      link.download = brochureFileName;
-      link.rel = "noopener";
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(downloadUrl);
+      if (window.navigator?.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(downloadBlob, brochureFileName);
+        return;
+      }
+
+      triggerDownload(URL.createObjectURL(downloadBlob), brochureFileName, true);
     } catch (error) {
-      const link = document.createElement("a");
-
-      link.href = brochureFile;
-      link.download = brochureFileName;
-      link.rel = "noopener";
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
+      triggerDownload(brochureFile, brochureFileName);
     }
   };
 

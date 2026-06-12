@@ -13,6 +13,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { company, productCategories, products, samples } from "../data/siteData";
+import featuredMachine from "../images/A3F-4050DX.png";
+import heroMachine from "../images/D602-2H.png";
 import "./ServicePage.css";
 
 function ServicePage() {
@@ -21,7 +23,7 @@ function ServicePage() {
   const [currentImage, setCurrentImage] = useState(0);
 
   const featuredProduct = products.find(
-    (product) => product.slug === "kj-1060uc-uv-flatbed-printer"
+    (product) => product.slug === "a3f-4050dx-uv-flatbed-printer"
   );
 
   const visibleProducts = useMemo(() => {
@@ -85,7 +87,16 @@ function ServicePage() {
           </div>
 
           <div className="products-hero-machine reveal">
-            <img src={featuredProduct.image} alt={featuredProduct.title} />
+            <div className="machine-showcase" aria-hidden="true">
+              <span className="showcase-ring" />
+              <span className="showcase-ring secondary" />
+              <span className="showcase-particle particle-one" />
+              <span className="showcase-particle particle-two" />
+              <span className="showcase-particle particle-three" />
+              <span className="showcase-particle particle-four" />
+              <span className="showcase-platform" />
+            </div>
+            <img src={heroMachine} alt="D602-2H machine" />
           </div>
         </section>
 
@@ -127,7 +138,15 @@ function ServicePage() {
           </div>
 
           <div className="featured-image">
-            <img src={getImage(featuredProduct)} alt={featuredProduct.title} />
+            <div className="featured-machine-stage" aria-hidden="true">
+              <span className="featured-ring" />
+              <span className="featured-ring inner" />
+              <span className="featured-orb orb-one" />
+              <span className="featured-orb orb-two" />
+              <span className="featured-orb orb-three" />
+              <span className="featured-platform" />
+            </div>
+            <img src={featuredMachine} alt="A3F-4050DX machine" />
           </div>
 
           <div className="featured-metrics">

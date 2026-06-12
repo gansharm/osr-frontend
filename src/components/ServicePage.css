@@ -73,33 +73,162 @@
 }
 
 .products-hero-machine {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 360px;
+  min-height: clamp(430px, 39vw, 560px);
   padding: 0;
-  border-radius: 10px;
+  isolation: isolate;
+  border-radius: 18px;
   background:
-    radial-gradient(ellipse at center, rgba(107, 188, 255, .28), transparent 60%),
-    rgba(255, 255, 255, .78);
-  border: 1px solid rgba(11, 124, 255, .10);
+    radial-gradient(circle at 50% 48%, rgba(12, 124, 255, .26), transparent 35%),
+    radial-gradient(circle at 50% 54%, rgba(255, 255, 255, .94), rgba(232, 244, 255, .62) 55%, rgba(214, 235, 255, .22) 100%);
+  border: 1px solid rgba(11, 124, 255, .14);
   box-sizing: border-box;
   overflow: hidden;
-  box-shadow: 0 28px 90px rgba(15, 57, 113, .12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .92),
+    0 32px 90px rgba(15, 57, 113, .14);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.products-hero-machine::before {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .82), rgba(255, 255, 255, .34));
+  border: 1px solid rgba(255, 255, 255, .84);
+  box-shadow:
+    inset 0 1px 28px rgba(255, 255, 255, .82),
+    0 0 70px rgba(11, 124, 255, .18);
+  backdrop-filter: blur(16px);
+}
+
+.products-hero-machine::after {
+  content: "";
+  position: absolute;
+  inset: 20% 13% 13%;
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, rgba(11, 124, 255, .30), rgba(11, 124, 255, .11) 42%, transparent 70%);
+  filter: blur(10px);
+  opacity: .9;
+}
+
+.products-hero-machine:hover {
+  transform: translateY(-4px);
+  border-color: rgba(11, 124, 255, .25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .94),
+    0 38px 105px rgba(15, 57, 113, .18);
 }
 
 .products-hero-machine img {
+  position: relative;
+  z-index: 3;
   display: block;
   flex: 0 0 auto;
   width: auto;
   height: auto;
-  max-width: calc(100% - 36px);
-  max-height: 340px;
+  max-width: min(88%, 760px);
+  max-height: clamp(330px, 32vw, 460px);
   margin: 0;
   object-fit: contain;
   object-position: center;
-  transform: none;
-  filter: drop-shadow(0 24px 28px rgba(15, 23, 42, .18));
+  animation: machineFloat 5.4s ease-in-out infinite;
+  filter:
+    drop-shadow(0 34px 30px rgba(15, 23, 42, .20))
+    drop-shadow(0 0 24px rgba(11, 124, 255, .12));
+}
+
+.machine-showcase,
+.showcase-ring,
+.showcase-particle,
+.showcase-platform {
+  pointer-events: none;
+}
+
+.machine-showcase {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.showcase-ring {
+  position: absolute;
+  inset: 13%;
+  border-radius: 50%;
+  border: 1px solid rgba(11, 124, 255, .22);
+  background:
+    conic-gradient(from 18deg, transparent 0 18%, rgba(11, 124, 255, .35) 20%, transparent 27% 57%, rgba(33, 189, 255, .26) 60%, transparent 66% 100%);
+  mask: radial-gradient(circle, transparent 63%, #000 64% 66%, transparent 67%);
+  animation: showcaseRingSpin 18s linear infinite;
+}
+
+.showcase-ring.secondary {
+  inset: 22%;
+  opacity: .56;
+  animation-duration: 26s;
+  animation-direction: reverse;
+}
+
+.showcase-particle {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #0b7cff;
+  box-shadow: 0 0 18px rgba(11, 124, 255, .55);
+  opacity: .68;
+  animation: particleDrift 6s ease-in-out infinite;
+}
+
+.particle-one {
+  top: 22%;
+  left: 20%;
+}
+
+.particle-two {
+  top: 18%;
+  right: 24%;
+  width: 7px;
+  height: 7px;
+  animation-delay: -1.6s;
+}
+
+.particle-three {
+  right: 15%;
+  bottom: 30%;
+  width: 11px;
+  height: 11px;
+  animation-delay: -3.2s;
+}
+
+.particle-four {
+  left: 24%;
+  bottom: 22%;
+  width: 6px;
+  height: 6px;
+  animation-delay: -4.4s;
+}
+
+.showcase-platform {
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 13%;
+  height: 20px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, rgba(15, 23, 42, .30), rgba(11, 124, 255, .13) 46%, transparent 72%);
+  filter: blur(10px);
+  opacity: .8;
+  animation: platformPulse 5.4s ease-in-out infinite;
 }
 
 .category-tabs {
@@ -177,26 +306,148 @@
 }
 
 .featured-image {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: clamp(300px, 28vw, 360px);
+  height: clamp(360px, 34vw, 460px);
   padding: 0;
   box-sizing: border-box;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(11, 124, 255, .24), transparent 34%),
+    radial-gradient(circle at 50% 55%, rgba(255, 255, 255, .98), rgba(232, 244, 255, .72) 58%, rgba(222, 240, 255, .20) 100%);
+  transition: transform .28s ease, filter .28s ease;
+}
+
+.featured-image::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  z-index: 0;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, .34));
+  border: 1px solid rgba(255, 255, 255, .86);
+  box-shadow:
+    inset 0 1px 30px rgba(255, 255, 255, .82),
+    0 0 72px rgba(11, 124, 255, .20);
+  backdrop-filter: blur(16px);
+}
+
+.featured-image::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 22%;
+  bottom: 12%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(11, 124, 255, .28), rgba(11, 124, 255, .10) 46%, transparent 72%);
+  filter: blur(12px);
+  animation: featuredGlowPulse 5.6s ease-in-out infinite;
+}
+
+.featured-image:hover {
+  transform: translateY(-3px);
+  filter: saturate(1.04);
 }
 
 .featured-image img {
+  position: relative;
+  z-index: 3;
   display: block;
   flex: 0 0 auto;
   width: auto;
   height: auto;
-  max-width: calc(100% - 24px);
-  max-height: calc(100% - 24px);
+  max-width: min(95%, 620px);
+  max-height: min(96%, 430px);
   margin: 0;
   object-fit: contain;
   object-position: center;
-  transform: none;
-  filter: drop-shadow(0 22px 28px rgba(15, 23, 42, .17));
+  animation: featuredMachineFloat 5.6s ease-in-out infinite;
+  filter:
+    drop-shadow(0 34px 34px rgba(15, 23, 42, .20))
+    drop-shadow(0 0 24px rgba(11, 124, 255, .13));
+}
+
+.featured-machine-stage,
+.featured-ring,
+.featured-orb,
+.featured-platform {
+  pointer-events: none;
+}
+
+.featured-machine-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.featured-ring {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  border: 1px solid rgba(11, 124, 255, .22);
+  background:
+    conic-gradient(from 210deg, transparent 0 22%, rgba(11, 124, 255, .34) 24%, transparent 31% 58%, rgba(33, 189, 255, .25) 61%, transparent 68% 100%);
+  mask: radial-gradient(circle, transparent 62%, #000 63% 65%, transparent 66%);
+  animation: featuredRingSpin 22s linear infinite;
+}
+
+.featured-ring.inner {
+  inset: 23%;
+  opacity: .58;
+  animation-duration: 31s;
+  animation-direction: reverse;
+}
+
+.featured-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: #0b7cff;
+  box-shadow: 0 0 18px rgba(11, 124, 255, .56);
+  opacity: .68;
+  animation: featuredOrbDrift 6.2s ease-in-out infinite;
+}
+
+.orb-one {
+  width: 9px;
+  height: 9px;
+  top: 22%;
+  left: 20%;
+}
+
+.orb-two {
+  width: 7px;
+  height: 7px;
+  top: 18%;
+  right: 22%;
+  animation-delay: -1.8s;
+}
+
+.orb-three {
+  width: 11px;
+  height: 11px;
+  right: 16%;
+  bottom: 31%;
+  animation-delay: -3.6s;
+}
+
+.featured-platform {
+  position: absolute;
+  left: 17%;
+  right: 17%;
+  bottom: 12%;
+  height: 22px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, rgba(15, 23, 42, .30), rgba(11, 124, 255, .13) 48%, transparent 73%);
+  filter: blur(11px);
+  opacity: .82;
+  animation: featuredPlatformPulse 5.6s ease-in-out infinite;
 }
 
 .featured-metrics {
@@ -466,15 +717,43 @@
   }
 
   .products-hero-machine {
-    min-height: 300px;
+    min-height: 360px;
+    border-radius: 14px;
   }
 
   .products-hero-machine img {
-    max-height: 260px;
+    max-width: min(90%, 520px);
+    max-height: 315px;
+  }
+
+  .showcase-ring {
+    inset: 11%;
+  }
+
+  .showcase-platform {
+    left: 14%;
+    right: 14%;
+    bottom: 17%;
   }
 
   .featured-image {
-    height: 280px;
+    height: 340px;
+    border-radius: 14px;
+  }
+
+  .featured-image img {
+    max-width: min(92%, 520px);
+    max-height: 320px;
+  }
+
+  .featured-ring {
+    inset: 10%;
+  }
+
+  .featured-platform {
+    left: 13%;
+    right: 13%;
+    bottom: 13%;
   }
 
   .featured-product {
@@ -520,5 +799,118 @@
   .quality-grid figure {
     min-width: 68%;
     scroll-snap-align: start;
+  }
+}
+
+@keyframes machineFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes showcaseRingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes particleDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: .48;
+  }
+
+  50% {
+    transform: translate3d(8px, -12px, 0);
+    opacity: .86;
+  }
+}
+
+@keyframes platformPulse {
+  0%,
+  100% {
+    transform: scaleX(.92);
+    opacity: .62;
+  }
+
+  50% {
+    transform: scaleX(1);
+    opacity: .86;
+  }
+}
+
+@keyframes featuredMachineFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes featuredRingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes featuredOrbDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: .48;
+  }
+
+  50% {
+    transform: translate3d(9px, -11px, 0);
+    opacity: .86;
+  }
+}
+
+@keyframes featuredPlatformPulse {
+  0%,
+  100% {
+    transform: scaleX(.9);
+    opacity: .62;
+  }
+
+  50% {
+    transform: scaleX(1);
+    opacity: .86;
+  }
+}
+
+@keyframes featuredGlowPulse {
+  0%,
+  100% {
+    opacity: .74;
+    transform: scale(.96);
+  }
+
+  50% {
+    opacity: .98;
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .products-hero-machine img,
+  .showcase-ring,
+  .showcase-particle,
+  .showcase-platform,
+  .featured-image::after,
+  .featured-image img,
+  .featured-ring,
+  .featured-orb,
+  .featured-platform {
+    animation: none;
   }
 }
