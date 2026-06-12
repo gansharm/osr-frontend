@@ -54,10 +54,12 @@ textarea {
   /* allow interaction on form controls and buttons even if their parents or pseudo-elements
      cover them visually on some devices */
   pointer-events: auto;
+  touch-action: manipulation;
 }
 
 a {
   pointer-events: auto;
+  touch-action: manipulation;
 }
 
 img {

@@ -158,8 +158,10 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  touch-action: pan-y;
   transition: transform .32s ease, opacity .32s ease, visibility .32s ease;
   -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-menu.show {
@@ -312,7 +314,12 @@
 
 body.nav-open {
   overflow: hidden;
-  touch-action: none;
+}
+
+.nav button,
+.mobile-menu button,
+.mobile-menu a {
+  touch-action: manipulation;
 }
 
 @media (max-width: 1120px) {
