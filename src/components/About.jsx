@@ -8,6 +8,7 @@ import {
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { aboutFeatures } from "../data/siteData";
+import HowWeWork from "./HowWeWork";
 import "./About.css";
 import "./Hero.css";
 // Use the KJ-1060 machine image from the images folder
@@ -102,6 +103,7 @@ function About() {
           </div>
         </div>
       </div>
+      <HowWeWork />
     </section>
   );
 }
