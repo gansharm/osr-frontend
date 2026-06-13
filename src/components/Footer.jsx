@@ -5,28 +5,35 @@ import { company, products } from "../data/siteData";
 import "./Footer.css";
 import logo from "../images/OSR.png";
 
+const FOOTER_LINKS = {
+  home: { path: "/", sectionId: "home" },
+  about: { path: "/about", sectionId: "about" },
+  services: { path: "/services", sectionId: "services" },
+  products: { path: "/products" },
+  gallery: { path: "/gallery", sectionId: "gallery" },
+  reviews: { path: "/reviews" },
+  contact: { path: "/contact", sectionId: "contact" },
+};
+
+const normalizePath = (pathname) => pathname.replace(/\/+$/, "") || "/";
+
 function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleNavigation = (sectionId) => {
-    if (sectionId === "products") {
-      navigate("/services");
-      return;
-    }
+  const handleNavigation = (linkKey) => {
+    const target = FOOTER_LINKS[linkKey];
+    if (!target) return;
 
-    if (sectionId === "reviews") {
-      navigate("/reviews");
-      return;
-    }
+    const pathChanged = normalizePath(location.pathname) !== normalizePath(target.path);
 
-    if (location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-      }, 260);
-    } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    navigate(target.path);
+
+    if (target.sectionId) {
+      setTimeout(
+        () => document.getElementById(target.sectionId)?.scrollIntoView({ behavior: "smooth" }),
+        pathChanged ? 260 : 0
+      );
     }
   };
 
