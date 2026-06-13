@@ -1,7 +1,7 @@
 .work-process {
   position: relative;
   overflow: hidden;
-  padding: 78px 0 86px;
+  padding: 72px 0 52px;
   background:
     radial-gradient(circle at 16% 18%, rgba(11, 124, 255, .12), transparent 27%),
     radial-gradient(circle at 86% 32%, rgba(34, 199, 214, .10), transparent 24%),
@@ -149,7 +149,7 @@
 
 @media (max-width: 760px) {
   .work-process {
-    padding: 62px 0 70px;
+    padding: 56px 0 42px;
   }
 
   .work-process-shell {

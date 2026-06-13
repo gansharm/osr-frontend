@@ -44,7 +44,7 @@ function Hero() {
             </p>
 
             <div className="ctas">
-              <button className="btn-primary" onClick={() => navigate("/services")}>
+              <button className="btn-primary" onClick={() => navigate("/products")}>
                 Explore Products
                 <FiArrowRight />
               </button>

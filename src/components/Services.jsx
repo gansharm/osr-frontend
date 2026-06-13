@@ -82,7 +82,7 @@ function Services() {
             ))}
           </div>
 
-          <button className="view-all" onClick={() => navigate("/services")}>
+          <button className="view-all" onClick={() => navigate("/products")}>
             View All Products
             <FiArrowRight />
           </button>

@@ -21,14 +21,16 @@ import "./Navbar.css";
 import logo from "../images/OSR.png";
 
 const NAV_LINKS = [
-  { name: "Home", id: "home", icon: FiHome },
-  { name: "About Us", id: "about", icon: FiUser },
-  { name: "Products", id: "Products", icon: FiBox },
-  { name: "Services", id: "services", icon: FiSettings },
-  { name: "Gallery", id: "gallery", icon: FiImage },
-  { name: "Contact Us", id: "contact", icon: FiPhone },
-  { name: "Reviews", id: "reviews", icon: FiStar },
+  { name: "Home", id: "home", path: "/", sectionId: "home", icon: FiHome },
+  { name: "About Us", id: "about", path: "/about", sectionId: "about", icon: FiUser },
+  { name: "Products", id: "products", path: "/products", icon: FiBox },
+  { name: "Services", id: "services", path: "/services", sectionId: "services", icon: FiSettings },
+  { name: "Gallery", id: "gallery", path: "/gallery", sectionId: "gallery", icon: FiImage },
+  { name: "Contact Us", id: "contact", path: "/contact", sectionId: "contact", icon: FiPhone },
+  { name: "Reviews", id: "reviews", path: "/reviews", icon: FiStar },
 ];
+
+const normalizePath = (pathname) => pathname.replace(/\/+$/, "") || "/";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,6 +39,7 @@ function Navbar() {
   const lastTouchActivationRef = useRef(0);
   const navigate = useNavigate();
   const location = useLocation();
+  const currentPath = normalizePath(location.pathname);
 
   useEffect(() => {
     if (menuOpen) {
@@ -82,26 +85,24 @@ function Navbar() {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleNavigation = (sectionId) => {
+  const getNavItem = (itemOrId) =>
+    typeof itemOrId === "string" ? NAV_LINKS.find((item) => item.id === itemOrId) : itemOrId;
+
+  const handleNavigation = (itemOrId) => {
+    const item = getNavItem(itemOrId);
+    if (!item) return;
+
     const scrollDelay = menuOpen ? 420 : 0;
+    const pathChanged = currentPath !== normalizePath(item.path);
 
     setMenuOpen(false);
+    navigate(item.path);
 
-    if (sectionId === "Products") {
-      navigate("/services");
-      return;
-    }
-
-    if (sectionId === "reviews") {
-      navigate("/reviews");
-      return;
-    }
-
-    if (location.pathname !== "/") {
-      navigate("/");
-      window.setTimeout(() => scrollToSection(sectionId), Math.max(scrollDelay, 260));
-    } else {
-      window.setTimeout(() => scrollToSection(sectionId), scrollDelay);
+    if (item.sectionId) {
+      window.setTimeout(
+        () => scrollToSection(item.sectionId),
+        pathChanged ? Math.max(scrollDelay, 260) : scrollDelay
+      );
     }
   };
 
@@ -135,16 +136,11 @@ function Navbar() {
   };
 
   const isActive = (item) => {
-    if (item.id === "Products") {
-      return location.pathname.startsWith("/services") || location.pathname.startsWith("/products");
+    if (item.id === "products") {
+      return currentPath === "/products" || currentPath.startsWith("/products/");
     }
-    if (item.id === "reviews") {
-      return location.pathname === "/reviews";
-    }
-    if (item.id === "home") {
-      return location.pathname === "/";
-    }
-    return false;
+
+    return currentPath === normalizePath(item.path);
   };
 
   const mobileMenu = (

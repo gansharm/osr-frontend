@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,7 +13,17 @@ import AdminReviewsPage from "./components/AdminReviewsPage";
 import AdminLoginPage from "./components/AdminLoginPage";
 import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
 
-function HomePage() {
+function HomePage({ scrollTarget }) {
+  useEffect(() => {
+    if (!scrollTarget) return undefined;
+
+    const timeout = window.setTimeout(() => {
+      document.getElementById(scrollTarget)?.scrollIntoView({ behavior: "smooth" });
+    }, 160);
+
+    return () => window.clearTimeout(timeout);
+  }, [scrollTarget]);
+
   return (
     <>
       <Navbar />
@@ -35,7 +46,27 @@ function App() {
         />
 
         <Route
+          path="/about"
+          element={<HomePage scrollTarget="about" />}
+        />
+
+        <Route
           path="/services"
+          element={<HomePage scrollTarget="services" />}
+        />
+
+        <Route
+          path="/gallery"
+          element={<HomePage scrollTarget="gallery" />}
+        />
+
+        <Route
+          path="/contact"
+          element={<HomePage scrollTarget="contact" />}
+        />
+
+        <Route
+          path="/products"
           element={<ServicePage />}
         />
 

@@ -51,7 +51,7 @@ function ProductDetail() {
   }, [productSlug]);
 
   if (!product) {
-    return <Navigate to="/services" replace />;
+    return <Navigate to="/products" replace />;
   }
 
   const gallery = product.gallery?.length ? product.gallery : [product.image];
@@ -99,7 +99,7 @@ function ProductDetail() {
   };
 
   const goToContact = () => {
-    navigate("/");
+    navigate("/contact");
     setTimeout(() => {
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
     }, 220);
@@ -121,7 +121,7 @@ function ProductDetail() {
           <div className="detail-breadcrumb">
             <button onClick={() => navigate("/")}>Home</button>
             <span>/</span>
-            <button onClick={() => navigate("/services")}>Products</button>
+            <button onClick={() => navigate("/products")}>Products</button>
             <span>/</span>
             <strong>{product.name}</strong>
           </div>

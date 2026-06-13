@@ -62,7 +62,7 @@ test("mobile navigation opens, navigates, and removes the overlay after closing"
 
   fireEvent.click(within(mobileMenu).getByRole("button", { name: /products/i }));
 
-  expect(mockNavigate).toHaveBeenCalledWith("/services");
+  expect(mockNavigate).toHaveBeenCalledWith("/products");
   expect(document.body).not.toHaveClass("nav-open");
 
   act(() => {
@@ -97,6 +97,28 @@ test("mobile section links close the menu before scrolling", () => {
   });
 
   expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth" });
+});
+
+test("navbar active state follows the current route", () => {
+  const { rerender } = render(<Navbar />);
+
+  expect(screen.getByRole("button", { name: "Home" })).toHaveClass("active");
+
+  [
+    ["/about", "About Us"],
+    ["/products", "Products"],
+    ["/products/uv-printer", "Products"],
+    ["/services", "Services"],
+    ["/gallery", "Gallery"],
+    ["/contact", "Contact Us"],
+    ["/reviews", "Reviews"],
+  ].forEach(([path, label]) => {
+    mockPathname = path;
+    rerender(<Navbar />);
+
+    expect(screen.getByRole("button", { name: "Home" })).not.toHaveClass("active");
+    expect(screen.getByRole("button", { name: label })).toHaveClass("active");
+  });
 });
 
 test("product detail mobile controls update thumbnails and accordion state", () => {
