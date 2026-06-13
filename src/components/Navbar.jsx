@@ -10,6 +10,7 @@ import {
   FiMail,
   FiPhone,
   FiSettings,
+  FiStar,
   FiUser,
 } from "react-icons/fi";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
@@ -25,6 +26,7 @@ const NAV_LINKS = [
   { name: "Services", id: "services", icon: FiSettings },
   { name: "Products", id: "Products", icon: FiBox },
   { name: "Gallery", id: "gallery", icon: FiImage },
+  { name: "Reviews ⭐", id: "reviews", icon: FiStar },
   { name: "Contact", id: "contact", icon: FiPhone },
 ];
 
@@ -90,6 +92,11 @@ function Navbar() {
       return;
     }
 
+    if (sectionId === "reviews") {
+      navigate("/reviews");
+      return;
+    }
+
     if (location.pathname !== "/") {
       navigate("/");
       window.setTimeout(() => scrollToSection(sectionId), Math.max(scrollDelay, 260));
@@ -130,6 +137,9 @@ function Navbar() {
   const isActive = (item) => {
     if (item.id === "Products") {
       return location.pathname.startsWith("/services") || location.pathname.startsWith("/products");
+    }
+    if (item.id === "reviews") {
+      return location.pathname === "/reviews";
     }
     if (item.id === "home") {
       return location.pathname === "/";
