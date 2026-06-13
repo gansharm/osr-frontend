@@ -15,6 +15,11 @@ function Footer() {
       return;
     }
 
+    if (sectionId === "reviews") {
+      navigate("/reviews");
+      return;
+    }
+
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {
@@ -63,6 +68,7 @@ function Footer() {
             <li onClick={() => handleNavigation("services")}>Services</li>
             <li onClick={() => handleNavigation("products")}>Products</li>
             <li onClick={() => handleNavigation("gallery")}>Gallery</li>
+            <li onClick={() => handleNavigation("reviews")}>Customer Reviews ⭐</li>
             <li onClick={() => handleNavigation("contact")}>Contact Us</li>
           </ul>
         </div>
