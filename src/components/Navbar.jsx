@@ -22,12 +22,12 @@ import logo from "../images/OSR.png";
 
 const NAV_LINKS = [
   { name: "Home", id: "home", icon: FiHome },
-  { name: "About", id: "about", icon: FiUser },
-  { name: "Services", id: "services", icon: FiSettings },
+  { name: "About Us", id: "about", icon: FiUser },
   { name: "Products", id: "Products", icon: FiBox },
+  { name: "Services", id: "services", icon: FiSettings },
   { name: "Gallery", id: "gallery", icon: FiImage },
-  { name: "Reviews ⭐", id: "reviews", icon: FiStar },
-  { name: "Contact", id: "contact", icon: FiPhone },
+  { name: "Contact Us", id: "contact", icon: FiPhone },
+  { name: "Reviews", id: "reviews", icon: FiStar },
 ];
 
 function Navbar() {
@@ -167,7 +167,9 @@ function Navbar() {
             <button
               type="button"
               key={item.id}
-              className={isActive(item) ? "active" : ""}
+              className={`${isActive(item) ? "active" : ""} ${
+                item.id === "reviews" ? "reviews-mobile-btn" : ""
+              }`}
               onPointerUp={(event) => handleTouchNavigation(item.id, event)}
               onClick={() => handleClickNavigation(item.id)}
             >
@@ -233,10 +235,19 @@ function Navbar() {
             <li key={item.id}>
               <button
                 type="button"
-                className={isActive(item) ? "active" : ""}
+                className={`${isActive(item) ? "active" : ""} ${
+                  item.id === "reviews" ? "reviews-nav-btn" : ""
+                }`}
                 onClick={() => handleNavigation(item.id)}
               >
-                {item.name}
+                {item.id === "reviews" ? (
+                  <>
+                    <FiStar />
+                    <span>{item.name}</span>
+                  </>
+                ) : (
+                  item.name
+                )}
               </button>
             </li>
           ))}

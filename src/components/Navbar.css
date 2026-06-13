@@ -39,7 +39,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 2vw, 32px);
+  gap: clamp(10px, 1.55vw, 26px);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -55,6 +55,7 @@
   letter-spacing: 0;
   padding: 12px 0;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav-links button::after {
@@ -79,6 +80,39 @@
 .nav-links button:hover::after,
 .nav-links button.active::after {
   transform: scaleX(1);
+}
+
+.nav-links button.reviews-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  border: 1px solid rgba(11, 124, 255, .42);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, .88);
+  color: #0b5fc7;
+  font-weight: 700;
+  padding: 8px 13px;
+  box-shadow: 0 8px 18px rgba(11, 124, 255, .08);
+}
+
+.nav-links button.reviews-nav-btn svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+}
+
+.nav-links button.reviews-nav-btn::after {
+  display: none;
+}
+
+.nav-links button.reviews-nav-btn:hover,
+.nav-links button.reviews-nav-btn.active {
+  border-color: #0b7cff;
+  background: #f7fbff;
+  color: #0b7cff;
+  box-shadow: 0 10px 22px rgba(11, 124, 255, .12);
 }
 
 .nav-actions {
@@ -236,6 +270,24 @@
   transform: translateX(2px);
 }
 
+.mobile-menu-links button.reviews-mobile-btn {
+  border: 1px solid rgba(85, 168, 255, .48);
+  background: rgba(255, 255, 255, .045);
+  color: #d9ecff;
+  font-weight: 700;
+}
+
+.mobile-menu-links button.reviews-mobile-btn svg {
+  color: #55a8ff;
+}
+
+.mobile-menu-links button.reviews-mobile-btn:hover,
+.mobile-menu-links button.reviews-mobile-btn.active {
+  border-color: rgba(85, 168, 255, .76);
+  background: rgba(11, 124, 255, .18);
+  color: #fff;
+}
+
 .menu-quote,
 .menu-contact,
 .mobile-menu-product {
@@ -322,17 +374,41 @@ body.nav-open {
   touch-action: manipulation;
 }
 
+@media (max-width: 1240px) {
+  .nav {
+    padding-inline: clamp(16px, 3vw, 44px);
+  }
+
+  .nav-logo {
+    width: 100px;
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links button {
+    font-size: 13px;
+  }
+
+  .quote-btn {
+    min-height: 42px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 1120px) {
   .nav {
     gap: 14px;
   }
 
   .nav-links {
-    gap: 18px;
+    gap: 10px;
   }
 
   .nav-links button {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .quote-btn {
