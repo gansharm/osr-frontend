@@ -2,13 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import {
   FiAward,
-  FiCamera,
   FiCheckCircle,
   FiChevronLeft,
   FiChevronRight,
   FiEdit3,
   FiHeadphones,
-  FiImage,
   FiPlus,
   FiSend,
   FiShield,
@@ -441,10 +439,13 @@ function ReviewsPage() {
                 <div className="featured-review-card loading-card">Loading customer reviews...</div>
               ) : (
                 <article className="featured-review-card reveal">
-                  <span className="quote-mark quote-left">"</span>
                   <div className="featured-review-content">
                     <RatingStars rating={featuredReview.rating} />
-                    <p>{featuredReview.review}</p>
+                    <p className="featured-review-text">
+                      <span className="review-inline-quote opening">&ldquo;</span>
+                      {featuredReview.review}
+                      <span className="review-inline-quote closing">&rdquo;</span>
+                    </p>
                     <div className="review-person">
                       <div className="review-avatar">
                         <ReviewAvatar review={featuredReview} />
@@ -455,7 +456,6 @@ function ReviewsPage() {
                       </div>
                     </div>
                   </div>
-                  <span className="quote-mark quote-right">"</span>
                 </article>
               )}
 
@@ -667,24 +667,6 @@ function ReviewsPage() {
               </div>
             </form>
 
-            <aside className="form-notes" aria-label="Review form fields">
-              <div>
-                <FiUsers />
-                <span>Name is required</span>
-              </div>
-              <div>
-                <FaStar />
-                <span>Rating is required</span>
-              </div>
-              <div>
-                <FiImage />
-                <span>Photo is optional</span>
-              </div>
-              <div>
-                <FiCamera />
-                <span>Reviews appear after approval</span>
-              </div>
-            </aside>
           </div>
         </div>
       )}

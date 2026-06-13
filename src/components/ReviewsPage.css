@@ -258,41 +258,7 @@
   min-height: 286px;
   width: 100%;
   box-sizing: border-box;
-  padding: 42px clamp(150px, 17vw, 220px) 42px clamp(118px, 10vw, 150px);
-}
-
-.quote-mark {
-  position: absolute;
-  z-index: 1;
-  pointer-events: none;
-  user-select: none;
-  color: rgba(11, 124, 255, .48);
-  font-size: clamp(78px, 8vw, 112px);
-  font-weight: 950;
-  line-height: .65;
-  text-shadow: 0 12px 24px rgba(11, 124, 255, .12);
-}
-
-.quote-left {
-  top: 58px;
-  left: 42px;
-}
-
-.quote-right {
-  right: clamp(34px, 6vw, 78px);
-  top: 50%;
-  display: grid;
-  place-items: center;
-  width: 118px;
-  height: 118px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, .92), rgba(229, 245, 255, .86) 55%, rgba(11, 124, 255, .18));
-  color: rgba(11, 124, 255, .55);
-  box-shadow:
-    inset 0 1px 18px rgba(255, 255, 255, .96),
-    0 18px 46px rgba(11, 124, 255, .14);
-  transform: translateY(-50%);
+  padding: 42px clamp(34px, 5vw, 74px);
 }
 
 .review-stars {
@@ -339,15 +305,45 @@
   transform: translateY(-2px);
 }
 
-.featured-review-card p {
+.featured-review-card p,
+.featured-review-text {
   max-width: 100%;
-  margin: 18px 0 24px;
+  margin: 16px 0 26px;
   color: #112033;
-  font-size: clamp(20px, 2.15vw, 27px);
-  line-height: 1.5;
-  font-weight: 900;
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.58;
+  font-weight: 700;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
+
+.featured-review-text {
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(11, 124, 255, .032), rgba(255, 255, 255, 0) 82%);
+  padding: 12px 16px;
+}
+
+.review-inline-quote {
+  display: inline-block;
+  color: #57aaff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.65em;
+  font-weight: 950;
+  line-height: 0;
+  text-shadow: 0 8px 18px rgba(11, 124, 255, .16);
+}
+
+.review-inline-quote.opening {
+  margin-right: 7px;
+  transform: translateY(.12em);
+}
+
+.review-inline-quote.closing {
+  margin-left: 7px;
+  transform: translateY(.18em);
 }
 
 .review-person,
@@ -649,9 +645,9 @@ body.review-modal-open {
 .review-modal {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-columns: minmax(0, 1fr);
   gap: 22px;
-  width: min(980px, 100%);
+  width: min(720px, 100%);
   max-height: min(92vh, 860px);
   overflow-y: auto;
   border: 1px solid rgba(11, 124, 255, .16);
@@ -831,33 +827,6 @@ body.review-modal-open {
   transform: none;
 }
 
-.form-notes {
-  display: grid;
-  align-content: start;
-  gap: 12px;
-  border-left: 1px solid rgba(11, 124, 255, .10);
-  padding-left: 22px;
-}
-
-.form-notes div {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 11px;
-  align-items: center;
-  color: #26384f;
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.form-notes svg {
-  width: 20px;
-  height: 20px;
-  padding: 10px;
-  border-radius: 8px;
-  background: #e8f4ff;
-  color: #0b7cff;
-}
-
 @media (max-width: 1120px) {
   .mini-review-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -905,14 +874,7 @@ body.review-modal-open {
   }
 
   .featured-review-content {
-    padding: 38px 118px 38px 96px;
-  }
-
-  .quote-right {
-    right: 24px;
-    top: 50%;
-    width: 92px;
-    height: 92px;
+    padding: 38px 36px;
   }
 
   .review-cta {
@@ -920,16 +882,6 @@ body.review-modal-open {
     flex-direction: column;
   }
 
-  .review-modal {
-    grid-template-columns: 1fr;
-  }
-
-  .form-notes {
-    grid-template-columns: repeat(2, 1fr);
-    border-left: 0;
-    border-top: 1px solid rgba(11, 124, 255, .10);
-    padding: 18px 0 0;
-  }
 }
 
 @media (max-width: 640px) {
@@ -965,25 +917,19 @@ body.review-modal-open {
     padding: 54px 24px 34px;
   }
 
-  .featured-review-card p {
-    font-size: 19px;
+  .featured-review-card p,
+  .featured-review-text {
+    font-size: 17px;
+    line-height: 1.58;
   }
 
-  .quote-left {
-    top: 20px;
-    left: 22px;
-    opacity: .16;
-    font-size: 62px;
+  .featured-review-text {
+    padding: 11px 12px;
+    background: linear-gradient(90deg, rgba(11, 124, 255, .036), rgba(255, 255, 255, 0) 92%);
   }
 
-  .quote-right {
-    right: 16px;
-    top: auto;
-    bottom: 16px;
-    width: 70px;
-    height: 70px;
-    opacity: .22;
-    transform: none;
+  .review-inline-quote {
+    font-size: 1.5em;
   }
 
   .slider-arrow {
@@ -1047,8 +993,7 @@ body.review-modal-open {
     padding: 20px 16px;
   }
 
-  .review-form-grid,
-  .form-notes {
+  .review-form-grid {
     grid-template-columns: 1fr;
   }
 
