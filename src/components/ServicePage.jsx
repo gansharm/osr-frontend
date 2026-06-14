@@ -12,6 +12,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SampleGallery from "../components/SampleGallery";
 import { company, productCategories, products, samples } from "../data/siteData";
 import featuredMachine from "../images/A3F-4050DX.png";
 import heroMachine from "../images/D602-2H.png";
@@ -206,16 +207,7 @@ function ServicePage() {
               <span>Quality</span>
             </h2>
           </div>
-          <div className="quality-grid">
-            {samples.map((sample) => (
-              <figure key={sample.title}>
-                <div className="sample-media">
-                  <img src={sample.image} alt={sample.title} />
-                </div>
-                <figcaption>{sample.title}</figcaption>
-              </figure>
-            ))}
-          </div>
+          <SampleGallery samples={samples} gridClassName="quality-grid" />
         </section>
  
         <section className="products-help">

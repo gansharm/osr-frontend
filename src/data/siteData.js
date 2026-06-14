@@ -12,8 +12,8 @@ import ecoSolvent2 from "../images/ECO-SOLVENT2.png";
 import catSample from "../images/catSample.jpeg";
 import girlSample from "../images/girlSample.jpeg";
 import head from "../images/head.jpeg";
-import iphoneSample from "../images/iphoneSample.jpeg";
-import iphone2Sample from "../images/iphone2Sample.jpeg";
+ import iphone2Sample from "../images/iphone2Sample.jpeg";
+import rajuSample from "../images/rajuSample.png";
 import ink from "../images/ink3.jpeg";
 import KJ1060 from "../images/KJ-1060.png";
 import KJ1060UCBrochure from "../images/KJ-1060UC-specifications.svg";
@@ -41,9 +41,9 @@ export const company = {
   branchPhone: "+91 9085184086",
   hours: "Mon - Sat : 10 AM - 6 PM",
   headOffice:
-    "Room no - US14, US COMPLEX , 120 Mathura road , Opp Apollo Hospital , Jasola Vihar , New Delhi - 110076",
+    "Room no - US14, Second floor , US COMPLEX , 120 Mathura road , Opp Apollo Hospital , Jasola Vihar , New Delhi - 110076",
   footerOffice:
-    "Head Office - First Floor, Room no US - 14, US COMPLEX, 120 Mathura Road, Opp Apollo Hospital, Jasola Vihar, New Delhi",
+    "Head Office - Room no US - 14, Second floor , US COMPLEX, 120 Mathura Road, Opp Apollo Hospital, Jasola Vihar, New Delhi",
   branch:
     "Santi Basti, Amsing Jorabat, (Narangi Army Cantt), Guwahati - 781027, ASSAM",
 };
@@ -336,8 +336,8 @@ export const samples = [
     image: uvBottleSample,
   },
   {
-    title: "Peacock Mobile Case Print",
-    image: iphoneSample,
+    title: "Premium UV Art Print",
+    image: rajuSample,
   },
   {
     title: "Devotional Mobile Cover Print",
