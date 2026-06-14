@@ -10,6 +10,7 @@ import {
   FiTool,
 } from "react-icons/fi";
 import { products, samples, services } from "../data/siteData";
+import SampleGallery from "./SampleGallery";
 import "./Services.css";
 
 const serviceIcons = [FiPrinter, FiTool, FiGrid, FiSettings, FiHeadphones, FiCpu];
@@ -97,16 +98,11 @@ function Services() {
             </h2>
           </div>
 
-          <div className="sample-grid">
-            {samples.map((sample) => (
-              <figure className="sample-card" key={sample.title}>
-                <div className="sample-media">
-                  <img src={sample.image} alt={sample.title} />
-                </div>
-                <figcaption>{sample.title}</figcaption>
-              </figure>
-            ))}
-          </div>
+          <SampleGallery
+            samples={samples}
+            gridClassName="sample-grid"
+            cardClassName="sample-card"
+          />
         </div>
       </div>
     </section>

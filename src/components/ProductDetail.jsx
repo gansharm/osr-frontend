@@ -14,6 +14,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import SampleGallery from "./SampleGallery";
 import { company, products, samples } from "../data/siteData";
 import "./ProductDetail.css";
 
@@ -382,16 +383,7 @@ function ProductDetail() {
             <span className="eyebrow">Printing Samples</span>
             <h2>See Our Printing Quality</h2>
           </div>
-          <div className="sample-row">
-            {samples.map((sample) => (
-              <figure key={sample.title}>
-                <div className="sample-media">
-                  <img src={sample.image} alt={sample.title} />
-                </div>
-                <figcaption>{sample.title}</figcaption>
-              </figure>
-            ))}
-          </div>
+          <SampleGallery samples={samples} gridClassName="sample-row" />
         </section>
 
         <div className="mobile-action-bar">
