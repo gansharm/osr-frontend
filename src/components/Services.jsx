@@ -9,15 +9,18 @@ import {
   FiShield,
   FiTool,
 } from "react-icons/fi";
-import { products, samples, services } from "../data/siteData";
+import { products, samples, services, spareParts } from "../data/siteData";
 import SampleGallery from "./SampleGallery";
+import SparePartsAccordion from "./SparePartsAccordion";
 import "./Services.css";
 
 const serviceIcons = [FiPrinter, FiTool, FiGrid, FiSettings, FiHeadphones, FiCpu];
 
 function Services() {
   const navigate = useNavigate();
-  const featuredProducts = products.slice(0, 4);
+  const featuredProducts = products
+    .filter((product) => product.category !== "Spare Parts")
+    .slice(0, 6);
 
   return (
     <section id="services" className="svc-bg">
@@ -82,6 +85,8 @@ function Services() {
               </article>
             ))}
           </div>
+
+          <SparePartsAccordion parts={spareParts} />
 
           <button className="view-all" onClick={() => navigate("/products")}>
             View All Products

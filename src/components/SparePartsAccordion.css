@@ -1,0 +1,199 @@
+.spare-parts-accordion {
+  margin: 24px 0 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(11, 124, 255, .16);
+  background: rgba(255, 255, 255, .86);
+  box-shadow: 0 18px 48px rgba(15, 57, 113, .09);
+}
+
+.spare-parts-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 62px;
+  border: 0;
+  padding: 18px 22px;
+  background:
+    linear-gradient(135deg, #0b7cff 0%, #005fe8 54%, #18ccd5 100%);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.spare-parts-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22);
+  transition: transform .28s ease, background .28s ease;
+}
+
+.spare-parts-trigger:hover .spare-parts-icon,
+.spare-parts-trigger:focus-visible .spare-parts-icon {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, .24);
+}
+
+.spare-parts-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.spare-parts-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .42s cubic-bezier(.2, .8, .2, 1);
+}
+
+.spare-parts-accordion.open .spare-parts-panel {
+  grid-template-rows: 1fr;
+}
+
+.spare-parts-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.spare-parts-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.spare-part-card {
+  display: grid;
+  grid-template-rows: 150px auto;
+  gap: 12px;
+  margin: 0;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(11, 124, 255, .10);
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(15, 57, 113, .08);
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+.spare-parts-accordion.open .spare-part-card {
+  animation: sparePartFadeUp .44s cubic-bezier(.2, .8, .2, 1) forwards;
+  animation-delay: calc(var(--item-index) * 70ms);
+}
+
+.spare-part-card:hover {
+  transform: scale(1.05);
+  border-color: rgba(11, 124, 255, .32);
+  box-shadow:
+    0 20px 46px rgba(15, 57, 113, .14),
+    0 0 0 4px rgba(11, 124, 255, .08);
+}
+
+.spare-part-image {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at center, rgba(11, 124, 255, .10), transparent 64%),
+    #f7fbff;
+  overflow: hidden;
+}
+
+.spare-part-image img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: calc(100% - 18px);
+  max-height: 126px;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 12px 14px rgba(15, 23, 42, .12));
+}
+
+.spare-part-card figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  color: #102033;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.25;
+  text-align: center;
+}
+
+@keyframes sparePartFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1120px) {
+  .spare-parts-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .spare-parts-trigger {
+    min-height: 58px;
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .spare-parts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .spare-part-card {
+    grid-template-rows: 124px auto;
+    padding: 12px;
+  }
+
+  .spare-part-image img {
+    max-height: 104px;
+  }
+}
+
+@media (max-width: 420px) {
+  .spare-parts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spare-parts-panel,
+  .spare-parts-icon,
+  .spare-part-card {
+    animation: none;
+    transition: none;
+  }
+
+  .spare-part-card {
+    opacity: 1;
+    transform: none;
+  }
+}

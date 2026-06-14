@@ -13,10 +13,13 @@ import { FaWhatsapp } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SampleGallery from "../components/SampleGallery";
-import { company, productCategories, products, samples } from "../data/siteData";
+import SparePartsAccordion from "../components/SparePartsAccordion";
+import { company, productCategories, products, samples, spareParts } from "../data/siteData";
 import featuredMachine from "../images/A3F-4050DX.png";
 import heroMachine from "../images/D602-2H.png";
 import "./ServicePage.css";
+
+const sparePartProductCategories = ["Spare Parts", "Spare Parts & Accessories"];
 
 function ServicePage() {
   const navigate = useNavigate();
@@ -27,12 +30,23 @@ function ServicePage() {
     (product) => product.slug === "a3f-4050dx-uv-flatbed-printer"
   );
 
+  const machineProducts = useMemo(
+    () => products.filter((product) => !sparePartProductCategories.includes(product.category)),
+    []
+  );
+
   const visibleProducts = useMemo(() => {
     if (activeCategory === "All Products") {
-      return products;
+      return machineProducts;
     }
-    return products.filter((product) => product.category === activeCategory);
-  }, [activeCategory]);
+    if (activeCategory === "Spare Parts") {
+      return [];
+    }
+    return machineProducts.filter((product) => product.category === activeCategory);
+  }, [activeCategory, machineProducts]);
+
+  const showSparePartsAccordion =
+    activeCategory === "All Products" || activeCategory === "Spare Parts";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -170,28 +184,32 @@ function ServicePage() {
             </h2>
           </div>
 
-          <div className="browse-grid">
-            {visibleProducts.map((product) => (
-              <article className="browse-card reveal" key={product.slug}>
-                <div className="browse-img">
-                  <img src={getImage(product)} alt={product.title} />
-                </div>
-                <div className="browse-copy">
-                  <h3>{product.name}</h3>
-                  <strong>{product.shortTitle}</strong>
-                  <ul>
-                    {product.specs.slice(0, 3).map((spec) => (
-                      <li key={spec}>{spec}</li>
-                    ))}
-                  </ul>
-                  <button onClick={() => navigate(`/products/${product.slug}`)}>
-                    View Details
-                    <FiArrowRight />
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
+          {visibleProducts.length > 0 && (
+            <div className="browse-grid">
+              {visibleProducts.map((product) => (
+                <article className="browse-card reveal" key={product.slug}>
+                  <div className="browse-img">
+                    <img src={getImage(product)} alt={product.title} />
+                  </div>
+                  <div className="browse-copy">
+                    <h3>{product.name}</h3>
+                    <strong>{product.shortTitle}</strong>
+                    <ul>
+                      {product.specs.slice(0, 3).map((spec) => (
+                        <li key={spec}>{spec}</li>
+                      ))}
+                    </ul>
+                    <button onClick={() => navigate(`/products/${product.slug}`)}>
+                      View Details
+                      <FiArrowRight />
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+
+          {showSparePartsAccordion && <SparePartsAccordion parts={spareParts} />}
 
           <button className="view-all bottom" onClick={() => setActiveCategory("All Products")}>
             View All Products

@@ -228,30 +228,7 @@ export const products = [
     ],
     applications: ["Signage", "Backlit Work", "Display Prints", "Commercial Media"],
   },
-  {
-    slug: "flatbed-uv-printer",
-    name: "KJ-1060",
-    category: "UV Flatbed Printers",
-    title: "KJ-1060",
-    shortTitle: "UV Flatbed Printer",
-    desc: "Industrial UV flatbed machine for quality printing on multiple surfaces.",
-    image: KJ1060,
-    heroImage: KJ1060,
-    gallery: [KJ1060, KJ1060UC, KJ1060UC1],
-    specs: [
-      "Multi Material Printing",
-      "Reliable Performance",
-      "UV Curing Output",
-      "Industrial Support",
-    ],
-    details: [
-      "Prints on rigid materials",
-      "Strong and durable structure",
-      "Operator training available",
-      "Technical support included",
-    ],
-    applications: ["Wood", "Acrylic", "Glass", "Metal", "Board"],
-  },
+   
   {
     slug: "ploter",
     name: "Plotter",
@@ -279,7 +256,7 @@ export const products = [
   {
     slug: "head-boards",
     name: "Head Boards",
-    category: "Spare Parts & Accessories",
+    category: "Spare Parts",
     title: "Head Boards",
     shortTitle: "Spare Parts",
     desc: "Genuine head board supply and support for industrial printer reliability.",
@@ -300,29 +277,28 @@ export const products = [
     ],
     applications: ["Printers", "Boards", "Repair", "Maintenance"],
   },
+];
+
+export const spareParts = [
   {
-    slug: "technical-support",
-    name: "Technical Support",
-    category: "Spare Parts & Accessories",
-    title: "Technical Support",
-    shortTitle: "Support",
-    desc: "Complete troubleshooting and maintenance support for machine operations.",
+    name: "Head",
+    image: head,
+  },
+  {
+    name: "Main Board",
     image: mainBoard,
-    heroImage: mainBoard,
-    gallery: [mainBoard, head, ink],
-    specs: [
-      "Expert Technicians",
-      "Remote Guidance",
-      "On-site Support",
-      "Maintenance Help",
-    ],
-    details: [
-      "Machine repair and maintenance",
-      "Installation and operator training",
-      "Spare part diagnosis",
-      "Reliable ongoing support",
-    ],
-    applications: ["Service", "Repair", "Installation", "Training"],
+  },
+  {
+    name: "Main Board",
+    image: mainBoard,
+  },
+  {
+    name: "Ink",
+    image: ink,
+  },
+  {
+    name: "Head",
+    image: head,
   },
 ];
 
@@ -383,5 +359,5 @@ export const productCategories = [
   "Eco Solvent Printers",
   "DTF Printers",
   "Plotters",
-  "Spare Parts & Accessories",
+  "Spare Parts",
 ];
