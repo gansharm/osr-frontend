@@ -37,6 +37,7 @@
   mix-blend-mode: normal;
   transform-origin: center;
   filter: drop-shadow(0 8px 16px rgba(15, 57, 113, .10));
+  animation: logoThemeFade .24s ease both;
   transition: transform .25s ease, filter .25s ease;
 }
 
@@ -240,6 +241,7 @@
   height: 60px;
   object-fit: contain;
   filter: drop-shadow(0 12px 22px rgba(11, 124, 255, .18));
+  animation: logoThemeFade .24s ease both;
 }
 
 .mobile-menu-head button {
@@ -390,6 +392,16 @@
 
 body.nav-open {
   overflow: hidden;
+}
+
+@keyframes logoThemeFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .nav button,
