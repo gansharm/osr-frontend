@@ -20,7 +20,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { company } from "../data/siteData";
 import "./Navbar.css";
-import logo from "../images/OSR.png";
+import logo from "../images/OSR-logo-transparent.png";
 
 const NAV_LINKS = [
   { name: "Home", id: "home", path: "/", sectionId: "home", icon: FiHome },

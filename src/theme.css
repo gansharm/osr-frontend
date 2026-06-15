@@ -27,9 +27,9 @@ html.dark {
   --theme-bg-secondary: #0b1120;
   --theme-card-bg: rgba(17, 24, 39, .85);
   --theme-glass-bg: rgba(255, 255, 255, .04);
-  --theme-text-primary: #f8fafc;
-  --theme-text-secondary: #cbd5e1;
-  --theme-text-muted: #94a3b8;
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #e2e8f0;
+  --theme-text-muted: #cbd5e1;
   --theme-accent: #2563eb;
   --theme-accent-hover: #3b82f6;
   --theme-glow: rgba(37, 99, 235, .35);
@@ -58,6 +58,7 @@ html.dark .nav {
 
 html.dark .nav-logo {
   mix-blend-mode: normal;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .28)) drop-shadow(0 0 12px rgba(59, 130, 246, .14));
 }
 
 html.dark .nav-links button {
@@ -170,8 +171,11 @@ html.dark .reviews-showcase::after {
 html.dark :is(
   .hero-h1,
   .hero-kicker,
+  .showcase-feature strong,
+  .rail-item strong,
   .customer-proof strong,
   .about-content h2,
+  .about-checks span,
   .work-process-head h2,
   .process-card h3,
   .feat-title,
@@ -179,18 +183,24 @@ html.dark :is(
   .section-heading h2,
   .svc-card h3,
   .product-card h3,
+  .product-card strong,
   .contact-head h2,
   .ci-label,
   .form-h3,
   .products-hero-copy h1,
+  .products-hero-badges span,
   .featured-copy h2,
+  .featured-specs span,
   .browse-copy h3,
+  .browse-copy strong,
   .products-help h2,
   .detail-copy h1,
   .detail-breadcrumb strong,
+  .detail-spec-list span,
   .strip-item,
   .tab-panel h2,
   .tab-panel h3,
+  .tab-panel li,
   .accordion-panel,
   .application-grid span,
   .sample-row figcaption,
@@ -217,7 +227,11 @@ html.dark :is(
 
 html.dark :is(
   .hero-desc,
+  .showcase-feature span,
+  .rail-item span,
+  .stat-card span,
   .about-text,
+  .about-card span,
   .feat-desc,
   .sec-sub,
   .svc-card p,
@@ -227,9 +241,11 @@ html.dark :is(
   .ci-val,
   .products-hero-copy p,
   .featured-copy p,
+  .featured-metrics span,
   .browse-copy ul,
   .products-help p,
   .detail-copy p,
+  .spec-table span,
   .tab-panel p,
   .reviews-heading p,
   .mini-review p,
@@ -496,6 +512,17 @@ html.dark .category-tabs button.active {
   background: var(--theme-accent);
   color: #fff;
   box-shadow: 0 16px 34px var(--theme-glow);
+}
+
+html.dark .products-hero-badges span {
+  background: rgba(37, 99, 235, .12);
+  border-color: rgba(59, 130, 246, .30);
+  color: #e2e8f0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 12px 30px rgba(0, 0, 0, .22);
+}
+
+html.dark .products-hero-badges svg {
+  color: #3b82f6;
 }
 
 html.dark :is(
