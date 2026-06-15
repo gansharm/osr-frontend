@@ -149,6 +149,7 @@
   background: linear-gradient(135deg, #0b7cff, #005fe8);
   color: #fff;
   font-weight: 900;
+  white-space: nowrap;
   box-shadow: 0 14px 30px rgba(11, 124, 255, .24);
 }
 
@@ -443,7 +444,8 @@ body.nav-open {
 @media (max-width: 960px) {
   .nav {
     height: 76px;
-    padding: 9px 18px;
+    gap: 10px;
+    padding: 9px 16px;
   }
 
   .nav-links,
@@ -459,6 +461,18 @@ body.nav-open {
     width: 100px;
     height: 58px;
   }
+
+  .nav-actions {
+    gap: 9px;
+  }
+
+  .quote-btn {
+    min-width: 126px;
+    min-height: 42px;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1;
+  }
 }
 
 @media (min-width: 961px) {
@@ -470,8 +484,9 @@ body.nav-open {
 @media (max-width: 480px) {
   .quote-btn {
     min-height: 42px;
-    padding: 10px 13px;
-    font-size: 13px;
+    min-width: 118px;
+    padding: 10px 12px;
+    font-size: 12px;
   }
 
   .hamburger {
@@ -486,5 +501,37 @@ body.nav-open {
 
   .mobile-menu {
     padding: 20px 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    padding-inline: 12px;
+  }
+
+  .nav-brand {
+    transform: translateX(-8px);
+  }
+
+  .nav-logo {
+    width: 92px;
+    height: 54px;
+  }
+
+  .nav-actions {
+    gap: 7px;
+  }
+
+  .quote-btn {
+    min-width: 112px;
+    padding-inline: 10px;
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .theme-toggle,
+  .hamburger {
+    width: 40px;
+    height: 40px;
   }
 }
