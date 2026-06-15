@@ -1,0 +1,635 @@
+:root {
+  --theme-bg-primary: #ffffff;
+  --theme-bg-secondary: #f3f9ff;
+  --theme-card-bg: rgba(255, 255, 255, .88);
+  --theme-glass-bg: rgba(255, 255, 255, .72);
+  --theme-text-primary: #071426;
+  --theme-text-secondary: #40546d;
+  --theme-text-muted: #64748b;
+  --theme-accent: #0b7cff;
+  --theme-accent-hover: #005fe8;
+  --theme-glow: rgba(11, 124, 255, .24);
+  --theme-border: rgba(11, 124, 255, .12);
+  --theme-shadow: 0 18px 46px rgba(15, 57, 113, .09);
+  --theme-input-bg: #f7fbff;
+}
+
+html.dark {
+  --osr-blue: #2563eb;
+  --osr-blue-dark: #1d4ed8;
+  --osr-cyan: #3b82f6;
+  --osr-ink: #f8fafc;
+  --osr-muted: #cbd5e1;
+  --osr-line: rgba(255, 255, 255, .08);
+  --osr-soft: rgba(37, 99, 235, .16);
+  --osr-shadow: 0 24px 70px rgba(0, 0, 0, .36);
+  --theme-bg-primary: #050816;
+  --theme-bg-secondary: #0b1120;
+  --theme-card-bg: rgba(17, 24, 39, .85);
+  --theme-glass-bg: rgba(255, 255, 255, .04);
+  --theme-text-primary: #f8fafc;
+  --theme-text-secondary: #cbd5e1;
+  --theme-text-muted: #94a3b8;
+  --theme-accent: #2563eb;
+  --theme-accent-hover: #3b82f6;
+  --theme-glow: rgba(37, 99, 235, .35);
+  --theme-border: rgba(255, 255, 255, .08);
+  --theme-shadow: 0 26px 78px rgba(0, 0, 0, .42), 0 0 34px rgba(37, 99, 235, .08);
+  --theme-input-bg: rgba(15, 23, 42, .92);
+  color-scheme: dark;
+}
+
+html.dark,
+html.dark body {
+  background: var(--theme-bg-primary);
+  color: var(--theme-text-primary);
+}
+
+html.dark body {
+  transition: background .3s ease, color .3s ease;
+}
+
+html.dark .nav {
+  background: rgba(5, 8, 22, .78);
+  border-bottom-color: var(--theme-border);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, .34), 0 0 24px rgba(37, 99, 235, .08);
+  backdrop-filter: blur(24px) saturate(1.18);
+}
+
+html.dark .nav-logo {
+  mix-blend-mode: normal;
+}
+
+html.dark .nav-links button {
+  color: var(--theme-text-secondary);
+}
+
+html.dark .nav-links button::after {
+  background: var(--theme-accent-hover);
+}
+
+html.dark .nav-links button:hover,
+html.dark .nav-links button.active {
+  color: var(--theme-accent-hover);
+}
+
+html.dark .nav-links button.reviews-nav-btn,
+html.dark .nav-call,
+html.dark .theme-toggle,
+html.dark .hamburger {
+  background: var(--theme-glass-bg);
+  border-color: var(--theme-border);
+  color: #bfdbfe;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 12px 28px rgba(0, 0, 0, .24);
+}
+
+html.dark .nav-links button.reviews-nav-btn:hover,
+html.dark .nav-links button.reviews-nav-btn.active,
+html.dark .nav-call:hover,
+html.dark .theme-toggle:hover,
+html.dark .hamburger:hover {
+  background: rgba(37, 99, 235, .16);
+  border-color: rgba(59, 130, 246, .36);
+  color: #dbeafe;
+  box-shadow: 0 16px 34px var(--theme-glow);
+}
+
+html.dark .quote-btn,
+html.dark .btn-primary,
+html.dark .view-all,
+html.dark .btn-submit,
+html.dark .menu-quote button {
+  background: linear-gradient(135deg, var(--theme-accent), var(--theme-accent-hover));
+  box-shadow: 0 16px 36px var(--theme-glow);
+}
+
+html.dark .btn-soft,
+html.dark .btn-outline {
+  background: var(--theme-card-bg);
+  border-color: var(--theme-border);
+  color: #dbeafe;
+  box-shadow: var(--theme-shadow);
+}
+
+html.dark .eyebrow,
+html.dark .tab-buttons button.active,
+html.dark .review-stat-card > svg,
+html.dark .trust-rail svg,
+html.dark .review-modal-head > svg,
+html.dark .admin-login-icon,
+html.dark .admin-summary strong,
+html.dark .ci-icon,
+html.dark .feat-icon,
+html.dark .svc-icon,
+html.dark .stat-card > svg,
+html.dark .rail-item > svg:first-child {
+  background: rgba(37, 99, 235, .16);
+  color: #93c5fd;
+}
+
+html.dark .hero,
+html.dark .about-bg,
+html.dark .svc-bg,
+html.dark .contact-bg,
+html.dark .work-process,
+html.dark .service-page,
+html.dark .product-detail-page,
+html.dark .reviews-page,
+html.dark .reviews-showcase,
+html.dark .admin-reviews-page,
+html.dark .admin-login-page,
+html.dark .admin-auth-loading {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(37, 99, 235, .16), transparent 29%),
+    radial-gradient(circle at 84% 18%, rgba(59, 130, 246, .10), transparent 25%),
+    linear-gradient(180deg, var(--theme-bg-primary) 0%, var(--theme-bg-secondary) 54%, var(--theme-bg-primary) 100%);
+  color: var(--theme-text-primary);
+}
+
+html.dark .about-bg,
+html.dark .contact-bg,
+html.dark .admin-auth-loading {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(37, 99, 235, .13), transparent 27%),
+    linear-gradient(180deg, var(--theme-bg-primary) 0%, var(--theme-bg-secondary) 100%);
+}
+
+html.dark .hero::before,
+html.dark .work-process::before,
+html.dark .reviews-showcase::before {
+  background-image: radial-gradient(rgba(59, 130, 246, .18) 1px, transparent 1px);
+  opacity: .26;
+}
+
+html.dark .reviews-showcase::after {
+  background:
+    radial-gradient(ellipse at 0% 100%, rgba(37, 99, 235, .22), transparent 44%),
+    radial-gradient(ellipse at 100% 100%, rgba(59, 130, 246, .18), transparent 42%);
+}
+
+html.dark :is(
+  .hero-h1,
+  .hero-kicker,
+  .customer-proof strong,
+  .about-content h2,
+  .work-process-head h2,
+  .process-card h3,
+  .feat-title,
+  .svc-head h2,
+  .section-heading h2,
+  .svc-card h3,
+  .product-card h3,
+  .contact-head h2,
+  .ci-label,
+  .form-h3,
+  .products-hero-copy h1,
+  .featured-copy h2,
+  .browse-copy h3,
+  .products-help h2,
+  .detail-copy h1,
+  .detail-breadcrumb strong,
+  .strip-item,
+  .tab-panel h2,
+  .tab-panel h3,
+  .accordion-panel,
+  .application-grid span,
+  .sample-row figcaption,
+  .quality-grid figcaption,
+  .reviews-heading h1,
+  .featured-review-card p,
+  .featured-review-text,
+  .review-person strong,
+  .mini-review-person strong,
+  .review-stat-card span,
+  .review-cta h2,
+  .trust-rail strong,
+  .review-modal-head h2,
+  .review-field label,
+  .admin-hero h1,
+  .admin-summary button,
+  .admin-review-top h2,
+  .admin-login-card h1,
+  .admin-login-field label,
+  .spare-part-card figcaption
+) {
+  color: var(--theme-text-primary);
+}
+
+html.dark :is(
+  .hero-desc,
+  .about-text,
+  .feat-desc,
+  .sec-sub,
+  .svc-card p,
+  .product-card li,
+  .sample-card figcaption,
+  .contact-head p,
+  .ci-val,
+  .products-hero-copy p,
+  .featured-copy p,
+  .browse-copy ul,
+  .products-help p,
+  .detail-copy p,
+  .tab-panel p,
+  .reviews-heading p,
+  .mini-review p,
+  .review-cta p,
+  .trust-rail span,
+  .review-modal-head p,
+  .review-field small,
+  .admin-hero p,
+  .admin-empty,
+  .admin-review-meta,
+  .admin-review-card p,
+  .admin-login-card p,
+  .admin-auth-loading,
+  .process-card p
+) {
+  color: var(--theme-text-secondary);
+}
+
+html.dark :is(
+  .hero-h1 span,
+  .about-content h2 span,
+  .svc-head h2 span,
+  .section-heading h2 span,
+  .contact-head h2 span,
+  .products-hero-copy h1 span,
+  .featured-copy h2 span,
+  .browse-products .section-heading span:not(.eyebrow),
+  .quality-section .section-heading span:not(.eyebrow),
+  .about-card strong,
+  .stat-card strong,
+  .svc-card span,
+  .product-card button,
+  .browse-copy button,
+  .featured-metrics strong,
+  .review-stat-card strong,
+  .review-person span,
+  .mini-review-person span,
+  .trust-rail strong,
+  .admin-review-top span,
+  .admin-empty svg,
+  .mini-quote,
+  .review-inline-quote
+) {
+  color: var(--theme-accent-hover);
+}
+
+html.dark :is(
+  .showcase-feature,
+  .rail-item,
+  .stat-card,
+  .hero-feature-rail,
+  .about-machine,
+  .about-card,
+  .feat,
+  .process-card,
+  .svc-card,
+  .product-card,
+  .sample-card,
+  .product-section,
+  .contact-left,
+  .form-box,
+  .ci,
+  .products-hero-badges span,
+  .category-tabs button,
+  .featured-product,
+  .featured-metrics div,
+  .browse-card,
+  .quality-grid figure,
+  .products-help,
+  .detail-gallery,
+  .detail-copy,
+  .detail-feature-strip,
+  .detail-tabs,
+  .detail-samples,
+  .spare-parts-accordion,
+  .spare-part-card,
+  .reviews-badge,
+  .slider-arrow,
+  .featured-review-card,
+  .mini-review,
+  .reviews-stats,
+  .review-cta,
+  .trust-rail,
+  .review-modal,
+  .admin-login-card,
+  .admin-summary button,
+  .admin-empty,
+  .admin-review-card
+) {
+  background: var(--theme-card-bg);
+  border-color: var(--theme-border);
+  box-shadow: var(--theme-shadow);
+}
+
+html.dark :is(
+  .svc-card:hover,
+  .product-card:hover,
+  .sample-card:hover,
+  .about-card:hover,
+  .feat:hover,
+  .process-step:hover .process-card,
+  .browse-card:hover,
+  .mini-review.active,
+  .mini-review:hover,
+  .admin-summary button:hover,
+  .admin-summary button.active,
+  .admin-review-card:hover
+) {
+  border-color: rgba(59, 130, 246, .42);
+  box-shadow: 0 24px 66px rgba(0, 0, 0, .42), 0 0 32px var(--theme-glow);
+}
+
+html.dark .showcase-stage {
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, .88), rgba(11, 17, 32, .78)),
+    radial-gradient(circle at 50% 48%, rgba(37, 99, 235, .28), transparent 54%);
+  border-color: var(--theme-border);
+  box-shadow:
+    0 34px 96px rgba(0, 0, 0, .38),
+    0 0 70px rgba(37, 99, 235, .12),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+html.dark .showcase-stage:hover {
+  border-color: rgba(59, 130, 246, .38);
+  box-shadow:
+    0 38px 112px rgba(0, 0, 0, .44),
+    0 0 86px rgba(37, 99, 235, .20),
+    inset 0 1px 0 rgba(255, 255, 255, .10);
+}
+
+html.dark .showcase-stage::before {
+  background:
+    radial-gradient(circle at 50% 44%, rgba(59, 130, 246, .30) 0 30%, rgba(37, 99, 235, .22) 31% 52%, transparent 68%),
+    radial-gradient(ellipse at center, rgba(37, 99, 235, .22), transparent 50%);
+  box-shadow:
+    0 0 120px rgba(37, 99, 235, .36),
+    0 42px 96px rgba(37, 99, 235, .20),
+    inset 0 -28px 54px rgba(37, 99, 235, .20);
+}
+
+html.dark .showcase-stage::after {
+  background:
+    radial-gradient(ellipse at center, rgba(37, 99, 235, .58), rgba(37, 99, 235, .24) 54%, transparent 78%);
+  box-shadow: 0 30px 64px rgba(37, 99, 235, .24);
+}
+
+html.dark .showcase-stage img,
+html.dark .about-machine img,
+html.dark .products-hero-machine img,
+html.dark .featured-image img,
+html.dark .detail-image-stage img,
+html.dark .product-image img,
+html.dark .browse-img img,
+html.dark .spare-part-image img {
+  filter:
+    drop-shadow(0 32px 34px rgba(0, 0, 0, .34))
+    drop-shadow(0 0 24px rgba(37, 99, 235, .15));
+}
+
+html.dark .about-machine {
+  background:
+    linear-gradient(115deg, transparent 0 34%, rgba(255, 255, 255, .055) 45%, transparent 56%),
+    radial-gradient(circle at 50% 48%, rgba(37, 99, 235, .22), transparent 48%),
+    linear-gradient(180deg, rgba(17, 24, 39, .90), rgba(11, 17, 32, .86));
+}
+
+html.dark .about-machine .showcase-stage {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+html.dark .about-machine .showcase-stage::after {
+  background: radial-gradient(ellipse at center, rgba(37, 99, 235, .09), rgba(5, 8, 22, .02));
+}
+
+html.dark .products-hero-machine,
+html.dark .featured-image {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(37, 99, 235, .38), transparent 35%),
+    radial-gradient(circle at 50% 54%, rgba(15, 23, 42, .92), rgba(11, 17, 32, .74) 55%, rgba(37, 99, 235, .16) 100%);
+  border-color: var(--theme-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .08),
+    0 34px 98px rgba(0, 0, 0, .38),
+    0 0 74px rgba(37, 99, 235, .14);
+}
+
+html.dark .products-hero-machine::before,
+html.dark .featured-image::before {
+  background: linear-gradient(145deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .018));
+  border-color: var(--theme-border);
+  box-shadow:
+    inset 0 1px 30px rgba(255, 255, 255, .08),
+    0 0 88px rgba(37, 99, 235, .22);
+}
+
+html.dark .products-hero-machine::after,
+html.dark .featured-image::after {
+  background:
+    radial-gradient(ellipse at center, rgba(37, 99, 235, .44), rgba(37, 99, 235, .18) 44%, transparent 72%);
+}
+
+html.dark .showcase-platform,
+html.dark .featured-platform {
+  background:
+    radial-gradient(ellipse at center, rgba(37, 99, 235, .56), rgba(37, 99, 235, .22) 48%, transparent 73%);
+}
+
+html.dark .showcase-ring,
+html.dark .featured-ring {
+  border-color: rgba(59, 130, 246, .26);
+}
+
+html.dark :is(
+  .product-image,
+  .sample-card .sample-media,
+  .browse-img,
+  .quality-grid .sample-media,
+  .detail-image-stage,
+  .detail-thumbs button,
+  .sample-row .sample-media,
+  .spare-part-image,
+  .application-panel,
+  .accordion-header,
+  .tab-panel-title
+) {
+  background:
+    radial-gradient(ellipse at center, rgba(37, 99, 235, .20), transparent 64%),
+    var(--theme-bg-secondary);
+  border-color: var(--theme-border);
+}
+
+html.dark .accordion-panel,
+html.dark .spec-table div,
+html.dark .application-grid span,
+html.dark .strip-item,
+html.dark .review-stat-card,
+html.dark .trust-rail div {
+  background: rgba(15, 23, 42, .62);
+  border-color: var(--theme-border);
+}
+
+html.dark .spec-table div:nth-child(4n + 1),
+html.dark .spec-table div:nth-child(4n + 2) {
+  background: rgba(30, 41, 59, .58);
+}
+
+html.dark .tab-buttons {
+  border-bottom-color: var(--theme-border);
+}
+
+html.dark .tab-buttons button,
+html.dark .detail-breadcrumb,
+html.dark .detail-breadcrumb button,
+html.dark .featured-metrics span,
+html.dark .review-stat-card small {
+  color: var(--theme-text-muted);
+}
+
+html.dark .category-tabs button:hover,
+html.dark .category-tabs button.active {
+  background: var(--theme-accent);
+  color: #fff;
+  box-shadow: 0 16px 34px var(--theme-glow);
+}
+
+html.dark :is(
+  .fg input,
+  .fg select,
+  .fg textarea,
+  .review-field input,
+  .review-field textarea,
+  .admin-login-field div,
+  .photo-upload
+) {
+  background: var(--theme-input-bg);
+  border-color: var(--theme-border);
+  color: var(--theme-text-primary);
+}
+
+html.dark .admin-login-field input {
+  color: var(--theme-text-primary);
+}
+
+html.dark .fg input::placeholder,
+html.dark .fg textarea::placeholder,
+html.dark .review-field input::placeholder,
+html.dark .review-field textarea::placeholder {
+  color: var(--theme-text-muted);
+}
+
+html.dark :is(
+  .fg input:focus,
+  .fg select:focus,
+  .fg textarea:focus,
+  .review-field input:focus,
+  .review-field textarea:focus,
+  .admin-login-field div:focus-within
+) {
+  background: rgba(15, 23, 42, .98);
+  border-color: var(--theme-accent-hover);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, .20);
+}
+
+html.dark select option {
+  background: var(--theme-bg-secondary);
+  color: var(--theme-text-primary);
+}
+
+html.dark .spare-parts-panel {
+  background: rgba(5, 8, 22, .18);
+}
+
+html.dark .review-stars {
+  color: rgba(148, 163, 184, .48);
+}
+
+html.dark .review-stars.interactive button {
+  background: var(--theme-input-bg);
+  border-color: var(--theme-border);
+  color: var(--theme-text-muted);
+}
+
+html.dark .review-dots button {
+  background: rgba(148, 163, 184, .38);
+}
+
+html.dark .review-dots button.active {
+  background: var(--theme-accent-hover);
+}
+
+html.dark .review-modal-backdrop {
+  background: rgba(2, 6, 23, .76);
+}
+
+html.dark .review-modal-close {
+  background: rgba(15, 23, 42, .92);
+  border-color: var(--theme-border);
+  color: var(--theme-text-secondary);
+}
+
+html.dark .review-success {
+  background: rgba(32, 198, 107, .14);
+  color: #86efac;
+}
+
+html.dark :is(.inline-alert, .review-status.pending) {
+  background: rgba(251, 146, 60, .14);
+  color: #fed7aa;
+}
+
+html.dark :is(.review-error, .admin-error, .admin-login-error, .review-status.rejected) {
+  background: rgba(239, 68, 68, .14);
+  color: #fecaca;
+}
+
+html.dark .review-status.approved {
+  background: rgba(32, 198, 107, .14);
+  color: #86efac;
+}
+
+html.dark .mobile-action-bar {
+  background: rgba(5, 8, 22, .86);
+  border-top-color: var(--theme-border);
+}
+
+html.dark .footer {
+  background:
+    radial-gradient(circle at 16% 0%, rgba(37, 99, 235, .16), transparent 30%),
+    linear-gradient(180deg, #0b1120 0%, #050816 100%);
+  border-top-color: var(--theme-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+}
+
+html.dark .footer-socials a {
+  background: var(--theme-glass-bg);
+  border-color: var(--theme-border);
+}
+
+html.dark .footer-desc,
+html.dark .footer-col li,
+html.dark .footer-bottom p,
+html.dark .footer-links span {
+  color: var(--theme-text-secondary);
+}
+
+html.dark .footer-col li:hover,
+html.dark .footer-links span:hover {
+  color: #93c5fd;
+}
+
+html.dark .whatsapp-float,
+html.dark .btn-whatsapp {
+  box-shadow: 0 16px 36px rgba(32, 198, 107, .30);
+}
+
+@media (max-width: 680px) {
+  html.dark .review-modal {
+    background: var(--theme-card-bg);
+  }
+}

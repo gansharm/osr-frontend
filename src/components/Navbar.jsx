@@ -8,9 +8,11 @@ import {
   FiHome,
   FiImage,
   FiMail,
+  FiMoon,
   FiPhone,
   FiSettings,
   FiStar,
+  FiSun,
   FiUser,
 } from "react-icons/fi";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
@@ -31,10 +33,29 @@ const NAV_LINKS = [
 ];
 
 const normalizePath = (pathname) => pathname.replace(/\/+$/, "") || "/";
+const THEME_STORAGE_KEY = "osr-theme";
+
+const readStoredTheme = () => {
+  if (typeof window === "undefined") return null;
+
+  try {
+    return window.localStorage.getItem(THEME_STORAGE_KEY);
+  } catch (error) {
+    return null;
+  }
+};
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuMounted, setMenuMounted] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof document === "undefined") return false;
+
+    return (
+      document.documentElement.classList.contains("dark") ||
+      readStoredTheme() === "dark"
+    );
+  });
   const navRef = useRef(null);
   const lastTouchActivationRef = useRef(0);
   const navigate = useNavigate();
@@ -55,6 +76,16 @@ function Navbar() {
     document.body.classList.toggle("nav-open", menuOpen);
     return () => document.body.classList.remove("nav-open");
   }, [menuOpen]);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, darkMode ? "dark" : "light");
+    } catch (error) {
+      // localStorage can be unavailable in private or restricted contexts.
+    }
+  }, [darkMode]);
 
   // set CSS variables for mobile menu top offset based on nav height
   useEffect(() => {
@@ -256,6 +287,16 @@ function Navbar() {
           <button type="button" className="quote-btn" onClick={getQuote}>
             Get a Quote
             <FiArrowRight />
+          </button>
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={() => setDarkMode((enabled) => !enabled)}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            aria-pressed={darkMode}
+            title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {darkMode ? <FiMoon /> : <FiSun />}
           </button>
           <button
             type="button"
