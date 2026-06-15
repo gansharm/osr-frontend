@@ -2,7 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import './theme.css';
 import reportWebVitals from './reportWebVitals';
+
+try {
+  const storedTheme = window.localStorage.getItem('osr-theme');
+  document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+} catch (error) {
+  document.documentElement.classList.remove('dark');
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

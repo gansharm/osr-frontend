@@ -9,9 +9,13 @@ Compiled successfully!
 You can now view odr in the browser.
 
   Local:            http://localhost:3000
-  On Your Network:  http://192.168.1.6:3000
+  On Your Network:  http://10.38.143.212:3000
 
 Note that the development build is not optimized.
 To create a production build, use npm run build.
 
+webpack compiled [1m[32msuccessfully[39m[22m
+Compiled successfully!
+webpack compiled [1m[32msuccessfully[39m[22m
+Compiled successfully!
 webpack compiled [1m[32msuccessfully[39m[22m

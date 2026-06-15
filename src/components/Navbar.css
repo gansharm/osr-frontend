@@ -123,6 +123,7 @@
 
 .quote-btn,
 .nav-call,
+.theme-toggle,
 .hamburger {
   display: inline-flex;
   align-items: center;
@@ -149,11 +150,13 @@
 
 .quote-btn:hover,
 .nav-call:hover,
+.theme-toggle:hover,
 .hamburger:hover {
   transform: translateY(-2px);
 }
 
 .nav-call,
+.theme-toggle,
 .hamburger {
   width: 46px;
   height: 46px;
@@ -162,6 +165,18 @@
   color: #0b7cff;
   border: 1px solid rgba(11, 124, 255, .10);
   font-size: 20px;
+}
+
+.theme-toggle {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle svg {
+  position: relative;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
 }
 
 .hamburger {
@@ -451,6 +466,11 @@ body.nav-open {
   }
 
   .hamburger {
+    width: 42px;
+    height: 42px;
+  }
+
+  .theme-toggle {
     width: 42px;
     height: 42px;
   }
