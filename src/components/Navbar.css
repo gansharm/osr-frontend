@@ -18,22 +18,30 @@
 .nav-brand {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  line-height: 0;
   border: 0;
   background: transparent;
   padding: 0;
+  margin: 0;
   cursor: pointer;
+  transform: translateX(-12px);
 }
 
 .nav-logo {
-  width: 112px;
-  height: 58px;
+  display: block;
+  width: 118px;
+  height: 62px;
   object-fit: contain;
-  mix-blend-mode: multiply;
-  transition: transform .25s ease;
+  mix-blend-mode: normal;
+  transform-origin: center;
+  filter: drop-shadow(0 8px 16px rgba(15, 57, 113, .10));
+  transition: transform .25s ease, filter .25s ease;
 }
 
 .nav-brand:hover .nav-logo {
-  transform: translateY(-2px);
+  transform: scale(1.05);
 }
 
 .nav-links {
@@ -395,7 +403,8 @@ body.nav-open {
   }
 
   .nav-logo {
-    width: 100px;
+    width: 106px;
+    height: 58px;
   }
 
   .nav-links {
@@ -447,8 +456,8 @@ body.nav-open {
   }
 
   .nav-logo {
-    width: 94px;
-    height: 54px;
+    width: 100px;
+    height: 58px;
   }
 }
 
