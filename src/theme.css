@@ -122,8 +122,7 @@ html.dark .admin-summary strong,
 html.dark .ci-icon,
 html.dark .feat-icon,
 html.dark .svc-icon,
-html.dark .stat-card > svg,
-html.dark .rail-item > svg:first-child {
+html.dark .stat-card > svg {
   background: rgba(37, 99, 235, .16);
   color: #93c5fd;
 }
@@ -172,7 +171,6 @@ html.dark :is(
   .hero-h1,
   .hero-kicker,
   .showcase-feature strong,
-  .rail-item strong,
   .customer-proof strong,
   .about-content h2,
   .about-checks span,
@@ -228,7 +226,6 @@ html.dark :is(
 html.dark :is(
   .hero-desc,
   .showcase-feature span,
-  .rail-item span,
   .stat-card span,
   .about-text,
   .about-card span,
@@ -294,9 +291,7 @@ html.dark :is(
 
 html.dark :is(
   .showcase-feature,
-  .rail-item,
   .stat-card,
-  .hero-feature-rail,
   .about-machine,
   .about-card,
   .feat,

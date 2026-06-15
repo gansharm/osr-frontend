@@ -3,7 +3,6 @@ import {
   FiArrowRight,
   FiAward,
   FiBox,
-  FiCheckCircle,
   FiCpu,
   FiPrinter,
   FiShield,
@@ -108,21 +107,6 @@ function Hero() {
           })}
         </div>
 
-        <div className="hero-feature-rail">
-          {heroHighlights.map((item, index) => {
-            const Icon = highlightIcons[index];
-            return (
-              <div key={item.title} className="rail-item">
-                <Icon />
-                <div>
-                  <strong>{item.title}</strong>
-                  <span>{item.desc}</span>
-                </div>
-                <FiCheckCircle />
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );
