@@ -20,7 +20,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { company } from "../data/siteData";
 import "./Navbar.css";
-import logo from "../images/OSR-logo-transparent.png";
+import logoLight from "../images/OSR-logo-transparent.png";
+import logoDark from "../images/OSR White1.png";
 
 const NAV_LINKS = [
   { name: "Home", id: "home", path: "/", sectionId: "home", icon: FiHome },
@@ -61,6 +62,7 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = normalizePath(location.pathname);
+  const activeLogo = darkMode ? logoDark : logoLight;
 
   useEffect(() => {
     if (menuOpen) {
@@ -181,7 +183,7 @@ function Navbar() {
       aria-hidden={!menuOpen}
     >
       <div className="mobile-menu-head">
-        <img src={logo} alt="OSR Solutions" />
+        <img key={`mobile-${activeLogo}`} src={activeLogo} alt="OSR Solutions" />
         <button type="button" onClick={() => setMenuOpen(false)} aria-label="Close navigation menu">
           <HiX />
         </button>
@@ -254,7 +256,7 @@ function Navbar() {
           onClick={() => navigate("/")}
           aria-label="Go to home"
         >
-          <img src={logo} alt="OSR Solutions" className="nav-logo" />
+          <img key={`nav-${activeLogo}`} src={activeLogo} alt="OSR Solutions" className="nav-logo" />
         </button>
 
         <ul className="nav-links">
