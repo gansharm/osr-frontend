@@ -131,7 +131,22 @@ function ProductDetail() {
             <div className="detail-gallery reveal">
               <span className="detail-badge">Best Seller</span>
               <div className="detail-image-stage">
-                <img src={gallery[selectedImage]} alt={product.title} />
+                <div className="detail-showcase-effects" aria-hidden="true">
+                  <span className="detail-neon-ring" />
+                  <span className="detail-neon-ring inner" />
+                  <span className="detail-particle particle-a" />
+                  <span className="detail-particle particle-b" />
+                  <span className="detail-particle particle-c" />
+                  <span className="detail-particle particle-d" />
+                  <span className="detail-glow-platform" />
+                </div>
+                <img className="detail-machine-img" src={gallery[selectedImage]} alt={product.title} />
+                <img
+                  className="detail-machine-reflection"
+                  src={gallery[selectedImage]}
+                  alt=""
+                  aria-hidden="true"
+                />
               </div>
               <div className="detail-thumbs" aria-label={`${product.title} gallery`}>
                 {gallery.map((image, index) => (
