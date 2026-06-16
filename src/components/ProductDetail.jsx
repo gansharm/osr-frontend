@@ -59,6 +59,7 @@ function ProductDetail() {
   const brochureFile = product.brochure || product.heroImage;
   const brochureFileName =
     product.brochureFileName || `${product.name}-brochure.${getFileExtension(brochureFile)}`;
+  const isWideMachineShowcase = product.slug === "astrojet-g8-eco-solvent-printer";
 
   const triggerDownload = (downloadUrl, fileName, shouldRevoke = false) => {
     const link = document.createElement("a");
@@ -140,9 +141,15 @@ function ProductDetail() {
                   <span className="detail-particle particle-d" />
                   <span className="detail-glow-platform" />
                 </div>
-                <img className="detail-machine-img" src={gallery[selectedImage]} alt={product.title} />
                 <img
-                  className="detail-machine-reflection"
+                  className={`detail-machine-img${isWideMachineShowcase ? " wide-machine-img" : ""}`}
+                  src={gallery[selectedImage]}
+                  alt={product.title}
+                />
+                <img
+                  className={`detail-machine-reflection${
+                    isWideMachineShowcase ? " wide-machine-reflection" : ""
+                  }`}
                   src={gallery[selectedImage]}
                   alt=""
                   aria-hidden="true"
