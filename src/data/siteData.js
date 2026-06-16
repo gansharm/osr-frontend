@@ -28,6 +28,11 @@ import peacockSample from "../images/peacockSample.jpeg";
 import plotter from "../images/Plotter.png";
 import plotter1 from "../images/Plotter1.png";
 import plotter2 from "../images/Plotter2.png";
+import ricohGen6 from "../images/RicohGen6.png";
+import ricohGen from "../images/RicohGen6 5.png";
+import ricohGen2 from "../images/RicohGen6-2.png";
+import ricohGenCat from "../images/RichohGenCat.png";
+
 import rahulSample from "../images/rahulSample.jpeg";
 import uvBottleSample from "../images/uvBottleSample.jpeg";
 import uvWoodSample from "../images/uvWoodSample.jpeg";
@@ -207,7 +212,7 @@ export const products = [
   {
     slug: "all-in-one-dtf-printer",
     name: "ECO-SOLVENT",
-    category: "Eco Solvent Printers",
+    category: "Eco-Solvent Printers",
     title: "ECO-SOLVENT",
     shortTitle: "Eco Solvent Printer",
     desc: "Wide-format eco solvent printing solution for sharp commercial media and signage output.",
@@ -227,6 +232,30 @@ export const products = [
       "Fast support from OSR Solutions",
     ],
     applications: ["Signage", "Backlit Work", "Display Prints", "Commercial Media"],
+  },
+  {
+    slug: "OSR-g8-eco-solvent-printer",
+    name: "OSR G8 Eco-Solvent Printer",
+    category: "Eco-Solvent Printers",
+    title: "OSR G8 Eco-Solvent Printer",
+    shortTitle: "Eco-Solvent Printer",
+    desc: "High-speed industrial eco-solvent printer with Ricoh Gen6/Gen5 printhead compatibility, suitable for flex, vinyl, backlit, signage, branding, and large-format printing applications.",
+    image: ricohGen6,
+    heroImage: ricohGenCat,
+    gallery: [ricohGen6,ricohGen,ricohGen2,ricohGenCat],
+    specs: [
+      "High Speed Printing",
+      "Industrial Grade Build",
+      "Large Format Output",
+      "Signage & Branding Ready",
+    ],
+    details: [
+      "Ricoh Gen6/Gen5 printhead compatibility",
+      "Stable eco-solvent output for commercial media",
+      "Designed for flex, vinyl, backlit and signage work",
+      "Reliable service and support from OSR Solutions",
+    ],
+    applications: ["Flex", "Vinyl", "Backlit", "Signage", "Branding", "Large-format Prints"],
   },
    
   {
@@ -356,7 +385,7 @@ export const samples = [
 export const productCategories = [
   "All Products",
   "UV Flatbed Printers",
-  "Eco Solvent Printers",
+  "Eco-Solvent Printers",
   "DTF Printers",
   "Plotters",
   "Spare Parts",
