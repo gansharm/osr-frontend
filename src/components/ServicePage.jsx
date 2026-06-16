@@ -78,12 +78,11 @@ function ServicePage() {
           <div className="products-hero-copy reveal">
             <span className="eyebrow">Our Products</span>
             <h1>
-              Industrial Printing
-              <span>Machines</span>
+              Print Beyound Limits
+              <span>With OSR Solutions</span>
             </h1>
             <p>
-              BYHX Machine Parts, Main Boards, Ink Heads, Motherboard Repair, Technical Support &
-              Spare Parts.
+              Premium UV Flatbed Printers , High-Quality Prints, Reliable Servive & Innovative printing solutions for businesses across India. Our experts are here to help you find the perfect solution.
             </p>
             <div className="products-hero-badges">
               <span>
