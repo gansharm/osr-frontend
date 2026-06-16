@@ -121,11 +121,16 @@ function Footer() {
             </li>
             <li>
               <FiMapPin />
-              <span>
-                {company.footerOffice}
-                <br />
-                Guwahati Branch - {company.branch}
-              </span>
+              <div className="footer-address-list">
+                <div className="footer-address-card">
+                  <strong>Head Office</strong>
+                  <span>{company.headOffice}</span>
+                </div>
+                <div className="footer-address-card branch">
+                  <strong>Guwahati Branch</strong>
+                  <span>{company.branch}</span>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
