@@ -8,6 +8,7 @@ import {
   FiHome,
   FiImage,
   FiMail,
+  FiMap,
   FiMoon,
   FiPhone,
   FiSettings,
@@ -29,6 +30,7 @@ const NAV_LINKS = [
   { name: "Products", id: "products", path: "/products", icon: FiBox },
   { name: "Services", id: "services", path: "/services", sectionId: "services", icon: FiSettings },
   { name: "Gallery", id: "gallery", path: "/gallery", sectionId: "gallery", icon: FiImage },
+  { name: "Exhibition", id: "exhibition", path: "/exhibition", icon: FiMap },
   { name: "Contact Us", id: "contact", path: "/contact", sectionId: "contact", icon: FiPhone },
   { name: "Reviews", id: "reviews", path: "/reviews", icon: FiStar },
 ];

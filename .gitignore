@@ -11,6 +11,9 @@
 # production
 /build
 
+# Original exhibition video sources (optimized copies live in src/media/exhibition/videos)
+/src/videos/
+
 # misc
 .DS_Store
 .env.local
