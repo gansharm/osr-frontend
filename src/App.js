@@ -12,6 +12,7 @@ import ReviewsPage from "./components/ReviewsPage";
 import AdminReviewsPage from "./components/AdminReviewsPage";
 import AdminLoginPage from "./components/AdminLoginPage";
 import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
+import ExhibitionPage from "./components/ExhibitionPage";
 
 function HomePage({ scrollTarget }) {
   useEffect(() => {
@@ -78,6 +79,11 @@ function App() {
         <Route
           path="/reviews"
           element={<ReviewsPage />}
+        />
+
+        <Route
+          path="/exhibition"
+          element={<ExhibitionPage />}
         />
 
         <Route
