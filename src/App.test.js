@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import App from "./App";
 import Navbar from "./components/Navbar";
+import ExhibitionPage from "./components/ExhibitionPage";
 import ProductDetail from "./components/ProductDetail";
 import { products } from "./data/siteData";
 
@@ -32,6 +33,7 @@ beforeEach(() => {
   mockProductSlug = products[0].slug;
   window.scrollTo = jest.fn();
   Element.prototype.scrollIntoView = jest.fn();
+  window.localStorage.removeItem("exhibitionSubscriber");
 });
 
 afterEach(() => {
@@ -110,6 +112,7 @@ test("navbar active state follows the current route", () => {
     ["/products/uv-printer", "Products"],
     ["/services", "Services"],
     ["/gallery", "Gallery"],
+    ["/exhibition", "Exhibition"],
     ["/contact", "Contact Us"],
     ["/reviews", "Reviews"],
   ].forEach(([path, label]) => {
@@ -119,6 +122,28 @@ test("navbar active state follows the current route", () => {
     expect(screen.getByRole("button", { name: "Home" })).not.toHaveClass("active");
     expect(screen.getByRole("button", { name: label })).toHaveClass("active");
   });
+});
+
+test("exhibition update subscription persists and prevents duplicate registration", () => {
+  const { unmount } = render(<ExhibitionPage />);
+
+  fireEvent.click(screen.getByRole("button", { name: /stay updated/i }));
+
+  expect(window.localStorage.getItem("exhibitionSubscriber")).toBe("true");
+  expect(screen.getByRole("button", { name: /joined/i })).toHaveAttribute("aria-pressed", "true");
+  expect(
+    screen.getByRole("heading", { name: /successfully joined/i })
+  ).toBeInTheDocument();
+
+  unmount();
+  render(<ExhibitionPage />);
+
+  const joinedButton = screen.getByRole("button", { name: /joined/i });
+  expect(joinedButton).toHaveAttribute("aria-pressed", "true");
+  fireEvent.click(joinedButton);
+
+  expect(screen.getByRole("heading", { name: /already joined/i })).toBeInTheDocument();
+  expect(window.localStorage.getItem("exhibitionSubscriber")).toBe("true");
 });
 
 test("product detail mobile controls update thumbnails and accordion state", () => {

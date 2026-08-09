@@ -19,6 +19,7 @@ import {
 import { FaStar } from "react-icons/fa";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import VideoTestimonials from "./VideoTestimonials";
 import { apiUrl } from "../utils/api";
 import "./ReviewsPage.css";
 
@@ -520,6 +521,8 @@ function ReviewsPage() {
                 );
               })}
             </section>
+
+            <VideoTestimonials />
 
             <section className="review-cta">
               <div>
