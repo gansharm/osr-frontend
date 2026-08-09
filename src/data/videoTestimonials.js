@@ -1,4 +1,4 @@
-import customerTestimonialVideo from "../videos/WhatsApp Video 2026-08-09 at 8.48.48 PM.mp4";
+import customerTestimonialVideo from "../videos/customer-feedback.mp4";
 
 // Add one object per customer video. Files stored under src can be imported as
 // above; alternatively, place them in public/media/testimonials and use their
