@@ -647,36 +647,6 @@
   object-fit: cover;
 }
 
-.video-testimonial-play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: grid;
-  width: 58px;
-  height: 58px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, .65);
-  border-radius: 50%;
-  background: rgba(11, 124, 255, .92);
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 0 12px 30px rgba(3, 74, 166, .35);
-  transform: translate(-50%, -50%);
-  transition: transform .2s ease, background .2s ease;
-}
-
-.video-testimonial-play:hover,
-.video-testimonial-play:focus-visible {
-  background: #075bd5;
-  outline: none;
-  transform: translate(-50%, -50%) scale(1.08);
-}
-
-.video-testimonial-play svg {
-  margin-left: 3px;
-  font-size: 24px;
-}
-
 .video-testimonial-content {
   display: flex;
   min-height: 150px;
