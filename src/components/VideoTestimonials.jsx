@@ -1,42 +1,20 @@
-import { useRef, useState } from "react";
-import { FiPlay, FiVideo } from "react-icons/fi";
+import { FiVideo } from "react-icons/fi";
 import videoTestimonials from "../data/videoTestimonials";
 
 function VideoTestimonialCard({ testimonial }) {
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const playVideo = () => {
-    videoRef.current?.play();
-  };
-
   return (
     <article className="video-testimonial-card">
       <div className="video-testimonial-media">
         <video
-          ref={videoRef}
           controls
           playsInline
           preload="metadata"
           poster={testimonial.poster}
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
-          onEnded={() => setIsPlaying(false)}
           aria-label={`Video testimonial from ${testimonial.name}`}
         >
           <source src={testimonial.videoUrl} type={testimonial.type || "video/mp4"} />
           Your browser does not support HTML5 video.
         </video>
-        {!isPlaying && (
-          <button
-            className="video-testimonial-play"
-            type="button"
-            onClick={playVideo}
-            aria-label={`Play testimonial from ${testimonial.name}`}
-          >
-            <FiPlay />
-          </button>
-        )}
       </div>
       <div className="video-testimonial-content">
         <p>{testimonial.feedback}</p>
