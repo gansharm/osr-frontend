@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { useNavigate } from "react-router-dom";
 import {
   AnimatePresence,
   MotionConfig,
@@ -13,6 +12,7 @@ import {
   FiArrowRight,
   FiBriefcase,
   FiCalendar,
+  FiCheck,
   FiChevronLeft,
   FiChevronRight,
   FiDownload,
@@ -43,6 +43,18 @@ const iconMap = {
   engagement: FiUsers,
   response: FiThumbsUp,
   connections: FiBriefcase,
+};
+
+const SUBSCRIPTION_STORAGE_KEY = "exhibitionSubscriber";
+
+const readSubscriptionStatus = () => {
+  if (typeof window === "undefined") return false;
+
+  try {
+    return window.localStorage.getItem(SUBSCRIPTION_STORAGE_KEY) === "true";
+  } catch (error) {
+    return false;
+  }
 };
 
 const revealVariants = {
@@ -233,14 +245,117 @@ function VideoModal({ video, onClose }) {
   );
 }
 
+function SubscriptionModal({ type, onClose }) {
+  const isSuccess = type === "success";
+
+  useEffect(() => {
+    if (!type) return undefined;
+
+    const timeout = window.setTimeout(onClose, 3000);
+    const onKeyDown = (event) => event.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.clearTimeout(timeout);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose, type]);
+
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
+    <AnimatePresence>
+      {type && (
+        <motion.div
+          className="exhibition-subscription-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.24 }}
+          onMouseDown={onClose}
+          role="presentation"
+        >
+          <motion.div
+            className="exhibition-subscription-modal"
+            initial={{ opacity: 0, scale: 0.88, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.94, y: 10 }}
+            transition={{ type: "spring", stiffness: 310, damping: 26 }}
+            onMouseDown={(event) => event.stopPropagation()}
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="exhibition-subscription-title"
+            aria-describedby="exhibition-subscription-message"
+          >
+            <button
+              className="exhibition-subscription-close"
+              type="button"
+              onClick={onClose}
+              aria-label="Close subscription confirmation"
+            >
+              <FiX />
+            </button>
+
+            <motion.span
+              className="exhibition-subscription-icon"
+              initial={{ scale: 0, rotate: -24 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ type: "spring", stiffness: 360, damping: 18, delay: 0.12 }}
+              aria-hidden="true"
+            >
+              <FiCheck />
+            </motion.span>
+
+            <h2 id="exhibition-subscription-title">
+              {isSuccess ? "🎉 Successfully Joined!" : "Already Joined"}
+            </h2>
+
+            <div id="exhibition-subscription-message" className="exhibition-subscription-message">
+              {isSuccess ? (
+                <>
+                  <p>You have successfully joined our Exhibition Updates.</p>
+                  <p>
+                    Whenever OSR Solutions announces its next exhibition, product launch, or live
+                    demo, you will be notified.
+                  </p>
+                  <p>Thank you for staying connected with OSR Solutions.</p>
+                </>
+              ) : (
+                <>
+                  <p>You are already subscribed to exhibition updates.</p>
+                  <p>We&apos;ll notify you whenever our next exhibition is announced.</p>
+                </>
+              )}
+            </div>
+
+            <button className="exhibition-subscription-ok" type="button" onClick={onClose} autoFocus>
+              OK
+            </button>
+            <motion.span
+              className="exhibition-subscription-timer"
+              initial={{ scaleX: 1 }}
+              animate={{ scaleX: 0 }}
+              transition={{ duration: 3, ease: "linear" }}
+              aria-hidden="true"
+            />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    document.body
+  );
+}
+
 function ExhibitionPage() {
-  const navigate = useNavigate();
   const shouldReduceMotion = useReducedMotion();
   const [showAllPhotos, setShowAllPhotos] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(null);
   const [activeVideo, setActiveVideo] = useState(null);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [mediaNotice, setMediaNotice] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(readSubscriptionStatus);
+  const [subscriptionModal, setSubscriptionModal] = useState(null);
+  const [subscriptionPulse, setSubscriptionPulse] = useState(false);
   const galleryRef = useRef(null);
   const data = exhibitionData;
 
@@ -265,14 +380,14 @@ function ExhibitionPage() {
   }, [data.description, data.name]);
 
   useEffect(() => {
-    const modalOpen = activeImageIndex !== null || Boolean(activeVideo);
+    const modalOpen = activeImageIndex !== null || Boolean(activeVideo) || Boolean(subscriptionModal);
     if (!modalOpen) return undefined;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, [activeImageIndex, activeVideo]);
+  }, [activeImageIndex, activeVideo, subscriptionModal]);
 
   useEffect(() => {
     if (shouldReduceMotion || data.testimonials.length < 2) return undefined;
@@ -302,6 +417,25 @@ function ExhibitionPage() {
     setTestimonialIndex(
       (current) => (current + direction + data.testimonials.length) % data.testimonials.length
     );
+  };
+
+  const closeSubscriptionModal = useCallback(() => setSubscriptionModal(null), []);
+
+  const handleStayUpdated = () => {
+    if (isSubscribed) {
+      setSubscriptionModal("already");
+      return;
+    }
+
+    try {
+      window.localStorage.setItem(SUBSCRIPTION_STORAGE_KEY, "true");
+    } catch (error) {
+      // The joined state still works for this session if storage is unavailable.
+    }
+
+    setIsSubscribed(true);
+    setSubscriptionPulse(true);
+    setSubscriptionModal("success");
   };
 
   const testimonial = data.testimonials[testimonialIndex];
@@ -617,10 +751,31 @@ function ExhibitionPage() {
                 <h2>See You At Our Next Exhibition!</h2>
                 <p>Stay connected with OSR Solutions for upcoming exhibitions, live demos and product launches.</p>
               </div>
-              <button className="exhibition-primary-button" type="button" onClick={() => navigate("/contact")}>
-                Stay Updated
-                <FiArrowRight />
-              </button>
+              <motion.button
+                className={`exhibition-primary-button exhibition-subscribe-button ${isSubscribed ? "joined" : ""}`}
+                type="button"
+                onClick={handleStayUpdated}
+                aria-pressed={isSubscribed}
+                animate={
+                  subscriptionPulse && !shouldReduceMotion
+                    ? { scale: [1, 1.06, 0.985, 1] }
+                    : { scale: 1 }
+                }
+                transition={{ duration: 0.52, ease: "easeOut" }}
+                onAnimationComplete={() => setSubscriptionPulse(false)}
+              >
+                {isSubscribed ? (
+                  <>
+                    <FiCheck />
+                    Joined
+                  </>
+                ) : (
+                  <>
+                    Stay Updated
+                    <FiArrowRight />
+                  </>
+                )}
+              </motion.button>
             </Reveal>
           </div>
         </section>
@@ -635,6 +790,7 @@ function ExhibitionPage() {
         onChange={setActiveImageIndex}
       />
       <VideoModal video={activeVideo} onClose={() => setActiveVideo(null)} />
+      <SubscriptionModal type={subscriptionModal} onClose={closeSubscriptionModal} />
       <AnimatePresence>
         {mediaNotice && (
           <motion.div
