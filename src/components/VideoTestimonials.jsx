@@ -1,6 +1,7 @@
 import { FiVideo } from "react-icons/fi";
 import videoTestimonials from "../data/videoTestimonials";
 
+
 function VideoTestimonialCard({ testimonial }) {
   return (
     <article className="video-testimonial-card">
