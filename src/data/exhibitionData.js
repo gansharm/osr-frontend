@@ -28,11 +28,15 @@ import expoVideo1Poster from "../media/exhibition/images/expo_video1_poster.jpg"
 import expoVideo2Poster from "../media/exhibition/images/expo_video2_poster.jpg";
 import expoVideo3Poster from "../media/exhibition/images/expo_video3_poster.jpg";
 import delhiVideo2Poster from "../media/exhibition/images/delhi2.jpeg";
+import delhiVideo1Poster from "../media/exhibition/images/delhi1.jpeg";
+import delhiVideo3Poster from "../media/exhibition/images/delhi3.jpeg";
 
 import expoVideo1 from "../media/exhibition/videos/expo_video1.mp4";
 import expoVideo2 from "../media/exhibition/videos/expo_video2.mp4";
 import expoVideo3 from "../media/exhibition/videos/expo_video3.mp4";
 import delhiVideo2 from "../media/exhibition/videos/delhi2.mp4";
+import delhiVideo1 from "../media/exhibition/videos/delhi1.mp4";
+import delhiVideo3 from "../media/exhibition/videos/delhi3.mp4";
 
 
 // This is the only file that needs editing when exhibition content changes.
@@ -187,6 +191,9 @@ export const delhiExhibitionData = {
   ],
   videos: [
     { title: "Inside the Delhi Booth", thumbnail: delhiVideo2Poster, src: delhiVideo2, duration: "00:18", description: "A closer look at the OSR exhibition booth." },
+        { title: "Inside the Delhi Booth", thumbnail: delhiVideo3Poster, src: delhiVideo3, duration: "00:18", description: "A closer look at the OSR exhibition booth." },
+ 
+    { title: "Exhibition Highlights", thumbnail: delhiVideo1Poster, src: delhiVideo1, duration: "00:30", description: "Highlights from the OSR exhibition booth at Bharat Mandapam." },
   ],
   highlights: [
     { icon: "demonstrations", title: "Live Machine Demonstrations", description: "Visitors saw print speed, precision and output quality first-hand." },
