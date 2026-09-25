@@ -1,6 +1,8 @@
 import { FiArrowRight, FiCalendar, FiMapPin, FiZap } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
 import exhibitionVisual from "../media/exhibition/images/expo2.jpeg";
+import exhibitionVisual1 from "../media/exhibition/images/delhi20.jpeg";
+
 import "./ExhibitionAnnouncement.css";
 
 export const EXHIBITION_AD_EXPIRY = "2026-09-20";
@@ -18,7 +20,7 @@ export const exhibitionAnnouncement = {
   primaryAction: "Visit Our Stall",
   secondaryAction: "Learn More",
   destination: "/exhibition",
-  image: exhibitionVisual,
+  image: exhibitionVisual1,
 };
 
 const getExpiryTime = () => new Date(`${EXHIBITION_AD_EXPIRY}T23:59:59.999`).getTime();

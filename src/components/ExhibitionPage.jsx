@@ -31,7 +31,7 @@ import {
 } from "react-icons/fi";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import exhibitionData from "../data/exhibitionData";
+import exhibitionData, { exhibitionEvents } from "../data/exhibitionData";
 import "./ExhibitionPage.css";
 
 const iconMap = {
@@ -346,6 +346,45 @@ function SubscriptionModal({ type, onClose }) {
   );
 }
 
+function ExhibitionSelector({ events, activeEventId, onSelect }) {
+  return (
+    <section className="exhibition-event-selector" aria-label="Our exhibitions">
+      <div className="exhibition-container">
+        <SectionHeading
+          eyebrow="Our Exhibitions"
+          title="Exhibitions Where We"
+          accent="Connect"
+          description="Explore the people, technology and conversations from our recent exhibition experiences."
+        />
+        <div className="exhibition-event-grid">
+          {events.map((event, index) => (
+            <Reveal className="exhibition-event-card" delay={index * 0.1} key={event.id}>
+              <img src={event.heroImage} alt={`OSR Solutions at ${event.name}`} loading={index === 0 ? "eager" : "lazy"} />
+              <div className="exhibition-event-overlay" />
+              <div className="exhibition-event-card-content">
+                <span className="exhibition-status"><span aria-hidden="true" />{event.status}</span>
+                <h2>{event.name}</h2>
+                <div className="exhibition-event-meta">
+                  <span><FiCalendar />{event.cardDate || event.date}</span>
+                  <span><FiMapPin />{event.cardVenue || event.venue}</span>
+                </div>
+                <button
+                  className="exhibition-primary-button"
+                  type="button"
+                  onClick={() => onSelect(event.id)}
+                  aria-pressed={activeEventId === event.id}
+                >
+                  View {event.shortName || "Guwahati"} Gallery <FiArrowRight />
+                </button>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ExhibitionPage() {
   const shouldReduceMotion = useReducedMotion();
   const [showAllPhotos, setShowAllPhotos] = useState(false);
@@ -356,8 +395,9 @@ function ExhibitionPage() {
   const [isSubscribed, setIsSubscribed] = useState(readSubscriptionStatus);
   const [subscriptionModal, setSubscriptionModal] = useState(null);
   const [subscriptionPulse, setSubscriptionPulse] = useState(false);
+  const [activeEventId, setActiveEventId] = useState(exhibitionData.id);
   const galleryRef = useRef(null);
-  const data = exhibitionData;
+  const data = exhibitionEvents.find((event) => event.id === activeEventId) || exhibitionData;
 
   const visibleGalleryImages = useMemo(
     () => (showAllPhotos ? data.galleryImages : data.galleryImages.slice(0, 8)),
@@ -403,7 +443,19 @@ function ExhibitionPage() {
     return () => window.clearTimeout(timeout);
   }, [mediaNotice]);
 
+  useEffect(() => {
+    setShowAllPhotos(false);
+    setActiveImageIndex(null);
+    setActiveVideo(null);
+    setTestimonialIndex(0);
+  }, [activeEventId]);
+
   const scrollToGallery = () => galleryRef.current?.scrollIntoView({ behavior: "smooth" });
+
+  const selectEvent = (eventId) => {
+    setActiveEventId(eventId);
+    window.setTimeout(() => galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+  };
 
   const openVideo = (video) => {
     if (!video.src) {
@@ -455,6 +507,8 @@ function ExhibitionPage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.45 }}
       >
+        <ExhibitionSelector events={exhibitionEvents} activeEventId={activeEventId} onSelect={selectEvent} />
+
         <section className="exhibition-hero" aria-labelledby="exhibition-title">
           <div className="exhibition-orb exhibition-orb-one" aria-hidden="true" />
           <div className="exhibition-orb exhibition-orb-two" aria-hidden="true" />
@@ -559,14 +613,33 @@ function ExhibitionPage() {
 
         <section className="exhibition-section exhibition-gallery-section" ref={galleryRef}>
           <div className="exhibition-container">
+            <div className="exhibition-gallery-tabs" role="tablist" aria-label="Choose exhibition gallery">
+              {exhibitionEvents.map((event) => (
+                <button
+                  className={activeEventId === event.id ? "active" : ""}
+                  id={`${event.id}-tab`}
+                  key={event.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeEventId === event.id}
+                  aria-controls={`${event.id}-gallery`}
+                  onClick={() => setActiveEventId(event.id)}
+                >
+                  <FiBriefcase />
+                  {event.shortName} Expo {event.id === "delhi-2025" ? "2025" : "2026"}
+                </button>
+              ))}
+            </div>
             <SectionHeading
               eyebrow="Exhibition Gallery"
-              title="Moments From The"
-              accent="Show Floor"
-              description="Explore the people, technology and conversations that made the exhibition memorable."
+              title={data.id === "delhi-2025" ? "Bharat Mandapam," : "North East Print & Pack Expo 2026 –"}
+              accent={data.id === "delhi-2025" ? "New Delhi – Exhibition Gallery" : "Guwahati – Exhibition Gallery"}
+              description={data.id === "delhi-2025"
+                ? "Moments from our participation at Bharat Mandapam, New Delhi. Live demonstrations, visitor interactions and product showcases."
+                : "Moments from our participation at North East Print & Pack Expo 2026. Live demonstrations, visitor interactions and product showcases."}
             />
 
-            <motion.div className="exhibition-gallery-grid" layout>
+            <motion.div className="exhibition-gallery-grid" layout id={`${data.id}-gallery`} role="tabpanel" aria-labelledby={`${data.id}-tab`}>
               <AnimatePresence initial={false}>
                 {visibleGalleryImages.map((image, index) => (
                   <motion.button
