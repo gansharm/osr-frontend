@@ -626,7 +626,7 @@ function ExhibitionPage() {
                   onClick={() => setActiveEventId(event.id)}
                 >
                   <FiBriefcase />
-                  {event.shortName} Expo {event.id === "delhi-2025" ? "2025" : "2026"}
+                  {event.shortName} Expo {event.id === "delhi-2026" ? "2026" : "2026"}
                 </button>
               ))}
             </div>
