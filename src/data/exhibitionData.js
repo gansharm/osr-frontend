@@ -27,9 +27,7 @@ import delhi19 from "../media/exhibition/images/delhi19.jpeg";//12
 import expoVideo1Poster from "../media/exhibition/images/expo_video1_poster.jpg";
 import expoVideo2Poster from "../media/exhibition/images/expo_video2_poster.jpg";
 import expoVideo3Poster from "../media/exhibition/images/expo_video3_poster.jpg";
-import delhiVideo1Poster from "../media/exhibition/images/delhi1.jpeg";
 import delhiVideo2Poster from "../media/exhibition/images/delhi2.jpeg";
-import delhiVideo3Poster from "../media/exhibition/images/delhi3.jpeg";
 
 import expoVideo1 from "../media/exhibition/videos/expo_video1.mp4";
 import expoVideo2 from "../media/exhibition/videos/expo_video2.mp4";

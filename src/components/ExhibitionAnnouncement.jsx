@@ -1,6 +1,5 @@
 import { FiArrowRight, FiCalendar, FiMapPin, FiZap } from "react-icons/fi";
 import { Link, useLocation } from "react-router-dom";
-import exhibitionVisual from "../media/exhibition/images/expo2.jpeg";
 import exhibitionVisual1 from "../media/exhibition/images/delhi20.jpeg";
 
 import "./ExhibitionAnnouncement.css";
