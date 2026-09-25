@@ -632,9 +632,9 @@ function ExhibitionPage() {
             </div>
             <SectionHeading
               eyebrow="Exhibition Gallery"
-              title={data.id === "delhi-2025" ? "Bharat Mandapam," : "North East Print & Pack Expo 2026 –"}
-              accent={data.id === "delhi-2025" ? "New Delhi – Exhibition Gallery" : "Guwahati – Exhibition Gallery"}
-              description={data.id === "delhi-2025"
+              title={data.id === "delhi-2026" ? "Bharat Mandapam," : "North East Print & Pack Expo 2026 –"}
+              accent={data.id === "delhi-2026" ? "New Delhi – Exhibition Gallery" : "Guwahati – Exhibition Gallery"}
+              description={data.id === "delhi-2026"
                 ? "Moments from our participation at Bharat Mandapam, New Delhi. Live demonstrations, visitor interactions and product showcases."
                 : "Moments from our participation at North East Print & Pack Expo 2026. Live demonstrations, visitor interactions and product showcases."}
             />
