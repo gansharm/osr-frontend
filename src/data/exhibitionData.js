@@ -156,7 +156,7 @@ export const delhiExhibitionData = {
   shortName: "Delhi",
   cardDate: "17 – 19 September 2025",
   cardVenue: "Bharat Mandapam, New Delhi",
-  date: "17 – 19 September 2025",
+  date: "17 – 19 September 2026",
   venue: "Bharat Mandapam, New Delhi",
   visitorCount: "1,000+",
   description:
