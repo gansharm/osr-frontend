@@ -154,9 +154,9 @@ export const exhibitionData = {
 // lightbox remain one shared experience. The supplied OSR show-floor photos
 // are intentionally referenced rather than introducing stock imagery.
 export const delhiExhibitionData = {
-  id: "delhi-2025",
+  id: "delhi-2026",
   status: "Event Completed",
-  name: "Bharat Mandapam New Delhi Expo 2025",
+  name: "Bharat Mandapam New Delhi Expo 2026",
   shortName: "Delhi",
   cardDate: "17 – 19 September 2026",
   cardVenue: "Bharat Mandapam, New Delhi",
