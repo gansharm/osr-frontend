@@ -14,8 +14,8 @@ import { aboutFeatures } from "../data/siteData";
 import HowWeWork from "./HowWeWork";
 import "./About.css";
 import "./Hero.css";
-// Use the KJ-1060 machine image from the images folder
-import aboutMachine from "../images/KJ-1060.png";
+import aboutExhibition from "../media/exhibition/images/delhi20.jpeg";
+import aboutExhibitionSecondary from "../media/exhibition/images/delhi19.jpeg";
 
 const WHY_OSR_CARDS = [
   {
@@ -50,12 +50,28 @@ function About() {
       <div className="about-shell">
         <div className="about-grid">
           <div className="about-visual reveal">
-            <div className="about-machine">
-              <div className="showcase-stage">
-                <img src={aboutMachine} alt="UV flatbed printing machine" />
-                <span className="stage-orb stage-orb-one" aria-hidden="true"></span>
-                <span className="stage-orb stage-orb-two" aria-hidden="true"></span>
-                <span className="stage-orb stage-orb-three" aria-hidden="true"></span>
+            <div className="about-machine about-photo-card">
+              <div className="showcase-stage about-photo-stage">
+                <img
+                  src={aboutExhibition}
+                  alt="OSR Solutions machines displayed at the exhibition booth"
+                />
+                <div className="about-photo-caption">
+                  <span>OSR in action</span>
+                  <strong>Technology showcased live</strong>
+                </div>
+              </div>
+            </div>
+            <div className="about-machine about-photo-card about-photo-card--secondary">
+              <div className="showcase-stage about-photo-stage">
+                <img
+                  src={aboutExhibitionSecondary}
+                  alt="OSR Solutions exhibition booth with an industrial flatbed printer"
+                />
+                <div className="about-photo-caption">
+                  <span>Built for business</span>
+                  <strong>OSR team at the expo</strong>
+                </div>
               </div>
             </div>
           </div>

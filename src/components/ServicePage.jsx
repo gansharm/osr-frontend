@@ -100,7 +100,8 @@ function ServicePage() {
             </div>
           </div>
 
-          <div className="products-hero-machine reveal">
+          <div className="products-hero-machine product-spotlight reveal">
+            <span className="product-spotlight-kicker">Precision DTF production</span>
             <div className="machine-showcase" aria-hidden="true">
               <span className="showcase-ring" />
               <span className="showcase-ring secondary" />
@@ -111,6 +112,19 @@ function ServicePage() {
               <span className="showcase-platform" />
             </div>
             <img src={heroMachine} alt="D602-2H machine" />
+            <span className="product-spotlight-model">
+              D602-2H
+              <small>Industrial DTF Printer</small>
+            </span>
+            <button
+              type="button"
+              className="product-spotlight-cta"
+              onClick={() => navigate("/products/d602-2h-dtf-printer")}
+              aria-label="View D602-2H machine details"
+            >
+              <FiArrowRight />
+              <span>View machine</span>
+            </button>
           </div>
         </section>
 
@@ -160,7 +174,7 @@ function ServicePage() {
               <span className="featured-orb orb-three" />
               <span className="featured-platform" />
             </div>
-            <img src={featuredMachine} alt="A3F-4050DX machine" />
+            <img src={featuredMachine} alt="A3F-4060DX machine" />
           </div>
 
           <div className="featured-metrics">

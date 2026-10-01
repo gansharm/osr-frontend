@@ -25,7 +25,7 @@ function SparePartsAccordion({ parts }) {
             {parts.map((part, index) => (
               <figure
                 className="spare-part-card"
-                key={part.name}
+                key={`${part.name}-${index}`}
                 style={{ "--item-index": index }}
               >
                 <div className="spare-part-image">

@@ -68,11 +68,25 @@ function Hero() {
           </div>
 
           <div className="hero-showcase reveal">
-            <div className="showcase-stage">
+            <div className="showcase-stage landing-machine-stage">
+              <span className="landing-stage-kicker">Precision, in every dimension.</span>
               <span className="stage-orb stage-orb-one" />
               <span className="stage-orb stage-orb-two" />
               <span className="stage-orb stage-orb-three" />
               <img src={heroMachine} alt="OPIXELL UV flatbed printing machine" />
+              <span className="landing-machine-model">
+                KJ-1060UC
+                <small>UV Flatbed Printer</small>
+              </span>
+              <button
+                type="button"
+                className="landing-machine-cta"
+                onClick={() => navigate("/products/kj-1060uc-uv-flatbed-printer")}
+                aria-label="Explore the KJ-1060UC machine"
+              >
+                <FiArrowRight />
+                <span>Explore the machine</span>
+              </button>
             </div>
 
             <div className="showcase-features">

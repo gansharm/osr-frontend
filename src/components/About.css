@@ -258,6 +258,128 @@
   margin: 0;
 }
 
+/* About-story exhibition photo. */
+html body .about-machine.about-photo-card {
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(11, 124, 255, .16);
+  border-radius: 28px 92px 28px 92px;
+  background: #ffffff;
+  box-shadow:
+    0 30px 72px rgba(15, 57, 113, .16),
+    0 0 0 10px rgba(11, 124, 255, .035);
+  animation: none;
+}
+
+html body .about-machine.about-photo-card.about-photo-card--secondary {
+  border-radius: 92px 28px 92px 28px;
+}
+
+html body .about-machine.about-photo-card .showcase-stage.about-photo-stage {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+html body .about-machine.about-photo-card .showcase-stage.about-photo-stage img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+  filter: saturate(1.04) contrast(1.02);
+  animation: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  transform: scale(1.002);
+}
+
+html body .about-machine.about-photo-card:hover .showcase-stage.about-photo-stage img {
+  transform: scale(1.04);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+html body .about-machine.about-photo-card .showcase-stage.about-photo-stage::after {
+  inset: 0;
+  width: auto;
+  height: auto;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, transparent 50%, rgba(4, 15, 29, .72) 100%),
+    linear-gradient(115deg, rgba(11, 124, 255, .08), transparent 38%);
+  filter: none;
+  transform: none;
+}
+
+.about-photo-caption {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 23px;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .36);
+}
+
+.about-photo-caption span {
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.about-photo-caption strong {
+  max-width: 190px;
+  font-size: 15px;
+  line-height: 1.25;
+  text-align: right;
+}
+
+html.dark body .about-machine.about-photo-card {
+  border-color: rgba(85, 168, 255, .22);
+  background: #08101f;
+  box-shadow:
+    0 34px 82px rgba(0, 0, 0, .4),
+    0 0 0 10px rgba(85, 168, 255, .035);
+}
+
+@media (max-width: 620px) {
+  html body .about-machine.about-photo-card {
+    border-radius: 22px 62px 22px 62px;
+  }
+
+  html body .about-machine.about-photo-card.about-photo-card--secondary {
+    border-radius: 62px 22px 62px 22px;
+  }
+
+  html body .about-machine.about-photo-card .showcase-stage.about-photo-stage {
+    min-height: 0;
+  }
+
+  html body .about-machine.about-photo-card .showcase-stage.about-photo-stage img {
+    width: 100%;
+    max-height: none;
+  }
+
+  .about-photo-caption {
+    left: 18px;
+    right: 18px;
+    bottom: 16px;
+  }
+
+  .about-photo-caption strong {
+    max-width: 150px;
+    font-size: 12px;
+  }
+}
+
 .why-osr-banner {
   display: flex;
   align-items: center;
