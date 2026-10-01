@@ -208,7 +208,7 @@ export const products = [
       "Smart Height Detection",
       "Bed Size: 15 × 24 inch",
     ],
-    applications: ["Phone Case", "Ceramic", "Leather", "Bottle", "Acrylic"],
+    applications: ["Phone Case", "Ceramic", "Leather", "Bottle", "Acrylic","MDF Board", "Wood", "Glass", "Metal", "PVC Board", "Signage"],
   },
   {
     slug: "all-in-one-dtf-printer",
