@@ -12,7 +12,7 @@
 /build
 
 # Original exhibition video sources (optimized copies live in src/media/exhibition/videos)
-/src/videos/
+/src/videos/*
 
 # misc
 .DS_Store
@@ -30,3 +30,6 @@ yarn-error.log*
 *.avi
 *.mkv
 *.webm
+
+# Include the customer video imported by the reviews page.
+!/src/videos/Palam - New Delhi.mp4
