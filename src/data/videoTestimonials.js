@@ -3,6 +3,7 @@ import kohimaTestimonialVideo from "../videos/Kohima.mp4";
 import indoreTestimonialVideo from "../videos/Indore.mp4";
 import palamTestimonialVideo from "../videos/Palam - New Delhi.mp4";
 import indore2TestimonialVideo from "../videos/Indore2.mp4";
+import sadarBazarTestimonialVideo from "../videos/Sdar-bazar.mp4";
 
 // Add one object per customer video. Files stored under src can be imported as
 // above; alternatively, place them in public/media/testimonials and use their
@@ -49,6 +50,13 @@ const videoTestimonials = [
     id: "customer-video-5",
     videoUrl: indore2TestimonialVideo,
     name: "OSR Solutions - Indore Customer 2",
+    companyName: "",
+    feedback: "Hear directly from our customer about their experience with OSR Solutions.",
+  },
+  {
+    id: "customer-video-6",
+    videoUrl: sadarBazarTestimonialVideo,
+    name: "OSR Solutions - Sadar Bazar Customer",
     companyName: "",
     feedback: "Hear directly from our customer about their experience with OSR Solutions.",
   },

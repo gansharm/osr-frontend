@@ -34,3 +34,4 @@ yarn-error.log*
 # Include the customer video imported by the reviews page.
 !/src/videos/Palam - New Delhi.mp4
 !/src/videos/Indore2.mp4
+!/src/videos/Sdar-bazar.mp4
